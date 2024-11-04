@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="View\Pics\btnNewGame.png" />
+    <None Remove="View\Pics\Planet2.png" />
+    <None Remove="View\Pics\Planet3.png" />
+    <None Remove="View\Pics\Planet4.png" />
+    <None Remove="View\Pics\Planet5.png" />
+    <None Remove="View\Pics\Planet6.png" />
+    <None Remove="View\Pics\Planet7.png" />
+    <None Remove="View\Pics\Title.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\Pics\btnNewGame.png" />
+    <Resource Include="View\Pics\Planet2.png" />
+    <Resource Include="View\Pics\Planet3.png" />
+    <Resource Include="View\Pics\Planet4.png" />
+    <Resource Include="View\Pics\Planet5.png" />
+    <Resource Include="View\Pics\Planet6.png" />
+    <Resource Include="View\Pics\Planet7.png" />
+    <Resource Include="View\Pics\Title.png" />
+  </ItemGroup>
+
+</Project>
