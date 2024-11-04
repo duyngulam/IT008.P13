@@ -9,5 +9,146 @@
                     Value="/Fonts/#Courier Prime" >
             </Setter>
         </Style>
+
+        <!-- STYLE BUTTON MENU GAME-->
+        <Style x:Key="btnMENU" TargetType="Button">
+            <Setter Property="Background" Value="#BE5CCD"/>
+            <Setter Property="Foreground" Value="#FFC5D4"/>
+            <Setter Property="FontFamily" Value="Kodchasan"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Opacity" Value="1"/>
+            <Setter Property="Margin" Value="0,15,0,0"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                        Width="170" Height="70"
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="#9D4EC5"
+                        BorderThickness="3"
+                        CornerRadius="40">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <!-- Trigger để hiển thị border khi di chuột qua -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="white"/>
+                                <Setter TargetName="border" Property="BorderThickness" Value="3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <!--Chấm tròn-->
+        <Style x:Key="iEllipe" TargetType="Ellipse">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Fill" Value="#BE5CCD"/>
+            <Setter Property="Stroke" Value="#FEEECC"/>
+            <Setter Property="StrokeThickness" Value="5"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Fill" Value="#FEEECC"/>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Ô chữ nhật-->
+        <Style x:Key="iRectangle" TargetType="Border">
+            <Setter Property="Width" Value="370"/>
+            <Setter Property="Height" Value="65"/>
+            <Setter Property="Background" Value="#BE5CCD"/>
+            <Setter Property="BorderBrush" Value="#9D4EC5"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="CornerRadius" Value="35"/>
+        </Style>
+        
+        <!--Button SCORE-->
+        <Style x:Key="btnScore" TargetType="Button">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Foreground" Value="#FFC5D4"/>
+            <Setter Property="FontFamily" Value="Kodchasan"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#BE5CCD"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                            Width="200" Height="60"
+                            x:Name="button"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="#9D4EC5"
+                            BorderThickness="0"
+                            CornerRadius="30">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <!-- Trigger để hiển thị border khi di chuột qua -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="button" Property="BorderBrush" Value="white"/>
+                                <Setter TargetName="button" Property="BorderThickness" Value="3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- STYLE BUTTON BACK GAME-->
+        <Style x:Key="btnBack" TargetType="Button">
+            <Setter Property="Background" Value="#BE5CCD"/>
+            <Setter Property="Foreground" Value="#FFC5D4"/>
+            <Setter Property="FontFamily" Value="Kodchasan"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Opacity" Value="1"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Width" Value="250"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                            Width="250" Height="70"
+                            x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="#9D4EC5"
+                            BorderThickness="3"
+                            CornerRadius="40">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"/>
+
+                        </Border>
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+                
+            
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#9D4EC5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>
