@@ -8,13 +8,14 @@
         Title="MainWindow" Height="720" Width="1280">
 
     <Window.Background >
-        <ImageBrush ImageSource="C:\Users\DELL\source\DOANLTTQ\Line98\View\Pics\Line98BackGround.jpg" 
+        <ImageBrush ImageSource="/View/Pics/background.png"
+
                     Stretch="UniformToFill" />
     </Window.Background>
 
     <Grid>
         <Image Source="/View/Pics/Title.png" Margin="0,0,0,342" />
-        
-        
+
+
     </Grid>
 </Window>
