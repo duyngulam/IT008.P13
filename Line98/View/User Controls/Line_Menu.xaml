@@ -1,0 +1,232 @@
+﻿<UserControl x:Class="Line98.View.User_Controls.Line_Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Line98.View.User_Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/View/Resource/btnStyleResource.xaml">
+
+                </ResourceDictionary>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Width="1280"
+              x:Name="grdMenu"
+              Visibility="Visible"
+              IsEnabled="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tieu de LINE-->
+        <TextBlock Text="LINE" Height="120" Width="414"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       TextAlignment="Center" FontSize="100" FontWeight="ExtraBlack"
+                       FontFamily="Courier Prime"
+                       Margin="0,10,0,0"
+                       >
+            <TextBlock.Foreground>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                    <GradientStop Color="#FF95B0" Offset="0.32" />
+                    <GradientStop Color="#FFCFD2" Offset="0.4233" />
+                    <GradientStop Color="#FEEECC" Offset="0.5467" />
+                    <GradientStop Color="#FCCDB6" Offset="0.6598" />
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <!--button SCORE STYLE HELP-->
+        <Canvas Grid.Row="1" >
+            <!--Button STYLE-->
+            <Button Style="{StaticResource btnMENU}"
+                        x:Name="btnStyle"
+                        Content="STYLE"
+                        Canvas.Left="157"
+                        Click="btnStyle_Click"/>
+            <Border Height="54" Width="248"
+                        x:Name="brdStyle"
+                        BorderBrush="White" BorderThickness="3"
+                        CornerRadius="30"
+                        Canvas.Left="157"
+                        Margin="0,15,0,0"
+                        Visibility="Visible"/>
+            <!--Button SCORE-->
+            <Button Style="{StaticResource btnMENU}"
+                        x:Name="btnScore"
+                        Content="SCORE"
+                        Canvas.Left="515"
+                        Click="btnScore_Click"/>
+            <Border Height="54" Width="248"
+                        x:Name="brdScore"
+                        BorderBrush="White" BorderThickness="3"
+                        CornerRadius="30"
+                        Canvas.Left="515"
+                        Margin="0,15,0,0"
+                        Visibility="Collapsed"/>
+            <!--Button HELP-->
+            <Button Style="{StaticResource btnMENU}"
+                        x:Name="btnHelp"
+                        Content="HELP"
+                        Canvas.Left="900"
+                        Click="btnHelp_Click"/>
+
+            <Border Height="54" Width="248"
+                        x:Name="brdHelp"
+                        BorderBrush="White" BorderThickness="3"
+                        CornerRadius="30"
+                        Canvas.Left="900"
+                        Margin="0,15,0,0"
+                        Visibility="Collapsed"/>
+
+        </Canvas>
+        <!--Hinh-->
+        <Canvas Grid.Row="2" Height="360" >
+            <Rectangle Height="360" Width="760"
+                           Fill="#6178C6" Opacity="0.6"
+                           Canvas.Left="260"
+                           RadiusX="40" RadiusY="40">
+            </Rectangle>
+
+            <!-- CANVAS STYLE-->
+            <Canvas x:Name="cvStyle"
+                        Visibility="Hidden">
+                <Rectangle Height="300" Width="664"
+                               Fill="#ACC7FE" Opacity="0.7"
+                               Canvas.Left="308"
+                               Canvas.Top="25"
+                               RadiusX="40" RadiusY="40">
+                </Rectangle>
+
+                <Grid Height="300" Width="664"
+                          Canvas.Left="308" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="106"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0"
+                                    Orientation="Vertical"  >
+                        <Ellipse Style="{StaticResource iEllipe}" Margin="0,30,0,0"/>
+                        <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
+                        <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
+                        <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                    Orientation="Vertical" >
+                        <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                        <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                        <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                        <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                    </StackPanel>
+
+                </Grid>
+            </Canvas>
+            <!-- CANVAS SCORE TIMER-->
+            <Canvas x:Name="cvScoreTimer"
+                        Canvas.Left="300"
+                        Canvas.Top="30"
+                        Visibility="Hidden"
+                        Height="300" Width="666">
+
+                <Path Fill="#ACC7FE" Opacity="0.7"
+                      Data=" M666 26.6667C666 11.9391 648.961 0 627.943 0H352.5C334.551 0 320 14.5679 320 32.5172C320 33.8348 320 35.1132 320 36.3534C320 56.4197 303.733 72.6667 283.667 72.6667H279H164.597H40C17.9086 72.6667 0 90.5753 0 112.667V273.333C0 288.061 17.0388 300 38.0571 300H627.943C648.961 300 666 288.061 666 273.333V26.6667Z"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Canvas Grid.Row="0"  Width="666">
+                        <Button Style="{StaticResource btnScore}"
+                                    x:Name="btnNormal"
+                                    Content="NORMAL"
+                                    Margin="70,20,0,0"
+                                    Click="btnNormal_Click"/>
+                        <Button Style="{StaticResource btnScore}"
+                                    x:Name="btnTimer"
+                                    Content="TIMER"
+                                    Margin="420,20,0,0"
+                                    Click="btnTimer_Click"/>
+                        <Border BorderBrush="White" BorderThickness="3" CornerRadius="20" 
+                                    Margin="420,20,0,0"
+                                    Height="40" Width="200"/>
+                    </Canvas>
+                </Grid>
+
+            </Canvas>
+            <!-- CANVAS SCORE NORMAL-->
+            <Canvas x:Name="cvScoreNormal"
+                        Canvas.Left="300"
+                        Canvas.Top="30"
+                        Visibility="Collapsed"
+                        Height="300" Width="666">
+
+                <Path Fill="#ACC7FE" Opacity="0.7"
+                          Data="M0 26.6667C0 11.9391 17.0388 0 38.0571 0H313.5C331.449 0 346 14.5679 346 32.5172C346 33.8348 346 35.1132 346 36.3534C346 56.4197 362.267 72.6667 382.333 72.6667H387H501.403H626C648.091 72.6667 666 90.5753 666 112.667V273.333C666 288.061 648.961 300 627.943 300H38.0571C17.0388 300 0 288.061 0 273.333V26.6667Z" />
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Canvas Grid.Row="0"  Width="660">
+                        <Button Style="{StaticResource btnScore}"
+                                    
+                                    Content="NORMAL"
+                                    Margin="70,20,0,0"
+                                    Click="btnNormal_Click"/>
+                        <Border BorderBrush="White" BorderThickness="3" CornerRadius="20" 
+                                    Margin="70,20,0,0"
+                                    Height="40" Width="200"/>
+                        <Button Style="{StaticResource btnScore}"                                    
+                                    Content="TIMER"
+                                    Margin="420,20,0,0"
+                                    Click="btnTimer_Click"/>
+
+                    </Canvas>
+                </Grid>
+
+            </Canvas>
+            <!-- CANVAS HELP-->
+            <Canvas x:Name="cvHelp"
+                        Visibility="Hidden">
+                <Rectangle Height="299" Width="663"
+                               Fill="#ACC7FE" Opacity="0.7"
+                               Canvas.Left="309"
+                               Canvas.Top="26"
+                               RadiusX="40" RadiusY="40" HorizontalAlignment="Center" VerticalAlignment="Top">
+                </Rectangle>
+            </Canvas>
+
+
+        </Canvas>
+        <!--BACK-->
+
+        <Button Style="{StaticResource btnBack}"
+                    x:Name="btnBack"
+                    Content="BACK"
+                    Grid.Row="3"
+                    VerticalAlignment="Center"
+                    Margin="0,0,0,0"
+                    >
+
+        </Button>
+
+    </Grid>
+</UserControl>
