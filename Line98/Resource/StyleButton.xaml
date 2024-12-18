@@ -16,14 +16,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border 
-                Width="248" Height="54"
-                x:Name="border"
-                Background="{TemplateBinding Background}"
-                BorderBrush="#9D4EC5"
-                BorderThickness="3"
-                CornerRadius="30">
+            Width="248" Height="54"
+            x:Name="border"
+            Background="{TemplateBinding Background}"
+            BorderBrush="#9D4EC5"
+            BorderThickness="3"
+            CornerRadius="30">
                         <ContentPresenter HorizontalAlignment="Center" 
-                                      VerticalAlignment="Center"/>
+                                  VerticalAlignment="Center"/>
 
                     </Border>
 
@@ -80,14 +80,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border 
-                    Width="200" Height="40"
-                    x:Name="button"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="#9D4EC5"
-                    BorderThickness="0"
-                    CornerRadius="20">
+                Width="200" Height="40"
+                x:Name="button"
+                Background="{TemplateBinding Background}"
+                BorderBrush="#9D4EC5"
+                BorderThickness="0"
+                CornerRadius="20">
                         <ContentPresenter HorizontalAlignment="Center" 
-                          VerticalAlignment="Center"/>
+                      VerticalAlignment="Center"/>
 
                     </Border>
 
@@ -119,14 +119,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border 
-                    Width="248" Height="54"
-                    x:Name="border"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="#9D4EC5"
-                    BorderThickness="3"
-                    CornerRadius="30">
+                Width="248" Height="54"
+                x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="#9D4EC5"
+                BorderThickness="3"
+                CornerRadius="30">
                         <ContentPresenter HorizontalAlignment="Center" 
-                              VerticalAlignment="Center"/>
+                          VerticalAlignment="Center"/>
 
                     </Border>
 

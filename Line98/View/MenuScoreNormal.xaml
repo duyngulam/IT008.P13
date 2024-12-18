@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Line98.View.MenuScoreNormal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Line98.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resource/StyleButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <!-- CANVAS SCORE NORMAL-->
+        <Canvas x:Name="cvScoreNormal"
+                Height="300" Width="666"
+                Margin="300,30,0,0"
+                >
+
+            <Path x:Name="pNormal"
+                  Visibility="Visible"
+                Fill="#ACC7FE" Opacity="0.7"
+                          Data="M0 26.6667C0 11.9391 17.0388 0 38.0571 0H313.5C331.449 0 346 14.5679 346 32.5172C346 33.8348 346 35.1132 346 36.3534C346 56.4197 362.267 72.6667 382.333 72.6667H387H501.403H626C648.091 72.6667 666 90.5753 666 112.667V273.333C666 288.061 648.961 300 627.943 300H38.0571C17.0388 300 0 288.061 0 273.333V26.6667Z" />
+            <Path x:Name="pTimer"
+                  Visibility="Collapsed"
+                Fill="#ACC7FE" Opacity="0.7"
+                Data=" M666 26.6667C666 11.9391 648.961 0 627.943 0H352.5C334.551 0 320 14.5679 320 32.5172C320 33.8348 320 35.1132 320 36.3534C320 56.4197 303.733 72.6667 283.667 72.6667H279H164.597H40C17.9086 72.6667 0 90.5753 0 112.667V273.333C0 288.061 17.0388 300 38.0571 300H627.943C648.961 300 666 288.061 666 273.333V26.6667Z"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <Canvas Grid.Row="0"  Width="660">
+
+                    <Button Style="{StaticResource btnScore}"
+                            x:Name="btnNormal"
+                                    Click="btnNormal_Click"
+                                    Content="NORMAL"
+                                    Margin="70,20,0,0"
+                                    />
+                    <Border x:Name="borderNormal"
+                            Visibility="Visible"
+                        BorderBrush="White" BorderThickness="3" CornerRadius="20" 
+                            Margin="70,20,0,0"
+                            Height="40" Width="200"/>
+                    <Button Style="{StaticResource btnScore}"     
+                            x:Name="btnTimer"
+                            Click="btnTimer_Click"
+                            Content="TIMER"
+                            Margin="420,20,0,0"
+                            
+                                    />
+                    <Border x:Name="borderTimer"
+                            Visibility="Hidden"
+                        BorderBrush="White" BorderThickness="3" CornerRadius="20" 
+                     Margin="420,20,0,0"
+                    Height="40" Width="200"/>
+
+                </Canvas>
+            </Grid>
+        </Canvas>
+    </Grid>
+</UserControl>

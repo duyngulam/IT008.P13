@@ -1,0 +1,205 @@
+﻿<UserControl x:Class="Line98.View.InGameUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Line98.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="560">
+    <UserControl.Resources>
+        <!-- STYLE BUTTON BACK GAME-->
+        <Style x:Key="btnItem" TargetType="Button">
+            <Setter Property="Background" Value="#BE5CCD"/>
+            <Setter Property="Foreground" Value="#FFC5D4"/>
+            <Setter Property="FontFamily" Value="Kodchasan"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Opacity" Value="1"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="80"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                Width="80" Height="40"
+                x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="#9D4EC5"
+                BorderThickness="3"
+                CornerRadius="20">
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+
+
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#9D4EC5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key = "TriggerStyle" TargetType = "Button">
+            <Style.Triggers>
+                <Trigger Property = "IsMouseOver" Value = "True">
+                    <Setter Property = "Background" Value = "#9D4EC5" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="340"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+        Grid.Row="0"
+        Text="LINE" Height="160" Width="440" 
+        TextAlignment="Center" FontSize="128" FontWeight="ExtraBlack"
+        FontFamily="Courier Prime"
+        Margin="0,0,0,0"
+    >
+            <TextBlock.Foreground>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                    <GradientStop Color="#FF95B0" Offset="0.32" />
+                    <GradientStop Color="#FFCFD2" Offset="0.4233" />
+                    <GradientStop Color="#FEEECC" Offset="0.5467" />
+                    <GradientStop Color="#FCCDB6" Offset="0.6598" />
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+        <Canvas Grid.Row="1">
+            <Rectangle Grid.Row="1" Height="340" Width="440"
+                   Fill="#6178C6" Opacity="0.6"
+                   RadiusX="40" RadiusY="40"
+                   Canvas.Left=" 60">
+            </Rectangle>
+            <StackPanel Height="340" Width="440"
+                    Canvas.Left="60" Orientation="Vertical">
+                <TextBlock Height="80" Width="120" Text="Next ball"
+                       FontFamily="Courier Prime" FontSize="30"
+                       FontWeight="Bold" Foreground="white"
+                       TextWrapping="Wrap" TextAlignment="Center"
+                       Margin="-200,0,0,0" />
+                <!--SCORE-->
+                <Grid Height="120" Width="370"
+                  Margin="0,0,0,0">
+                    <TextBlock
+                        Height="50" Width="150" Text="Score"
+                        FontFamily="Courier Prime" FontSize="40"
+                        FontWeight="ExtraBold" Foreground="Black"
+                        TextWrapping="Wrap" TextAlignment="Center"
+                        Margin="135,-120,0,0"
+                 >
+
+                    </TextBlock>
+                    <Path 
+                    Stroke="Black" Fill="Transparent" StrokeThickness="3"
+                    Data="M192 2H22L14 5L8 10L4 18L2 27V77L3 85L7 93L14 99L22 102H342L346.5 101L351 98.5L356 94L359.5 88L361 83.5L362 78V21L360.5 17L358 13.5L355.5 10L352 6.5L347.5 4.5L340.5 2.5H314.5"
+                    >
+
+                    </Path>
+
+                    <TextBlock
+                    Margin="0,20,0,0"
+                    Height="100" Width="358"
+                    FontFamily="Geostar Fill" FontSize="60"
+                    Text=" 1020" Foreground="White"
+                    TextAlignment="Center"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                 />
+
+                </Grid>
+
+                <Grid Height="140" Width="370"
+                  Margin="0,20,0,0">
+
+                    <TextBlock
+                        Height="50" Width="150" Text="Time"
+                        FontFamily="Courier Prime" FontSize="40"
+                        FontWeight="ExtraBold" Foreground="Black"
+                        TextWrapping="Wrap" TextAlignment="Center"
+                        Margin="135,-130,0,0"
+                >
+
+                    </TextBlock>
+                    <Path 
+                    
+                    Stroke="Black" Fill="Transparent" StrokeThickness="3"
+                    Data="M202.93 2H23.5912L14.3378 4.94118L7.72827 10.3333L3.76255 18.6667L2 26.5098V76.5098L3.32191 85.3333L7.72827 93.6667L14.3378 99.0588L22.7099 102H339.087C348.781 102 354.95 94.6471 354.95 94.6471L359.797 87.7843L362 77.9804V27.4902L361.559 20.6275L358.475 14.2549L351.865 5.92157L341.731 2.4902H305.599"
+                    >
+
+                    </Path>
+
+                    <TextBlock
+                    Height="100" Width="358"
+                    FontFamily="Geostar Fill" FontSize="60"
+                    Text=" 10:20" Foreground="White"
+                    TextAlignment="Center"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    />
+                </Grid>
+
+            </StackPanel>
+        </Canvas>
+
+        <Canvas Grid.Row="2">
+            <Rectangle  Height="140" Width="440"
+                    Fill="#6178C6" Opacity="0.6"
+                    RadiusX="40" RadiusY="40"
+                    
+                    Canvas.Top="40"
+                    Canvas.Left=" 60">
+            </Rectangle>
+
+            <Grid Height="140" Width="440"
+                Canvas.Top="40"
+                Canvas.Left=" 60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="240"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{StaticResource btnItem}"
+                    Margin="-80,-60,0,0"/>
+
+                <Button Style="{StaticResource btnItem}"
+                    Margin="-80,60,0,0"/>
+
+                <Button Style="{StaticResource btnItem}"
+                    Margin="160,-60,0,0"/>
+
+                <Button Style="{StaticResource btnItem}"
+                    Margin="160,60,0,0"/>
+
+                <Button Grid.Column="2"                       
+                    Height="100" Width="120"
+                    Background="#BE5CCD"
+                    Style="{StaticResource TriggerStyle}"
+            >
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border 
+                            Width="120" Height="100"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="#9D4EC5"
+                            BorderThickness="3"
+                            CornerRadius="40">
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+        </Canvas>
+
+    </Grid>
+</UserControl>

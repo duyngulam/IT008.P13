@@ -1,6 +1,7 @@
 ﻿using Line98.Control;
 using Line98.Model;
 using Line98.View.User_Controls;
+using Line98.ViewModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,6 +38,7 @@ namespace Line98
             // Gán GameControl vào gameArea
             gameArea.Children.Add(gameControl);
             _gameController.NewGame();
+
         }
 
     }

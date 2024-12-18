@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Line98"
+        xmlns:views ="clr-namespace:Line98.View"
+        xmlns:localViewModel="clr-namespace:Line98.ViewModel"
         xmlns:Menu="clr-namespace:Line98.View.User_Controls"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -15,7 +17,7 @@
                     Stretch="UniformToFill" />
     </Window.Background>
 
-
+    
     <Grid >
         <!--NAT-->
         <Image Source="/View/Pics/Title.png" Margin="0,10,0,332" 
@@ -25,9 +27,6 @@
 
         </Grid>
 
+        <views:MenuView/>
     </Grid>
-
-
-
-
 </Window>
