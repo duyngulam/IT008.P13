@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Line98.View.MenuStyleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Line98.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Line98;component/Resource/StyleButton.xaml"/>
+                <ResourceDictionary Source="/Line98;component/Resource/DataTemplete.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <Grid>
+
+        <!-- CANVAS STYLE-->
+        <Canvas>
+            <Rectangle Height="300" Width="664"
+                               Fill="#ACC7FE" Opacity="0.7"
+                               Canvas.Left="308"
+                               Canvas.Top="25"
+                               RadiusX="40" RadiusY="40">
+            </Rectangle>
+
+            <Grid Height="300" Width="664"
+                          Canvas.Left="308" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="106"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                                    Orientation="Vertical"  >
+                    <Ellipse Style="{StaticResource iEllipe}" Margin="0,30,0,0"/>
+                    <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
+                    <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
+                    <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                                    Orientation="Vertical" >
+                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                </StackPanel>
+
+            </Grid>
+        </Canvas>
+    </Grid>
+</UserControl>

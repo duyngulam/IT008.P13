@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Line98"
-        xmlns:Menulocal="clr-namespace:Line98.View.User_Controls"
+        xmlns:views ="clr-namespace:Line98.View"
+        xmlns:localViewModel="clr-namespace:Line98.ViewModel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="Line" Height="740" Width="1280">
 
     <Window.Background >
         <ImageBrush ImageSource="/View/Pics/background.png"
@@ -15,17 +16,7 @@
                     Stretch="UniformToFill" />
     </Window.Background>
 
-    
     <Grid >
-        <!--NAT-->
-        <Image Source="/View/Pics/Title.png" Margin="0,10,0,332" 
-               Visibility="Collapsed"/>
-    <Menulocal:Line_Menu/>
-        
-
+        <views:MenuView/>
     </Grid>
-
-
-    
-    
 </Window>

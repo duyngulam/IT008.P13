@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Line98.View"
+                    xmlns:localViewModel="clr-namespace:Line98.ViewModel">
+    
+    <DataTemplate 
+DataType="{x:Type localViewModel:MenuHelpViewModel}">
+        <local:MenuHelpView/>
+    </DataTemplate>
+
+    <DataTemplate 
+DataType="{x:Type localViewModel:MenuStyleViewModel}">
+        <local:MenuStyleView/>
+    </DataTemplate>
+
+    <DataTemplate 
+DataType="{x:Type localViewModel:MenuScoreNormalViewModel}">
+        <local:MenuScoreNormal/>
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -2,18 +2,42 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="View\User Controls\Line_Menu.xaml.cs">
+    <Compile Update="View\InGameUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MenuHelpView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MenuScoreNormal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MenuStyleView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MenuView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\Resource\btnStyleResource.xaml">
+    <Page Update="Resource\DataTemplete.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\User Controls\btnStyleResource.xaml">
+    <Page Update="Resource\StyleButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\User Controls\Line_Menu.xaml">
+    <Page Update="View\InGameUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MenuHelpView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MenuScoreNormal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MenuStyleView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MenuView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
