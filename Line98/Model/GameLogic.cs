@@ -32,22 +32,7 @@ namespace Line98.Model
             this.board = board;
             this.minLength = minLength;
         }
-        private List<(int x, int y)> GetEmptyCells()
-        {
-            List<(int x, int y)> emptyCells = new List<(int x, int y)>();
 
-            for (int i = 0; i < board.Size; i++)
-            {
-                for (int j = 0; j < board.Size; j++)
-                {
-                    if (board.IsEmpty(i, j))
-                    {
-                        emptyCells.Add((i, j));
-                    }
-                }
-            }
-            return emptyCells;
-        }
 
         // Hàm tạo bóng nhỏ ở vị trí ngẫu nhiên
         public void MakeSmallBall()
