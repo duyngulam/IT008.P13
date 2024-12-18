@@ -50,4 +50,8 @@
 		<Resource Include="View\Pics\Title.png" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="View\User Controls\" />
+	</ItemGroup>
+
 </Project>

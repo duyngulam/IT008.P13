@@ -12,11 +12,11 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Line98;component/Resource/StyleButton.xaml"/>
-                <ResourceDictionary Source="/Resource/DataTemplete.xaml"/>
+                <ResourceDictionary Source="/Line98;component/Resource/DataTemplete.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
-        
+
     </UserControl.Resources>
 
     <UserControl.DataContext>
@@ -81,7 +81,7 @@
                            Canvas.Left="260"
                            RadiusX="40" RadiusY="40">
             </Rectangle>
-            
+
             <Canvas>
                 <ContentControl Content="{Binding CurrentView}">
                 </ContentControl>

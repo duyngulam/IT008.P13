@@ -21,12 +21,13 @@ namespace Line98
     /// </summary>
     public partial class MainWindow : Window
     {
+        int GridSize = 9;
+        int BallCount = 5;
         private GameController _gameController;
         public MainWindow()
         {
             InitializeComponent();
-            int GridSize = 9;
-            int BallCount = 5;
+
             // Tạo Board và GameLogic
             var board = new Board(GridSize); // 9x9 lưới
             var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa
