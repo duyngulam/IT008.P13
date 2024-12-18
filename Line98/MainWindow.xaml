@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Line98"
         xmlns:views ="clr-namespace:Line98.View"
         xmlns:localViewModel="clr-namespace:Line98.ViewModel"
-        xmlns:Menu="clr-namespace:Line98.View.User_Controls"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="756" Width="1280">
