@@ -2,11 +2,20 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Control\GameControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\User Controls\Line_Menu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Animation\GameAnimation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Control\GameControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Resource\btnStyleResource.xaml">
       <SubType>Designer</SubType>
     </Page>

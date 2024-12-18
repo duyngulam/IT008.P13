@@ -17,6 +17,9 @@ namespace Line98.Model
             this.isBig = IsBig;
             this.isTriggered = isTriggered;
         }
-
+        public Ball Clone()
+        {
+            return new Ball(this.colorIndex, this.isBig);
+        }
     }
 }

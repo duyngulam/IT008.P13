@@ -9,6 +9,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Resources\background.png" />
+		<None Remove="Resources\balls.png" />
+		<None Remove="Resources\gameboard.png" />
+		<None Remove="Resources\Grid12x12.png" />
+		<None Remove="Resources\Grid9x9.png" />
 		<None Remove="View\Pics\Background.png" />
 		<None Remove="View\Pics\btnExit.png" />
 		<None Remove="View\Pics\btnLoadGame.png" />
@@ -25,6 +30,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Resources\background.png" />
+		<Resource Include="Resources\balls.png" />
+		<Resource Include="Resources\gameboard.png" />
+		<Resource Include="Resources\Grid12x12.png" />
+		<Resource Include="Resources\Grid9x9.png" />
 		<Resource Include="View\Pics\background.png" />
 		<Resource Include="View\Pics\btnExit.png" />
 		<Resource Include="View\Pics\btnLoadGame.png" />

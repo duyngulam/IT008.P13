@@ -6,11 +6,11 @@
              xmlns:local="clr-namespace:Line98.View.User_Controls"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
-    
+
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/View/Resource/btnStyleResource.xaml">
+                <ResourceDictionary Source="/Line98;component/View/Resource/btnStyleResource.xaml">
 
                 </ResourceDictionary>
 

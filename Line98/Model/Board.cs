@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Line98.Model
 {
@@ -25,6 +26,23 @@ namespace Line98.Model
         public bool IsWithinBounds(int x, int y)
         {
             return x >= 0 && x < Size && y >= 0 && y < Size;
+        }
+        public List<Ball> GetAllBalls()
+        {
+            var balls = new List<Ball>();
+
+            for (int i = 0; i < Balls.GetLength(0); i++)
+            {
+                for (int j = 0; j < Balls.GetLength(1); j++)
+                {
+                    if (Balls[i, j] != null)
+                    {
+                        balls.Add(Balls[i, j]);
+                    }
+                }
+            }
+
+            return balls;
         }
 
     }

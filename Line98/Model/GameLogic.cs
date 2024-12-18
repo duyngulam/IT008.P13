@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Line98.Model
 {
@@ -11,39 +12,105 @@ namespace Line98.Model
         private Board board;
         private int minLength;
         private Random random = new Random();
-        private (int row, int col)? selectedBallPosition; // Nullable Tuple
+        private (int row, int col)? selectedBallPosition;// Nullable Tuple
+        private List<(int row, int col)>? movingPath;
         public (int row, int col)? SelectedBallPosition
         {
             get => selectedBallPosition;
             private set => selectedBallPosition = value;
         }
+        public List<(int row, int col)>? MovingPath
+        {
+            get => movingPath;
+            private set => movingPath = value;
+        }
 
         // Các hướng di chuyển: lên, xuống, trái, phải
         private readonly int[][] directions = new int[][]
-        {
-        new int[] { -1, 0 },  // Lên
-        new int[] { 1, 0 },   // Xuống
-        new int[] { 0, -1 },  // Trái
-        new int[] { 0, 1 }    // Phải
-        };
+   {
+    new int[] { -1, 0 },  // Lên
+    new int[] { 1, 0 },   // Xuống
+    new int[] { 0, -1 },  // Trái
+    new int[] { 0, 1 },   // Phải
+    new int[] { -1, -1 }, // Chéo trái trên
+    new int[] { -1, 1 },  // Chéo phải trên
+    new int[] { 1, -1 },  // Chéo trái dưới
+    new int[] { 1, 1 }    // Chéo phải dưới
+   };
+        private readonly int[][] Pathdirections = new int[][]
+   {
+    new int[] { -1, 0 },  // Lên
+    new int[] { 1, 0 },   // Xuống
+    new int[] { 0, -1 },  // Trái
+    new int[] { 0, 1 },   // Phải
+    };
 
-        public GameLogic(Board board, int minLength)
+
+        public GameLogic(Board board, int minLength = 5)
         {
             this.board = board;
             this.minLength = minLength;
         }
+        private List<(int x, int y)> GetEmptyCells()
+        {
+            List<(int x, int y)> emptyCells = new List<(int x, int y)>();
 
+            for (int i = 0; i < board.Size; i++)
+            {
+                for (int j = 0; j < board.Size; j++)
+                {
+                    if (board.IsEmpty(i, j))
+                    {
+                        emptyCells.Add((i, j));
+                    }
+                }
+            }
+            return emptyCells;
+        }
 
         // Hàm tạo bóng nhỏ ở vị trí ngẫu nhiên
         public void MakeSmallBall()
         {
             var emptyCells = GetEmptyCells();
-            if (emptyCells.Count > 0)
+            if (emptyCells.Count == 0) return;
+
+            // Đếm số lượng bóng mỗi màu hiện tại
+            var colorCount = new int[7];
+            foreach (var ball in board.GetAllBalls())
             {
-                var randomCell = emptyCells[random.Next(emptyCells.Count)];
-                board.AddBall(randomCell.x, randomCell.y, new Ball(random.Next(7), IsBig: false));
+                if (ball != null)
+                    colorCount[ball.colorIndex]++;
             }
+
+            // Xác định màu có số lượng nhiều nhất
+            int mostFrequentColor = 0;
+            int maxCount = 0;
+
+            for (int i = 0; i < colorCount.Length; i++)
+            {
+                if (colorCount[i] > maxCount)
+                {
+                    maxCount = colorCount[i];
+                    mostFrequentColor = i;
+                }
+            }
+
+            // Tính toán xác suất để chọn màu nhiều nhất 
+            int chosenColor;
+            if (random.NextDouble() < 0.3)
+            {
+                chosenColor = mostFrequentColor;
+            }
+            else
+            {
+                chosenColor = random.Next(7); // Chọn ngẫu nhiên một màu khác
+            }
+
+            // Thêm bóng vào ô trống ngẫu nhiên
+            var randomCell = emptyCells[random.Next(emptyCells.Count)];
+            board.AddBall(randomCell.x, randomCell.y, new Ball(chosenColor, IsBig: false));
         }
+
 
         // Hàm tạo bóng lớn ở vị trí ngẫu nhiên
         public void MakeBigBall()
@@ -53,27 +120,16 @@ namespace Line98.Model
             {
                 var randomCell = emptyCells[random.Next(emptyCells.Count)];
                 board.AddBall(randomCell.x, randomCell.y, new Ball(random.Next(7), IsBig: true));
+
             }
+
         }
 
 
-        private void MoveBall((int x, int y) from, (int x, int y) to, List<(int x, int y)> path)
+        private void MoveBall((int x, int y) from, (int x, int y) to)
         {
-            // Di chuyển bóng theo đường đi
-            foreach (var step in path)
-            {
-                if (board.IsEmpty(step.x, step.y))
-                {
-                    board.Balls[step.x, step.y] = board.Balls[from.x, from.y];
-                    board.RemoveBall(from.x, from.y);
-                    from = step; // Cập nhật vị trí bóng hiện tại
-                }
-            }
-
-            // Cập nhật vị trí cuối cùng
             board.Balls[to.x, to.y] = board.Balls[from.x, from.y];
             board.RemoveBall(from.x, from.y);
-
             // Hủy chọn bóng sau khi di chuyển
             SelectedBallPosition = null;
         }
@@ -81,7 +137,7 @@ namespace Line98.Model
 
 
         // Hàm tính điểm
-        public List<(int x, int y)> Scoring(int minLength)
+        public List<(int x, int y)> Scoring()
         {
             List<(int x, int y)> toClear = new List<(int x, int y)>();
             HashSet<(int x, int y)> visited = new HashSet<(int x, int y)>();
@@ -194,14 +250,12 @@ namespace Line98.Model
         public List<(int x, int y)> FindPath((int x, int y) start, (int x, int y) end)
         {
             int size = board.Size;
-
-            // Kiểm tra điều kiện đầu vào: vị trí hợp lệ
-            if (!board.IsWithinBounds(start.x, start.y) ||
-                !board.IsWithinBounds(end.x, end.y) ||
-                board.Balls[start.x, start.y] == null ||
-                board.Balls[end.x, end.y] != null)
+            if (board.Balls[end.x, end.y] != null )
             {
-                return null;
+                if(board.Balls[end.x, end.y].isBig)
+                {
+                    return null;
+                }
             }
 
             // Hàng đợi BFS và danh sách thăm
@@ -224,7 +278,7 @@ namespace Line98.Model
                 }
 
                 // Duyệt các hướng di chuyển
-                foreach (var dir in directions)
+                foreach (var dir in Pathdirections)
                 {
                     int newX = currentX + dir[0];
                     int newY = currentY + dir[1];
@@ -247,15 +301,14 @@ namespace Line98.Model
             // Không tìm thấy đường đi
             return null;
         }
-        public bool HandleClick(int row, int col)
+        public ClickState HandleClick(int row, int col)
         {
-            if (!board.IsWithinBounds(row, col)) return false;
-
             if (SelectedBallPosition == null)
             {
                 // Chọn bóng tại vị trí này
                 SelectBall(row, col);
-                return true;
+                Scoring();
+                return ClickState.selectBall;
             }
             else
             {
@@ -264,13 +317,14 @@ namespace Line98.Model
                 if (moved)
                 {
                     SelectedBallPosition = null; // Hủy chọn bóng sau khi di chuyển
-                    return true;
+                    return ClickState.moved;
                 }
                 else
                 {
                     // Nếu không di chuyển được, chọn bóng mới
                     SelectBall(row, col);
-                    return false;
+
+                    return ClickState.selectNewBall;
                 }
             }
         }
@@ -281,13 +335,12 @@ namespace Line98.Model
             if (SelectedBallPosition == null) return false;
 
             // Tìm đường và di chuyển bóng
-            var path = FindPath(SelectedBallPosition.Value, (row, col));
-            if (path != null)
+            MovingPath = FindPath(SelectedBallPosition.Value, (row, col));
+            if (MovingPath != null)
             {
-                MoveBall(SelectedBallPosition.Value, (row, col), path);
+                MoveBall(SelectedBallPosition.Value, (row, col));
                 return true;
             }
-
             return false;
         }
 
@@ -297,15 +350,15 @@ namespace Line98.Model
             if (!board.IsWithinBounds(row, col)) return;
 
             var ball = board.Balls[row, col];
-            if (ball != null)
+            if (ball != null && ball.isBig)
             {
-                // Đặt bóng tại vị trí (row, col) làm bóng được chọn
                 SelectedBallPosition = (row, col);
+
             }
             else
             {
-                // Nếu ô trống được click, hủy chọn bóng
                 SelectedBallPosition = null;
+
             }
         }
         public int CalculateScore(int numCleared)
@@ -318,7 +371,35 @@ namespace Line98.Model
             }
             return numCleared * scorePerBall;
         }
+        public void NewTurn()
+        {
+            foreach (var SmallBall in board.Balls)
+            {
+                if (SmallBall != null)
+                {
+                    if (!SmallBall.isBig)
+                        SmallBall.isBig = true;
+                }
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                MakeSmallBall();
+            }
 
+        }
+        public Ball[,] GetBalls()
+        {
+            return board.Balls;
+        }
+        public int getSize()
+        {
+            return (int)board.Size;
+        }
     }
-
+    public enum ClickState
+    {
+        selectNewBall,
+        selectBall,
+        moved
+    }
 }

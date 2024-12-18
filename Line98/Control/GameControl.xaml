@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Line98.Control.GameControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Line98.Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="720">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Line98;component/Animation/GameAnimation.xaml" />
+    </UserControl.Resources>
+
+    <!--Grid chỉ hiển thị ảnh các ô-->
+    <Grid Name="GridCell">
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <!-- mặc định 99 -->
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/resources/Grid9x9.png" Stretch="UniformToFill"/>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <!-- Khi giá trị là true, chuyển sang ảnh nền khác -->
+                    <DataTrigger Binding="{Binding Is12x12}" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="/resources/Grid12x12.png" Stretch="UniformToFill"/>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
+        <!-- Canvas để hiển thị bóng -->
+        <Canvas x:Name="BallOverlay" Background="Transparent" MouseLeftButtonDown="Canvas_MouseLeftButtonDown"/>
+    </Grid>
+</UserControl>
