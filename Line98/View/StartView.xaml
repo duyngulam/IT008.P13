@@ -55,7 +55,7 @@
                         x:Name="btnMenu"
                         Content="MENU"
                         FontSize="36" Margin="26,14,26,7"
-                        />
+                        Command="{Binding DataContext.MainViewModel.ShowMenuCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                 <!--Button LOAD GAME-->
                 <Button Grid.Row="2"
@@ -70,7 +70,7 @@
                         Style="{StaticResource btnBack}"
                         x:Name="btnExit"
                         Content="EXIT"
-                        FontSize="36" Margin="26,0,26,21"
+                        FontSize="36" Margin="26,0,26,21" Click="btnExit_Click"
                         />
             </Grid>
         </Canvas>

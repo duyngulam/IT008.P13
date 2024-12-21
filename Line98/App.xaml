@@ -4,10 +4,15 @@
              xmlns:local="clr-namespace:Line98"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="CustomFont">
+        <!--<Style x:Key="CustomFont">
             <Setter Property="TextElement.FontFamily" 
                     Value="/Fonts/#Courier Prime" >
             </Setter>
-        </Style>
+        </Style>-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource/DataTemplete.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -18,4 +18,12 @@ DataType="{x:Type localViewModel:MenuScoreNormalViewModel}">
         <local:MenuScoreNormal/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type localViewModel:StartViewModel}">
+        <local:Start/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type localViewModel:MenuViewModel}">
+        <local:MenuView/>
+    </DataTemplate>
+
 </ResourceDictionary>

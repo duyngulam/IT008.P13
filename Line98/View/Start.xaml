@@ -19,9 +19,9 @@
 
     </UserControl.Resources>
 
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <localViewModel:MainViewModel/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
 
     <Grid x:Name="startTitle">
         <!--Chia Luoi-->

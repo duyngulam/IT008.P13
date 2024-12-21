@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,6 +39,11 @@ namespace Line98.View
         private void NewGameView_BackRequested(object sender, EventArgs e)
         {
             canvasStartMenu.Visibility = Visibility.Visible;
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

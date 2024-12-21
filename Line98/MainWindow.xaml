@@ -10,6 +10,9 @@
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="720" Width="1280">
 
+    <Window.DataContext>
+        <localViewModel:ControlPanelViewModel/>
+    </Window.DataContext>
     <Window.Background >
         <ImageBrush ImageSource="/View/Pics/background.png"
 
@@ -17,7 +20,6 @@
     </Window.Background>
 
     <Grid >
-        <views:Start />
-        <views:MenuView Visibility="Collapsed"/>
+        <ContentControl Content="{Binding MainViewModel.CurrentView}"/>
     </Grid>
 </Window>
