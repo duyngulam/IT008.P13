@@ -15,9 +15,6 @@ using static Line98.Control.GameControl;
 
 namespace Line98
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         int GridSize = 9;
@@ -36,7 +33,7 @@ namespace Line98
             _gameController = new GameController(gameControl, gameLogic);
 
             // Gán GameControl vào gameArea
-            gameArea.Children.Add(gameControl);
+            //gameArea.Children.Add(gameControl);
             _gameController.NewGame();
 
         }

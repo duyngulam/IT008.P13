@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Line98.View.StartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Line98.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="420" d:DesignWidth="1280">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Line98;component/Resource/StyleButton.xaml"/>
+                <ResourceDictionary Source="/Line98;component/Resource/DataTemplete.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+
+    </UserControl.Resources>
+
+
+    <Grid>
+
+        <!-- CANVAS STYLE-->
+        <Canvas x:Name="canvasStartMenu" Visibility="Visible">
+            <Rectangle Height="350" Width="350"
+                               Fill="#ACC7FE" Opacity="0.7"
+                               Canvas.Left="465"
+                               Canvas.Top="35"
+                               RadiusX="40" RadiusY="40" HorizontalAlignment="Left" VerticalAlignment="Top">
+            </Rectangle>
+
+            <Grid Height="350" Width="350"
+                          Canvas.Left="465" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="35">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="87"/>
+                    <RowDefinition Height="87"/>
+                    <RowDefinition Height="87"/>
+                    <RowDefinition Height="87"/>
+                </Grid.RowDefinitions>
+
+                <!--Button NEW GAME-->
+                <Button Grid.Row="0"
+                        Style="{StaticResource btnBack}"
+                        x:Name="btnNewGame"
+                        Content="NEW GAME"
+                        FontSize="36" Margin="26,21,26,0"
+                        Click="btnNewGame_Click"
+                        />
+
+                <!--Button MENU-->
+                <Button Grid.Row="1"
+                        Style="{StaticResource btnBack}"
+                        x:Name="btnMenu"
+                        Content="MENU"
+                        FontSize="36" Margin="26,14,26,7"
+                        />
+
+                <!--Button LOAD GAME-->
+                <Button Grid.Row="2"
+                        Style="{StaticResource btnBack}"
+                        x:Name="btnLoadGame"
+                        Content="LOAD GAME"
+                        FontSize="36" Margin="26,7,26,14"
+                        />
+
+                <!--Button EXIT-->
+                <Button Grid.Row="3"
+                        Style="{StaticResource btnBack}"
+                        x:Name="btnExit"
+                        Content="EXIT"
+                        FontSize="36" Margin="26,0,26,21"
+                        />
+            </Grid>
+        </Canvas>
+        <local:NewGameView Visibility="Collapsed" />
+    </Grid>
+</UserControl>
