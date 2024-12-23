@@ -9,49 +9,30 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="View\User Controls\**" />
+	  <EmbeddedResource Remove="View\User Controls\**" />
+	  <None Remove="View\User Controls\**" />
+	  <Page Remove="View\User Controls\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\Background Music\Song 1.wav" />
 		<None Remove="Resources\background.png" />
 		<None Remove="Resources\balls.png" />
 		<None Remove="Resources\gameboard.png" />
 		<None Remove="Resources\Grid12x12.png" />
 		<None Remove="Resources\Grid9x9.png" />
-		<None Remove="View\Pics\Background.png" />
-		<None Remove="View\Pics\btnExit.png" />
-		<None Remove="View\Pics\btnLoadGame.png" />
-		<None Remove="View\Pics\btnMenu.png" />
-		<None Remove="View\Pics\btnNewGame.png" />
-		<None Remove="View\Pics\Planet1.png" />
-		<None Remove="View\Pics\Planet2.png" />
-		<None Remove="View\Pics\Planet3.png" />
-		<None Remove="View\Pics\Planet4.png" />
-		<None Remove="View\Pics\Planet5.png" />
-		<None Remove="View\Pics\Planet6.png" />
-		<None Remove="View\Pics\Planet7.png" />
-		<None Remove="View\Pics\Title.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<Content Include="Resources\Background Music\Song 1.wav">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 		<Resource Include="Resources\background.png" />
 		<Resource Include="Resources\balls.png" />
 		<Resource Include="Resources\gameboard.png" />
 		<Resource Include="Resources\Grid12x12.png" />
 		<Resource Include="Resources\Grid9x9.png" />
-		<Resource Include="View\Pics\background.png" />
-		<Resource Include="View\Pics\btnExit.png" />
-		<Resource Include="View\Pics\btnLoadGame.png" />
-		<Resource Include="View\Pics\btnMenu.png" />
-		<Resource Include="View\Pics\btnNewGame.png" />
-		<Resource Include="View\Pics\Planet1.png" />
-		<Resource Include="View\Pics\Planet2.png" />
-		<Resource Include="View\Pics\Planet3.png" />
-		<Resource Include="View\Pics\Planet4.png" />
-		<Resource Include="View\Pics\Planet5.png" />
-		<Resource Include="View\Pics\Planet6.png" />
-		<Resource Include="View\Pics\Planet7.png" />
-		<Resource Include="View\Pics\Title.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="View\User Controls\" />
 	</ItemGroup>
 
 </Project>

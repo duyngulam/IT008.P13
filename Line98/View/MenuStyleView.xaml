@@ -36,10 +36,10 @@
 
                 <StackPanel Grid.Column="0"
                                     Orientation="Vertical"  >
-                    <Ellipse Style="{StaticResource iEllipe}" Margin="0,30,0,0"/>
-                    <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
-                    <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
-                    <Ellipse Style="{StaticResource iEllipe}" Margin="0,40,0,0"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,30,0,0" IsChecked="True"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,40,0,0"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,40,0,0"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,40,0,0"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1"

@@ -4,6 +4,7 @@ using Line98.ViewModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,6 +25,12 @@ namespace Line98
         {
             InitializeComponent();
 
+            //BACKGROUND MUSIC
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer("Resources/Background Music/Song 1.wav");
+            player.Load();
+            player.PlayLooping();
+            
+
             // Tạo Board và GameLogic
             var board = new Board(GridSize); // 9x9 lưới
             var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa
@@ -33,7 +40,7 @@ namespace Line98
             _gameController = new GameController(gameControl, gameLogic);
 
             // Gán GameControl vào gameArea
-            //gameArea.Children.Add(gameControl);
+            gameArea.Children.Add(gameControl);
             _gameController.NewGame();
 
         }

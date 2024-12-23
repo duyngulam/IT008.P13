@@ -8,18 +8,23 @@
         xmlns:localViewModel="clr-namespace:Line98.ViewModel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="MainWindow" Height="758" Width="1280" ResizeMode="NoResize">
 
     <Window.DataContext>
         <localViewModel:ControlPanelViewModel/>
     </Window.DataContext>
     <Window.Background >
-        <ImageBrush ImageSource="/View/Pics/background.png"
+        <ImageBrush ImageSource="/Resources/background.png"
 
                     Stretch="UniformToFill" />
     </Window.Background>
 
     <Grid >
         <ContentControl Content="{Binding MainViewModel.CurrentView}"/>
+        <Grid x:Name="gameArea" Height="720" Width="720" VerticalAlignment="Top" HorizontalAlignment="Left"  Visibility="Hidden">
+
+        </Grid>
     </Grid>
+    
+    
 </Window>

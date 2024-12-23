@@ -53,25 +53,43 @@
         <Canvas Grid.Row="1" >
             <!--Button STYLE-->
             <Button Style="{StaticResource btnMENU}"
-                        x:Name="btnStyle"
-                        Content="STYLE"
-                        Canvas.Left="157"
+                    x:Name="btnStyle"
+                    Content="STYLE"
+                    Canvas.Left="157"
+                    Click="btnStyle_Click"
                     Command="{Binding MenuItemViewModel.ShowMenuStyleCommand}"
-                        />
+                    />
+            <Border x:Name="borderStyle"
+                    Visibility="Visible"
+                    BorderBrush="White" BorderThickness="3" CornerRadius="30"
+                    Height="54" Width="248" Canvas.Left="157" Canvas.Top="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
             <!--Button SCORE-->
             <Button Style="{StaticResource btnMENU}"
-                        x:Name="btnScore"
-                        Content="SCORE"
-                        Canvas.Left="515"
-                        Command="{Binding MenuItemViewModel.ShowMenuScoreNormalCommand}"
-                        />
+                    x:Name="btnScore"
+                    Content="SCORE"
+                    Canvas.Left="515"
+                    Click="btnScore_Click"
+                    Command="{Binding MenuItemViewModel.ShowMenuScoreNormalCommand}"
+                    />
+            <Border x:Name="borderScore"
+                    Visibility="Hidden"
+                    BorderBrush="White" BorderThickness="3" CornerRadius="30"
+                    Height="54" Width="248" Canvas.Left="515" Canvas.Top="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
             <!--Button HELP-->
             <Button Style="{StaticResource btnMENU}"
-                        x:Name="btnHelp"
-                        Content="HELP"
-                        Canvas.Left="900"
+                    x:Name="btnHelp"
+                    Content="HELP"
+                    Canvas.Left="900"
+                    Click="btnHelp_Click"
                     Command="{Binding MenuItemViewModel.ShowMenuHelpCommand}"
-                        />
+                    />
+            <Border x:Name="borderHelp"
+                    Visibility="Hidden"
+                    BorderBrush="White" BorderThickness="3" CornerRadius="30"
+                    Height="54" Width="248" Canvas.Left="900" Canvas.Top="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
 
         </Canvas>
         <!--Hinh-->
