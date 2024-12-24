@@ -15,7 +15,6 @@
     </Window.DataContext>
     <Window.Background >
         <ImageBrush ImageSource="/Resources/background.png"
-
                     Stretch="UniformToFill" />
     </Window.Background>
 

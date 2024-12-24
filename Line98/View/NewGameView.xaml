@@ -14,8 +14,6 @@
                 <ResourceDictionary Source="/Line98;component/Resource/DataTemplete.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
-
     </UserControl.Resources>
 
 

@@ -63,7 +63,7 @@
                         x:Name="btnLoadGame"
                         Content="LOAD GAME"
                         FontSize="36" Margin="26,7,26,14"
-                        />
+                        Command="{Binding DataContext.MainViewModel.ShowLoadGameCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                 <!--Button EXIT-->
                 <Button Grid.Row="3"

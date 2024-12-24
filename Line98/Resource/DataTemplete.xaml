@@ -25,5 +25,9 @@ DataType="{x:Type localViewModel:MenuScoreNormalViewModel}">
     <DataTemplate DataType="{x:Type localViewModel:MenuViewModel}">
         <local:MenuView/>
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type localViewModel:LoadGameViewModel}">
+        <local:LoadGameView/>
+    </DataTemplate>
 
 </ResourceDictionary>
