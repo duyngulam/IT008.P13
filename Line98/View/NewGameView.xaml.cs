@@ -17,17 +17,9 @@ namespace Line98.View
 {
     public partial class NewGameView : UserControl
     {
-        public event EventHandler BackRequested;
         public NewGameView()
         {
             InitializeComponent();
-        }
-
-        private void btnSmallBack_Click(object sender, RoutedEventArgs e)
-        {
-            //canvasNewGame.Visibility = Visibility.Collapsed;
-            //BackRequested?.Invoke(this, EventArgs.Empty);
-
         }
     }
 }

@@ -46,7 +46,6 @@
                         x:Name="btnNewGame"
                         Content="NEW GAME"
                         FontSize="36" Margin="26,21,26,0"
-                        Click="btnNewGame_Click"
                         Command="{Binding DataContext.MainViewModel.ShowNewGameCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                 <!--Button MENU-->

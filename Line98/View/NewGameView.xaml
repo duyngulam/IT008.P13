@@ -175,7 +175,6 @@
                     Content="BACK"
                     FontSize="30"
                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25,0,0,0"
-                    Click="btnSmallBack_Click"
                     Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
             </Grid>
