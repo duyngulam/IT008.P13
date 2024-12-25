@@ -1,5 +1,6 @@
 ﻿using Line98.Control;
 using Line98.Model;
+using Line98.View;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,11 +17,12 @@ namespace Line98
     {
         private readonly GameControl gameControl;
         private readonly GameLogic gameLogic;
-
-        public GameController(GameControl gameControl, GameLogic gameLogic)
+        private readonly InGameUC inGameUC;
+        public GameController(GameControl gameControl, GameLogic gameLogic, InGameUC inGameUC)
         {
             this.gameControl = gameControl;
             this.gameLogic = gameLogic;
+            this.inGameUC = inGameUC;
             gameControl.CellClicked += HandleCellClick;
 
         }
@@ -64,7 +66,8 @@ namespace Line98
                 var ClearPosition = gameLogic.Scoring();
                 if (ClearPosition.Count != 0)
                 {
-
+                    inGameUC.scoreText.Text = gameLogic.Score.ToString();
+                    MessageBox.Show($"{gameLogic.CalculateScore(ClearPosition.Count)}");
                     await gameControl.ClearBallsAnimation(gameControl.BallOverlay, ClearPosition);
                     return;
                 }
@@ -72,7 +75,8 @@ namespace Line98
                 ClearPosition = gameLogic.Scoring();
                 if (ClearPosition.Count != 0)
                 {
-
+                    inGameUC.scoreText.Text = gameLogic.Score.ToString();
+                    MessageBox.Show($"{gameLogic.CalculateScore(ClearPosition.Count)}");
                     await gameControl.ClearBallsAnimation(gameControl.BallOverlay, ClearPosition);
                     return;
                 }

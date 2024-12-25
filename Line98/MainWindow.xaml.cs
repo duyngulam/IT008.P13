@@ -31,17 +31,18 @@ namespace Line98
             player.PlayLooping();
             
 
-            // Tạo Board và GameLogic
-            var board = new Board(GridSize); // 9x9 lưới
-            var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa
+            //// Tạo Board và GameLogic
+            //var board = new Board(GridSize); // 9x9 lưới
+            //var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa
+            //var inGameUC = new View.InGameUC();
 
-            // Tạo GameControl và GameController
-            var gameControl = new GameControl(GridSize);
-            _gameController = new GameController(gameControl, gameLogic);
+            //// Tạo GameControl và GameController
+            //var gameControl = new GameControl(GridSize);
+            //_gameController = new GameController(gameControl, gameLogic, inGameUC);
 
-            // Gán GameControl vào gameArea
-            //gameArea.Children.Add(gameControl);
-            _gameController.NewGame();
+            //// Gán GameControl vào gameArea
+            ////gameArea.Children.Add(gameControl);
+            //_gameController.NewGame();
 
         }
 
