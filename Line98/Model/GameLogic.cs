@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Line98.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Windows;
 
 namespace Line98.Model
 {
-    public class GameLogic
+    public class GameLogic : ViewModelBase
     {
         private Board board;
         private int minLength;
@@ -18,6 +19,15 @@ namespace Line98.Model
         {
             get => selectedBallPosition;
             private set => selectedBallPosition = value;
+        }
+        public int MinLength
+        {
+            get => minLength;
+            set
+            {
+                minLength = value;
+                OnPropertyChanged(nameof(MinLength));
+            }
         }
         public List<(int row, int col)>? MovingPath
         {

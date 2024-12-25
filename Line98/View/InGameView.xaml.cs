@@ -1,5 +1,6 @@
 ﻿using Line98.Control;
 using Line98.Model;
+using Line98.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,14 @@ namespace Line98.View
         int GridSize = 9;
         int BallCount = 5;
         private GameController _gameController;
+        private NewGameViewModel _viewModel;
 
         public InGameView()
         {
             InitializeComponent();
+
+            _viewModel = new NewGameViewModel();
+            DataContext = _viewModel;
 
             // Tạo Board và GameLogic
             var board = new Board(GridSize); // 9x9 lưới
@@ -38,6 +43,17 @@ namespace Line98.View
             // Gán GameControl vào gameArea
             gameArea.Children.Add(gameControl);
             _gameController.NewGame();
+
+            _viewModel.PropertyChanged += ViewModel_PropertyChanged;
+        }
+
+        private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(NewGameViewModel.BallCount))
+            {
+                // Update GameLogic with the new BallCount
+                _gameController.GameLogic.MinLength = _viewModel.BallCount;
+            }
         }
     }
 }

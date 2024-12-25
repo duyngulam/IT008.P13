@@ -1,7 +1,9 @@
 ﻿using Line98.Control;
 using Line98.Model;
+using Line98.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,10 +14,28 @@ using System.Windows.Media.Animation;
 
 namespace Line98
 {
-    public class GameController
+    public class GameController : ViewModelBase
     {
-        private readonly GameControl gameControl;
-        private readonly GameLogic gameLogic;
+        private GameControl gameControl;
+        public GameControl GameControl
+        {
+            get => gameControl;
+            set
+            {
+                gameControl = value;
+                OnPropertyChanged(nameof(GameControl));
+            }
+        }
+        private GameLogic gameLogic;
+        public GameLogic GameLogic
+        {
+            get => gameLogic;
+            set
+            {
+                gameLogic = value;
+                OnPropertyChanged(nameof(GameLogic));
+            }
+        }
 
         public GameController(GameControl gameControl, GameLogic gameLogic)
         {
