@@ -22,12 +22,20 @@ DataType="{x:Type localViewModel:MenuScoreNormalViewModel}">
         <local:Start/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type localViewModel:NewGameViewModel}">
+        <local:NewGameView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type localViewModel:MenuViewModel}">
         <local:MenuView/>
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type localViewModel:LoadGameViewModel}">
         <local:LoadGameView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type localViewModel:InGameViewModel}">
+        <local:InGameView/>
     </DataTemplate>
 
 </ResourceDictionary>

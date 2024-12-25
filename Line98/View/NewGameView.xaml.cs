@@ -25,8 +25,8 @@ namespace Line98.View
 
         private void btnSmallBack_Click(object sender, RoutedEventArgs e)
         {
-            canvasNewGame.Visibility = Visibility.Collapsed;
-            BackRequested?.Invoke(this, EventArgs.Empty);
+            //canvasNewGame.Visibility = Visibility.Collapsed;
+            //BackRequested?.Invoke(this, EventArgs.Empty);
 
         }
     }

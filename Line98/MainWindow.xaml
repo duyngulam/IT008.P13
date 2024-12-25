@@ -20,9 +20,6 @@
 
     <Grid >
         <ContentControl Content="{Binding MainViewModel.CurrentView}"/>
-        <Grid x:Name="gameArea" Height="720" Width="720" VerticalAlignment="Top" HorizontalAlignment="Left"  Visibility="Hidden">
-
-        </Grid>
     </Grid>
     
     
