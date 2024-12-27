@@ -22,6 +22,13 @@
 		<None Remove="Resources\gameboard.png" />
 		<None Remove="Resources\Grid12x12.png" />
 		<None Remove="Resources\Grid9x9.png" />
+		<None Remove="Resources\Icons\exit.png" />
+		<None Remove="Resources\Icons\load.png" />
+		<None Remove="Resources\Icons\pause.png" />
+		<None Remove="Resources\Icons\save.png" />
+		<None Remove="Resources\Icons\undo.png" />
+		<None Remove="Resources\Icons\volume-mute.png" />
+		<None Remove="Resources\Icons\volume.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -33,6 +40,13 @@
 		<Resource Include="Resources\gameboard.png" />
 		<Resource Include="Resources\Grid12x12.png" />
 		<Resource Include="Resources\Grid9x9.png" />
+		<Resource Include="Resources\Icons\exit.png" />
+		<Resource Include="Resources\Icons\load.png" />
+		<Resource Include="Resources\Icons\pause.png" />
+		<Resource Include="Resources\Icons\save.png" />
+		<Resource Include="Resources\Icons\undo.png" />
+		<Resource Include="Resources\Icons\volume-mute.png" />
+		<Resource Include="Resources\Icons\volume.png" />
 	</ItemGroup>
 
 </Project>

@@ -33,7 +33,6 @@ namespace Line98.ViewModel
 
         private void SixBall(object obj)
         {
-            MessageBox.Show("6");
             BallCount = 6;
         }
 
@@ -44,7 +43,6 @@ namespace Line98.ViewModel
 
         private void FourBall(object obj)
         {
-            MessageBox.Show("4");
             BallCount = 4;
         }
     }

@@ -18,9 +18,6 @@ namespace Line98
 {
     public partial class MainWindow : Window
     {
-        int GridSize = 9;
-        int BallCount = 5;
-        private GameController _gameController;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,21 +26,6 @@ namespace Line98
             System.Media.SoundPlayer player = new System.Media.SoundPlayer("Resources/Background Music/Song 1.wav");
             player.Load();
             player.PlayLooping();
-            
-
-            // Tạo Board và GameLogic
-            var board = new Board(GridSize); // 9x9 lưới
-            var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa
-
-            // Tạo GameControl và GameController
-            var gameControl = new GameControl(GridSize);
-            _gameController = new GameController(gameControl, gameLogic);
-
-            // Gán GameControl vào gameArea
-            //gameArea.Children.Add(gameControl);
-            _gameController.NewGame();
-
         }
-
     }
 }

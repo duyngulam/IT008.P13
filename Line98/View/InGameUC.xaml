@@ -118,6 +118,7 @@
 
                 </Grid>
 
+                <!--TIME-->
                 <Grid Height="140" Width="370"
                   Margin="0,20,0,0">
 
@@ -168,31 +169,98 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Style="{StaticResource btnItem}"
-                    Margin="-80,-60,0,0"/>
+                <!-- BUTTON UNDO-->
+                <Button x:Name="btnUndo"
+                    Style="{StaticResource btnItem}"
+                    Margin="-80,-60,0,0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                Width="80" Height="40"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="20">
+                                <Image Source="/Resources/Icons/undo.png" Stretch="Uniform" Margin="1,1,4,3"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
+                <!-- BUTTON PAUSE-->
                 <Button Style="{StaticResource btnItem}"
-                    Margin="-80,60,0,0"/>
+                    Margin="-80,60,0,0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                Width="80" Height="40"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="20">
+                                <Image Source="/Resources/Icons/pause.png" Stretch="Uniform" Margin="2,3,2,3"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
+                <!-- BUTTON SAVE-->
                 <Button Style="{StaticResource btnItem}"
-                    Margin="160,-60,0,0"/>
+                    Margin="160,-60,0,0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                Width="80" Height="40"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="20">
+                                <Image Source="/Resources/Icons/save.png" Stretch="Uniform" Margin="2,3,2,3"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
-                <Button Style="{StaticResource btnItem}"
-                    Margin="160,60,0,0"/>
+                <!-- BUTTON VOLUME-->
+                <Button Style="{StaticResource btnItem}" Command="{Binding DataContext.InGameViewModel.VolumeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    Margin="160,60,0,0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                Width="80" Height="40"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="20">
+                                <Image x:Name="volumeImage" Source="/Resources/Icons/volume.png" Stretch="Uniform" Margin="3,3,3,3"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding DataContext.InGameViewModel.IsVolumeChecked, RelativeSource={RelativeSource AncestorType=Window}}" Value="True">
+                                    <Setter TargetName="volumeImage" Property="Source" Value="C:\Users\DELL\source\DOANLTTQ\Line98\Resources\Icons\volume.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding DataContext.InGameViewModel.IsVolumeChecked, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
+                                    <Setter TargetName="volumeImage" Property="Source" Value="C:\Users\DELL\source\DOANLTTQ\Line98\Resources\Icons\volume-mute.png"/>
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
+                <!-- BUTTON EXIT-->
                 <Button Grid.Column="2"                       
-                    Height="100" Width="120"
+                    Height="120" Width="120"
                     Background="#BE5CCD"
                     Style="{StaticResource TriggerStyle}"
-            >
+                    Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}">
                     <Button.Template>
                         <ControlTemplate>
                             <Border 
-                            Width="120" Height="100"
+                            Width="120" Height="120"
                             Background="{TemplateBinding Background}"
                             BorderBrush="#9D4EC5"
                             BorderThickness="3"
-                            CornerRadius="40">
+                            CornerRadius="60">
+                                <Image Source="C:\Users\DELL\source\DOANLTTQ\Line98\Resources\Icons\exit.png" Stretch="Uniform" Margin="3,3,3,3"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
@@ -200,6 +268,5 @@
             </Grid>
 
         </Canvas>
-
     </Grid>
 </UserControl>
