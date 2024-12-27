@@ -8,7 +8,7 @@
         xmlns:localViewModel="clr-namespace:Line98.ViewModel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="758" Width="1280" ResizeMode="NoResize">
+        Title="LINE" Height="758" Width="1280" ResizeMode="NoResize">
 
     <Window.DataContext>
         <localViewModel:ControlPanelViewModel/>
@@ -19,8 +19,15 @@
     </Window.Background>
 
     <Grid >
+
+        <Canvas Margin="0,0,0,0">
+            <Image Name="Planet1" Source="/Resources/Pics/Planet1.png" Canvas.Left="232" Height="61" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Name="Planet2" Source="/Resources/Pics/Planet2.png" Canvas.Left="24" Height="80" Width="92" HorizontalAlignment="Left" Canvas.Top="509" VerticalAlignment="Top"/>
+        </Canvas>
+
         <ContentControl Content="{Binding MainViewModel.CurrentView}"/>
+
     </Grid>
-    
-    
+
+
 </Window>

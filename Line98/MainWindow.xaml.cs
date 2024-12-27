@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -24,30 +25,43 @@ namespace Line98
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
 
             _player = new System.Media.SoundPlayer("Resources/Background Music/Song 1.wav");
             _viewModel = new ControlPanelViewModel();
             DataContext = _viewModel;
 
             //BACKGROUND MUSIC
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer("Resources/Background Music/Song 1.wav");
-            player.Load();
-            player.PlayLooping();
-            
+            _player.Load();
+            _player.PlayLooping();
 
-            //// Tạo Board và GameLogic
-            //var board = new Board(GridSize); // 9x9 lưới
-            //var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa
-            //var inGameUC = new View.InGameUC();
-
-            //// Tạo GameControl và GameController
-            //var gameControl = new GameControl(GridSize);
-            //_gameController = new GameController(gameControl, gameLogic, inGameUC);
-
-            //// Gán GameControl vào gameArea
-            ////gameArea.Children.Add(gameControl);
-            //_gameController.NewGame();
-
+            _viewModel.InGameViewModel.PropertyChanged += ViewModel_PropertyChanged;
         }
+
+        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(InGameViewModel.IsVolumeChecked))
+            {
+                if (_viewModel.InGameViewModel.IsVolumeChecked)
+                {
+                    _player.Load();
+                    _player.PlayLooping();
+                }
+                else
+                {
+                    _player.Stop();
+                }
+            }
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var ImageAnimation = (Storyboard)FindResource("ImageAnimation");
+            ImageAnimation.Begin(Planet1);
+
+            var ImageAnimation2 = (Storyboard)FindResource("ImageAnimation2");
+            ImageAnimation2.Begin(Planet2);
+        }
+
     }
 }

@@ -170,7 +170,8 @@
                 <!-- BUTTON UNDO-->
                 <Button x:Name="btnUndo"
                     Style="{StaticResource btnItem}"
-                    Margin="-80,-60,0,0">
+                    Margin="-80,-60,0,0"
+                        ToolTip="Undo the last step (1 time per game)">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border 
@@ -187,7 +188,8 @@
 
                 <!-- BUTTON PAUSE-->
                 <Button Style="{StaticResource btnItem}"
-                    Margin="-80,60,0,0">
+                    Margin="-80,60,0,0"
+                        ToolTip="Pause game">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border 
@@ -204,7 +206,8 @@
 
                 <!-- BUTTON SAVE-->
                 <Button Style="{StaticResource btnItem}"
-                    Margin="160,-60,0,0">
+                    Margin="160,-60,0,0"
+                        ToolTip="Save the current game">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border 
@@ -221,7 +224,8 @@
 
                 <!-- BUTTON VOLUME-->
                 <Button Style="{StaticResource btnItem}" Command="{Binding DataContext.InGameViewModel.VolumeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-                    Margin="160,60,0,0">
+                    Margin="160,60,0,0"
+                        ToolTip="Music On/Off">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border 
@@ -244,25 +248,28 @@
                     </Button.Template>
                 </Button>
 
+
                 <!-- BUTTON EXIT-->
-                <Button Grid.Column="2"                       
+                    <Button Grid.Column="2"                       
                     Height="120" Width="120"
                     Background="#BE5CCD"
                     Style="{StaticResource TriggerStyle}"
-                    Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Border 
-                            Width="120" Height="120"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="#9D4EC5"
-                            BorderThickness="3"
-                            CornerRadius="60">
-                                <Image Source="C:\Users\DELL\source\DOANLTTQ\Line98\Resources\Icons\exit.png" Stretch="Uniform" Margin="3,3,3,3"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                    Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    ToolTip="Back to Start menu">
+
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Border 
+                                Width="120" Height="120"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="60">
+                                    <Image Source="C:\Users\DELL\source\DOANLTTQ\Line98\Resources\Icons\exit.png" Stretch="Uniform" Margin="3,3,3,3"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
             </Grid>
 
         </Canvas>

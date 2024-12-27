@@ -29,6 +29,8 @@
 		<None Remove="Resources\Icons\undo.png" />
 		<None Remove="Resources\Icons\volume-mute.png" />
 		<None Remove="Resources\Icons\volume.png" />
+		<None Remove="Resources\Pics\Planet1.png" />
+		<None Remove="Resources\Pics\Planet2.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -47,6 +49,8 @@
 		<Resource Include="Resources\Icons\undo.png" />
 		<Resource Include="Resources\Icons\volume-mute.png" />
 		<Resource Include="Resources\Icons\volume.png" />
+		<Resource Include="Resources\Pics\Planet1.png" />
+		<Resource Include="Resources\Pics\Planet2.png" />
 	</ItemGroup>
 
 </Project>

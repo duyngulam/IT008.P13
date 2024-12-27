@@ -21,15 +21,15 @@ namespace Line98.View
     public partial class InGameView : UserControl
     {
         int GridSize = 9;
-        int BallCount = 5;
+        int BallCount = 6;
         private GameController _gameController;
-        private NewGameViewModel _viewModel;
+        private ControlPanelViewModel _viewModel;
 
         public InGameView()
         {
             InitializeComponent();
 
-            _viewModel = new NewGameViewModel();
+            _viewModel = new ControlPanelViewModel();
             DataContext = _viewModel;
 
             // Tạo Board và GameLogic
@@ -43,17 +43,6 @@ namespace Line98.View
             // Gán GameControl vào gameArea
             gameArea.Children.Add(gameControl);
             _gameController.NewGame();
-
-            _viewModel.PropertyChanged += ViewModel_PropertyChanged;
-        }
-
-        private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(NewGameViewModel.BallCount))
-            {
-                // Update GameLogic with the new BallCount
-                _gameController.GameLogic.MinLength = _viewModel.BallCount;
-            }
         }
     }
 }

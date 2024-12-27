@@ -18,8 +18,9 @@ namespace Line98
     {
         private readonly GameControl gameControl;
         private readonly GameLogic gameLogic;
+        private readonly InGameUC inGameUC;
 
-        public GameController(GameControl gameControl, GameLogic gameLogic)
+        public GameController(GameControl gameControl, GameLogic gameLogic, InGameUC inGameUC)
         {
             this.gameControl = gameControl;
             this.gameLogic = gameLogic;
