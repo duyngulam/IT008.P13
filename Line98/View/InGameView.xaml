@@ -63,7 +63,7 @@
 
         </Grid>
 
-        <local:InGameUC Grid.Column="1"/>
+        <local:InGameUC x:Name="inGameUC" Grid.Column="1"/>
 
     </Grid>
 </UserControl>

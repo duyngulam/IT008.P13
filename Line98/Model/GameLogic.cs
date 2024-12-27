@@ -15,6 +15,10 @@ namespace Line98.Model
         private Random random = new Random();
         private (int row, int col)? selectedBallPosition;// Nullable Tuple
         private List<(int row, int col)>? movingPath;
+        private int score;
+
+        public int Score { get { return score; } }
+      
         public (int row, int col)? SelectedBallPosition
         {
             get => selectedBallPosition;
@@ -181,6 +185,7 @@ namespace Line98.Model
             {
                 board.RemoveBall(pos.x, pos.y);
             }
+           score+= CalculateScore(toClear.Count);
 
             return toClear;
         }

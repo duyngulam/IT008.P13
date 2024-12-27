@@ -82,14 +82,10 @@
             </Rectangle>
             <StackPanel Height="340" Width="440"
                     Canvas.Left="60" Orientation="Vertical">
-                <TextBlock Height="80" Width="120" Text="Next ball"
-                       FontFamily="Courier Prime" FontSize="30"
-                       FontWeight="Bold" Foreground="white"
-                       TextWrapping="Wrap" TextAlignment="Center"
-                       Margin="-200,0,0,0" />
+
                 <!--SCORE-->
                 <Grid Height="120" Width="370"
-                  Margin="0,0,0,0">
+                  Margin="0,30,0,0">
                     <TextBlock
                         Height="50" Width="150" Text="Score"
                         FontFamily="Courier Prime" FontSize="40"
@@ -107,10 +103,11 @@
                     </Path>
 
                     <TextBlock
+                        x:Name="scoreText"
                     Margin="0,20,0,0"
                     Height="100" Width="358"
                     FontFamily="Geostar Fill" FontSize="60"
-                    Text=" 1020" Foreground="White"
+                    Text="0" Foreground="White"
                     TextAlignment="Center"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -120,7 +117,7 @@
 
                 <!--TIME-->
                 <Grid Height="140" Width="370"
-                  Margin="0,20,0,0">
+                  Margin="0,40,0,0">
 
                     <TextBlock
                         Height="50" Width="150" Text="Time"
@@ -140,6 +137,7 @@
                     </Path>
 
                     <TextBlock
+                    x:Name="CountdownText"
                     Height="100" Width="358"
                     FontFamily="Geostar Fill" FontSize="60"
                     Text=" 10:20" Foreground="White"

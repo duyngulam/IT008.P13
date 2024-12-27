@@ -1,6 +1,6 @@
 ﻿using Line98.Control;
 using Line98.Model;
-using Line98.ViewModel;
+using Line98.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,33 +14,16 @@ using System.Windows.Media.Animation;
 
 namespace Line98
 {
-    public class GameController : ViewModelBase
+    public class GameController
     {
-        private GameControl gameControl;
-        public GameControl GameControl
-        {
-            get => gameControl;
-            set
-            {
-                gameControl = value;
-                OnPropertyChanged(nameof(GameControl));
-            }
-        }
-        private GameLogic gameLogic;
-        public GameLogic GameLogic
-        {
-            get => gameLogic;
-            set
-            {
-                gameLogic = value;
-                OnPropertyChanged(nameof(GameLogic));
-            }
-        }
+        private readonly GameControl gameControl;
+        private readonly GameLogic gameLogic;
 
         public GameController(GameControl gameControl, GameLogic gameLogic)
         {
             this.gameControl = gameControl;
             this.gameLogic = gameLogic;
+            this.inGameUC = inGameUC;
             gameControl.CellClicked += HandleCellClick;
 
         }
@@ -84,7 +67,8 @@ namespace Line98
                 var ClearPosition = gameLogic.Scoring();
                 if (ClearPosition.Count != 0)
                 {
-
+                    inGameUC.scoreText.Text = gameLogic.Score.ToString();
+                    MessageBox.Show($"{gameLogic.CalculateScore(ClearPosition.Count)}");
                     await gameControl.ClearBallsAnimation(gameControl.BallOverlay, ClearPosition);
                     return;
                 }
@@ -92,7 +76,8 @@ namespace Line98
                 ClearPosition = gameLogic.Scoring();
                 if (ClearPosition.Count != 0)
                 {
-
+                    inGameUC.scoreText.Text = gameLogic.Score.ToString();
+                    MessageBox.Show($"{gameLogic.CalculateScore(ClearPosition.Count)}");
                     await gameControl.ClearBallsAnimation(gameControl.BallOverlay, ClearPosition);
                     return;
                 }

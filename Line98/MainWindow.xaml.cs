@@ -31,25 +31,23 @@ namespace Line98
 
             //BACKGROUND MUSIC
             System.Media.SoundPlayer player = new System.Media.SoundPlayer("Resources/Background Music/Song 1.wav");
-            _player.Load();
-            _player.PlayLooping();
+            player.Load();
+            player.PlayLooping();
+            
 
-            _viewModel.InGameViewModel.PropertyChanged += ViewModel_PropertyChanged;
-        }
-        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(InGameViewModel.IsVolumeChecked))
-            {
-                if (_viewModel.InGameViewModel.IsVolumeChecked)
-                {
-                    _player.Load();
-                    _player.PlayLooping();
-                }
-                else
-                {
-                    _player.Stop();
-                }
-            }
+            //// Tạo Board và GameLogic
+            //var board = new Board(GridSize); // 9x9 lưới
+            //var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa
+            //var inGameUC = new View.InGameUC();
+
+            //// Tạo GameControl và GameController
+            //var gameControl = new GameControl(GridSize);
+            //_gameController = new GameController(gameControl, gameLogic, inGameUC);
+
+            //// Gán GameControl vào gameArea
+            ////gameArea.Children.Add(gameControl);
+            //_gameController.NewGame();
+
         }
     }
 }

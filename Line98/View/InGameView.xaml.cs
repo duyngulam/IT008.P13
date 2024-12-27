@@ -34,11 +34,11 @@ namespace Line98.View
 
             // Tạo Board và GameLogic
             var board = new Board(GridSize); // 9x9 lưới
-            var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa
+            var gameLogic = new GameLogic(board, BallCount); // 5 bóng liên tiếp để xóa;
 
             // Tạo GameControl và GameController
             var gameControl = new GameControl(GridSize);
-            _gameController = new GameController(gameControl, gameLogic);
+            _gameController = new GameController(gameControl, gameLogic, inGameUC);
 
             // Gán GameControl vào gameArea
             gameArea.Children.Add(gameControl);
