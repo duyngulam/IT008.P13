@@ -61,7 +61,17 @@ namespace Line98
 
             var ImageAnimation2 = (Storyboard)FindResource("ImageAnimation2");
             ImageAnimation2.Begin(Planet2);
+
+            DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromSeconds(2)));
+            Content.BeginAnimation(OpacityProperty, doubleAnimation);
         }
 
+        public void ChangeBackgroundMusic(string musicFilePath)
+        {
+            _player.Stop();
+            _player.SoundLocation = musicFilePath;
+            _player.Load();
+            _player.PlayLooping();
+        }
     }
 }

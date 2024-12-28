@@ -25,7 +25,7 @@
             <Image Name="Planet2" Source="/Resources/Pics/Planet2.png" Canvas.Left="24" Height="80" Width="92" HorizontalAlignment="Left" Canvas.Top="509" VerticalAlignment="Top"/>
         </Canvas>
 
-        <ContentControl Content="{Binding MainViewModel.CurrentView}"/>
+        <ContentControl x:Name="Content" Content="{Binding MainViewModel.CurrentView}"/>
 
     </Grid>
 

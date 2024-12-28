@@ -17,6 +17,7 @@
 
 	<ItemGroup>
 		<None Remove="Resources\Background Music\Song 1.wav" />
+		<None Remove="Resources\Background Music\Song 2.wav" />
 		<None Remove="Resources\background.png" />
 		<None Remove="Resources\balls.png" />
 		<None Remove="Resources\gameboard.png" />
@@ -37,6 +38,8 @@
 		<Content Include="Resources\Background Music\Song 1.wav">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
+		<Content Include="Resources\Background Music\Song 2.wav" />
+		<PackageReference Include="NAudio" Version="2.2.1" />
 		<Resource Include="Resources\background.png" />
 		<Resource Include="Resources\balls.png" />
 		<Resource Include="Resources\gameboard.png" />

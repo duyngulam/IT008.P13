@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Line98.View
 {
-    /// <summary>
-    /// Interaction logic for MenuHelp.xaml
-    /// </summary>
     public partial class MenuHelpView : UserControl
     {
         public MenuHelpView()

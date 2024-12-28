@@ -58,12 +58,12 @@
         </Grid.RowDefinitions>
 
         <TextBlock 
-        Grid.Row="0"
-        Text="LINE" Height="160" Width="440" 
-        TextAlignment="Center" FontSize="128" FontWeight="ExtraBlack"
-        FontFamily="Courier Prime"
-        Margin="0,0,0,0"
-    >
+            Grid.Row="0"
+            Text="LINE" Height="160" Width="440" 
+            TextAlignment="Center" FontSize="128" FontWeight="ExtraBlack"
+            FontFamily="Courier Prime"
+            Margin="0,0,0,0"
+            >
             <TextBlock.Foreground>
                 <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
                     <GradientStop Color="#FF95B0" Offset="0.32" />

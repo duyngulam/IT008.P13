@@ -26,21 +26,32 @@
     <!--Animation cho btnBack-->
     <Storyboard x:Key="btnAnimation">
         <DoubleAnimation Storyboard.TargetProperty="Height" 
-                         From="54" To="80" Duration="0:0:0.3" AutoReverse="True" />
+                         From="54" To="80" Duration="0:0:0.3" AutoReverse="True">
+            <DoubleAnimation.EasingFunction>
+                <PowerEase Power="2" EasingMode="EaseInOut"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
     </Storyboard>
     
     <!--Animation cho image 1-->
     <Storyboard x:Key="ImageAnimation">
         <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)"
-                         From="10" To="40" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                         From="10" To="40" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever">
+            <DoubleAnimation.EasingFunction>
+                <PowerEase Power="2" EasingMode="EaseInOut"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
     </Storyboard>
     
     <!--Animation cho image 2-->
     <Storyboard x:Key="ImageAnimation2">
         <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)"
-                         From="510" To="530" Duration="0:0:2" AutoReverse="True" RepeatBehavior="Forever" />
-        <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)"
-                 From="24" To="54" Duration="0:0:2" AutoReverse="True" RepeatBehavior="Forever" />
-
+                         From="510" To="540" Duration="0:0:3" AutoReverse="True" RepeatBehavior="Forever">
+            <DoubleAnimation.EasingFunction>
+                <PowerEase Power="2" EasingMode="EaseInOut"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
     </Storyboard>
+    
+    
 </ResourceDictionary>
