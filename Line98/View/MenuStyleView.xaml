@@ -37,10 +37,10 @@
 
                 <StackPanel Grid.Column="1"
                                     Orientation="Vertical"  >
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,30,0,0" IsChecked="True"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,30,0,0" IsChecked="True" Checked="RadioButton_Checked_1"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0" IsChecked="False" Checked="RadioButton_Checked_2"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0" IsChecked="False" Checked="RadioButton_Checked_3"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0" IsChecked="False" Checked="RadioButton_Checked_4"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2"
