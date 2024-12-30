@@ -29,7 +29,11 @@ namespace Line98.View
         public InGameUC()
         {
             InitializeComponent();
-            countup();
+            if (StyleBallManager.Instance.isCountingup == true) { countup(); }
+            else
+            {
+                countdown();
+            }
         }
 
         void countdown()

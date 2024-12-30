@@ -17,8 +17,8 @@ namespace Line98
     public class GameController
     {
         private readonly GameControl gameControl;
-        private readonly GameLogic gameLogic;
-        private readonly InGameUC inGameUC;
+        public readonly GameLogic gameLogic;
+        private InGameUC inGameUC;
 
         public GameController(GameControl gameControl, GameLogic gameLogic, InGameUC inGameUC)
         {

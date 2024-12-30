@@ -185,7 +185,7 @@ namespace Line98.Model
             {
                 board.RemoveBall(pos.x, pos.y);
             }
-           score+= CalculateScore(toClear.Count);
+            score+= CalculateScore(toClear.Count);
 
             return toClear;
         }

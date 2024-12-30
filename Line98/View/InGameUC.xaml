@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="560">
     <UserControl.Resources>
+
+        <FontFamily x:Key="GeostarFillFont" >pack://application:,,,/Fonts/#Geostar Fill</FontFamily>
+        <FontFamily x:Key="CourierPrimeFont" >pack://application:,,,/Fonts/#Courier Prime</FontFamily>
         <!-- STYLE BUTTON BACK GAME-->
         <Style x:Key="btnItem" TargetType="Button">
             <Setter Property="Background" Value="#BE5CCD"/>
@@ -58,12 +61,12 @@
         </Grid.RowDefinitions>
 
         <TextBlock 
-            Grid.Row="0"
-            Text="LINE" Height="160" Width="440" 
-            TextAlignment="Center" FontSize="128" FontWeight="ExtraBlack"
-            FontFamily="Courier Prime"
-            Margin="0,0,0,0"
-            >
+        Grid.Row="0"
+        Text="LINE" Height="160" Width="440" 
+        TextAlignment="Center" FontSize="128" FontWeight="ExtraBlack"
+        FontFamily="{StaticResource CourierPrimeFont}"
+        Margin="0,0,0,0"
+    >
             <TextBlock.Foreground>
                 <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
                     <GradientStop Color="#FF95B0" Offset="0.32" />
@@ -88,7 +91,7 @@
                   Margin="0,30,0,0">
                     <TextBlock
                         Height="50" Width="150" Text="Score"
-                        FontFamily="Courier Prime" FontSize="40"
+                        FontFamily="{StaticResource CourierPrimeFont}" FontSize="40"
                         FontWeight="ExtraBold" Foreground="Black"
                         TextWrapping="Wrap" TextAlignment="Center"
                         Margin="135,-120,0,0"
@@ -106,7 +109,7 @@
                         x:Name="scoreText"
                     Margin="0,20,0,0"
                     Height="100" Width="358"
-                    FontFamily="Geostar Fill" FontSize="60"
+                    FontFamily="{StaticResource GeostarFillFont}" FontSize="60"
                     Text="0" Foreground="White"
                     TextAlignment="Center"
                     VerticalAlignment="Center"
@@ -121,7 +124,7 @@
 
                     <TextBlock
                         Height="50" Width="150" Text="Time"
-                        FontFamily="Courier Prime" FontSize="40"
+                        FontFamily="{StaticResource CourierPrimeFont}" FontSize="40"
                         FontWeight="ExtraBold" Foreground="Black"
                         TextWrapping="Wrap" TextAlignment="Center"
                         Margin="135,-130,0,0"
@@ -139,8 +142,8 @@
                     <TextBlock
                     x:Name="CountdownText"
                     Height="100" Width="358"
-                    FontFamily="Geostar Fill" FontSize="60"
-                    Text=" 10:20" Foreground="White"
+                    FontFamily="{StaticResource GeostarFillFont}" FontSize="60"
+                    Text="" Foreground="White"
                     TextAlignment="Center"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"

@@ -21,5 +21,15 @@ namespace Line98.View
         {
             InitializeComponent();
         }
+
+        private void rdBtnNormal_Checked(object sender, RoutedEventArgs e)
+        {
+            StyleBallManager.Instance.SetMode(true);
+        }
+
+        private void rdBtnTimer_Checked(object sender, RoutedEventArgs e)
+        {
+            StyleBallManager.Instance.SetMode(false);
+        }
     }
 }

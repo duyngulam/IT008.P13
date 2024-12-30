@@ -14,7 +14,7 @@ namespace Line98
 
         // Biến lưu style hiện tại
         public string ResourcePath { get; private set; } = "pack://application:,,,/resources/balls.png";
-
+        public bool isCountingup = true;
         private StyleBallManager() { }
 
         public static StyleBallManager Instance
@@ -34,6 +34,11 @@ namespace Line98
         public void SetStyle(string styleName)
         {
             ResourcePath = $"pack://application:,,,/resources/{styleName}.png";
+        }
+
+        public void SetMode(bool type)
+        {
+            isCountingup = type;
         }
     }
 }
