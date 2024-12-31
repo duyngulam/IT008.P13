@@ -238,10 +238,10 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <DataTrigger Binding="{Binding DataContext.InGameViewModel.IsVolumeChecked, RelativeSource={RelativeSource AncestorType=Window}}" Value="True">
-                                    <Setter TargetName="volumeImage" Property="Source" Value="C:\Users\DELL\source\DOANLTTQ\Line98\Resources\Icons\volume.png"/>
+                                    <Setter TargetName="volumeImage" Property="Source" Value="\Resources\Icons\volume.png"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding DataContext.InGameViewModel.IsVolumeChecked, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
-                                    <Setter TargetName="volumeImage" Property="Source" Value="C:\Users\DELL\source\DOANLTTQ\Line98\Resources\Icons\volume-mute.png"/>
+                                    <Setter TargetName="volumeImage" Property="Source" Value="\Resources\Icons\volume-mute.png"/>
                                 </DataTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -265,7 +265,7 @@
                                 BorderBrush="#9D4EC5"
                                 BorderThickness="3"
                                 CornerRadius="60">
-                                    <Image Source="C:\Users\DELL\source\DOANLTTQ\Line98\Resources\Icons\exit.png" Stretch="Uniform" Margin="3,3,3,3"/>
+                                    <Image Source="\Resources\Icons\exit.png" Stretch="Uniform" Margin="3,3,3,3"/>
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>

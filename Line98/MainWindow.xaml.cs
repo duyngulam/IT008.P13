@@ -15,42 +15,57 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Line98.Control.GameControl;
+using NAudio.Wave;
+using NAudio.CoreAudioApi;
 
 namespace Line98
 {
     public partial class MainWindow : Window
     {
-        private System.Media.SoundPlayer _player;
+        private WaveOutEvent _waveOut;           // Đối tượng để phát nhạc
+        private AudioFileReader _audioFile;     // Đối tượng đọc file nhạc
         private ControlPanelViewModel _viewModel;
         public MainWindow()
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
 
-            _player = new System.Media.SoundPlayer("Resources/Background Music/Song 1.wav");
             _viewModel = new ControlPanelViewModel();
             DataContext = _viewModel;
 
             //BACKGROUND MUSIC
-            _player.Load();
-            _player.PlayLooping();
+            _audioFile = new AudioFileReader(_viewModel.MenuMusicViewModel.CurrentSong);
+            _waveOut = new WaveOutEvent();
+            _waveOut.Init(_audioFile);
+            _waveOut.Play();
 
-            _viewModel.InGameViewModel.PropertyChanged += ViewModel_PropertyChanged;
+            _viewModel.InGameViewModel.PropertyChanged += InGameViewModel_PropertyChanged;
+            _viewModel.MenuMusicViewModel.PropertyChanged += MenuMusicViewModel_PropertyChanged;
         }
 
-        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void InGameViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(InGameViewModel.IsVolumeChecked))
             {
                 if (_viewModel.InGameViewModel.IsVolumeChecked)
                 {
-                    _player.Load();
-                    _player.PlayLooping();
+                    _waveOut.Play();
                 }
                 else
                 {
-                    _player.Stop();
+                    _waveOut.Pause();
                 }
+            }
+        }
+        
+        private void MenuMusicViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(MenuMusicViewModel.CurrentSong))
+            {
+                _audioFile = new AudioFileReader(_viewModel.MenuMusicViewModel.CurrentSong);
+                _waveOut = new WaveOutEvent();
+                _waveOut.Init(_audioFile);
+                _waveOut.Play();
             }
         }
 
@@ -68,10 +83,11 @@ namespace Line98
 
         public void ChangeBackgroundMusic(string musicFilePath)
         {
-            _player.Stop();
-            _player.SoundLocation = musicFilePath;
-            _player.Load();
-            _player.PlayLooping();
+            _waveOut.Stop();
+            _audioFile.Dispose();
+            _audioFile = new AudioFileReader(musicFilePath);
+            _waveOut.Init(_audioFile);
+            _waveOut.Play();
         }
     }
 }

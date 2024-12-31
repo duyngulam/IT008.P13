@@ -40,7 +40,7 @@ namespace Line98.ViewModel
         private void ShowMenu(object obj) => CurrentView = new MenuViewModel();
         private void ShowMenuStyle(object obj) => CurrentView = new MenuStyleViewModel();
         private void ShowMenuScoreNormal(object obj) => CurrentView = new MenuScoreNormalViewModel();
-        private void ShowMenuHelp(object obj) => CurrentView = new MenuHelpViewModel();
+        private void ShowMenuHelp(object obj) => CurrentView = new MenuMusicViewModel();
         private void ShowLoadGame(object obj) => CurrentView = new LoadGameViewModel();
         private void ShowInGame(object obj) => CurrentView = new InGameViewModel();
         private void ExitAciton(object obj)

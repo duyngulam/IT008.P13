@@ -4,8 +4,8 @@
                     xmlns:localViewModel="clr-namespace:Line98.ViewModel">
     
     <DataTemplate 
-DataType="{x:Type localViewModel:MenuHelpViewModel}">
-        <local:MenuHelpView/>
+DataType="{x:Type localViewModel:MenuMusicViewModel}">
+        <local:MenuMusicView/>
     </DataTemplate>
 
     <DataTemplate 

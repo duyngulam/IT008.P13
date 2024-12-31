@@ -12,12 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NAudio.Wave;
+using NAudio.CoreAudioApi;
 
 namespace Line98.View
 {
-    public partial class MenuHelpView : UserControl
+    public partial class MenuMusicView : UserControl
     {
-        public MenuHelpView()
+        public MenuMusicView()
         {
             InitializeComponent();
         }

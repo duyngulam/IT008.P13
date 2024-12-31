@@ -205,5 +205,35 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <!--BUTTON SONG-->
+    <Style x:Key="btnSong" TargetType="Button">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Foreground" Value="#FFC5D4"/>
+        <Setter Property="FontFamily" Value="Kodchasan"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="#BE5CCD"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border 
+                Width="200" Height="40"
+                x:Name="button"
+                Background="{TemplateBinding Background}"
+                BorderBrush="#9D4EC5"
+                BorderThickness="0"
+                CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                      VerticalAlignment="Center"/>
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>
