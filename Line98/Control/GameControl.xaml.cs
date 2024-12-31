@@ -78,7 +78,7 @@ namespace Line98.Control
 
         private ImageSource GetBallImage(int colorIndex)
         {
-            string resourcePath = "pack://application:,,,/resources/balls.png"; // Đường dẫn tài nguyên
+            string resourcePath = StyleBallManager.Instance.ResourcePath; // Đường dẫn tài nguyên
             var bitmap = new BitmapImage();
 
             // Tải ảnh PNG từ tài nguyên

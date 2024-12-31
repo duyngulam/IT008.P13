@@ -23,15 +23,16 @@ namespace Line98.View
     public partial class InGameUC : UserControl
     {
         private CountdownTimer _countdownTimer;
+        private CountdownTimer countUp;
         private GameLogic _gameLogic;
         private int _score;
         public InGameUC()
         {
             InitializeComponent();
-            Timer();
+            countup();
         }
 
-        void Timer()
+        void countdown()
         {
             _countdownTimer = new CountdownTimer(15); // 5 phút = 300 giây
 
@@ -44,6 +45,14 @@ namespace Line98.View
             // Bắt đầu đếm ngược
             _countdownTimer.Start();
         }
+
+        void countup()
+        {
+            countUp = new CountdownTimer(isCountingUp: true); // Đếm thời gian từ 0
+            countUp.TimeChanged += time => CountdownText.Text = time;
+            countUp.Start();
+        }
+
 
     }
 }

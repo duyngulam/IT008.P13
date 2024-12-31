@@ -30,24 +30,42 @@
             <Grid Height="300" Width="664"
                           Canvas.Left="308" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="25">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="106"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0"
+                <StackPanel Grid.Column="1"
                                     Orientation="Vertical"  >
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,30,0,0" IsChecked="True"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,40,0,0"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,40,0,0"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,40,0,0"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,30,0,0" IsChecked="True" Checked="RadioButton_Checked_1"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0" IsChecked="False" Checked="RadioButton_Checked_2"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0" IsChecked="False" Checked="RadioButton_Checked_3"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,45,0,0" IsChecked="False" Checked="RadioButton_Checked_4"/>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1"
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Left"
                                     Orientation="Vertical" >
-                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
-                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
-                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
-                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0"/>
+                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0" >
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Resources/balls.png"/>
+                        </Border.Background>
+                    </Border>
+                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Resources/ball2.png"/>
+                        </Border.Background>
+                    </Border>
+                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Resources/ball3.png"/>
+                        </Border.Background>
+                    </Border>
+                    <Border Style="{StaticResource iRectangle}" Margin="0,20,35,0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Resources/ball4.png"/>
+                        </Border.Background>
+                    </Border>
                 </StackPanel>
 
             </Grid>
