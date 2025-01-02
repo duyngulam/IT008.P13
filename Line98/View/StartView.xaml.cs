@@ -5,7 +5,6 @@ namespace Line98.View
 {
     public partial class StartView : UserControl
     {
-        private NewGameView newGameView;
         public StartView()
         {
             InitializeComponent();

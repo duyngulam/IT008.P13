@@ -1,10 +1,29 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
 namespace Line98.ViewModel
 {
     public class InGameViewModel : ViewModelBase
     {
+        private bool _isVolumeChecked;
+        public bool IsVolumeChecked
+        {
+            get => _isVolumeChecked;
+            set
+            {
+                _isVolumeChecked = value;
+                OnPropertyChanged(nameof(IsVolumeChecked));
+            }
+        }
+        public ICommand VolumeCommand { get; set; }
         public InGameViewModel()
         {
+            VolumeCommand = new ViewModelCommand(Volume);
+            IsVolumeChecked = true;
             var mainVM = Application.Current.Resources["MainViewModel"] as MainViewModel;
             if (mainVM != null)
             {
@@ -19,14 +38,30 @@ namespace Line98.ViewModel
 
             }
         }
-        ~InGameViewModel()
+
+
+        private void Volume(object obj)
         {
-            var mainVM = Application.Current.Resources["MainViewModel"] as MainViewModel;
-            if (mainVM != null)
+            if (IsVolumeChecked)
             {
-                mainVM.ViewChanged -= OnViewChanged;
+                IsVolumeChecked = false;
+            }
+            else
+            {
+                IsVolumeChecked = true;
             }
         }
+    }
+}
+
+~InGameViewModel()
+        {
+    var mainVM = Application.Current.Resources["MainViewModel"] as MainViewModel;
+    if (mainVM != null)
+    {
+        mainVM.ViewChanged -= OnViewChanged;
+    }
+}
 
     }
 

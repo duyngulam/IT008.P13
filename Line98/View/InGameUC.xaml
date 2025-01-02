@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="560">
     <UserControl.Resources>
+
+        <FontFamily x:Key="GeostarFillFont" >pack://application:,,,/Fonts/#Geostar Fill</FontFamily>
+        <FontFamily x:Key="CourierPrimeFont" >pack://application:,,,/Fonts/#Courier Prime</FontFamily>
         <!-- STYLE BUTTON BACK GAME-->
         <Style x:Key="btnItem" TargetType="Button">
             <Setter Property="Background" Value="#BE5CCD"/>
@@ -61,7 +64,7 @@
         Grid.Row="0"
         Text="LINE" Height="160" Width="440" 
         TextAlignment="Center" FontSize="128" FontWeight="ExtraBlack"
-        FontFamily="Courier Prime"
+        FontFamily="{StaticResource CourierPrimeFont}"
         Margin="0,0,0,0"
     >
             <TextBlock.Foreground>
@@ -88,7 +91,7 @@
                   Margin="0,30,0,0">
                     <TextBlock
                         Height="50" Width="150" Text="Score"
-                        FontFamily="Courier Prime" FontSize="40"
+                        FontFamily="{StaticResource CourierPrimeFont}" FontSize="40"
                         FontWeight="ExtraBold" Foreground="Black"
                         TextWrapping="Wrap" TextAlignment="Center"
                         Margin="135,-120,0,0"
@@ -106,7 +109,7 @@
                         x:Name="scoreText"
                     Margin="0,20,0,0"
                     Height="100" Width="358"
-                    FontFamily="Geostar Fill" FontSize="60"
+                    FontFamily="{StaticResource GeostarFillFont}" FontSize="60"
                     Text="0" Foreground="White"
                     TextAlignment="Center"
                     VerticalAlignment="Center"
@@ -115,12 +118,13 @@
 
                 </Grid>
 
+                <!--TIME-->
                 <Grid Height="140" Width="370"
                   Margin="0,40,0,0">
 
                     <TextBlock
                         Height="50" Width="150" Text="Time"
-                        FontFamily="Courier Prime" FontSize="40"
+                        FontFamily="{StaticResource CourierPrimeFont}" FontSize="40"
                         FontWeight="ExtraBold" Foreground="Black"
                         TextWrapping="Wrap" TextAlignment="Center"
                         Margin="135,-130,0,0"
@@ -138,8 +142,8 @@
                     <TextBlock
                     x:Name="CountdownText"
                     Height="100" Width="358"
-                    FontFamily="Geostar Fill" FontSize="60"
-                    Text=" 10:20" Foreground="White"
+                    FontFamily="{StaticResource GeostarFillFont}" FontSize="60"
+                    Text="" Foreground="White"
                     TextAlignment="Center"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -166,23 +170,117 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <!-- BUTTON UNDO-->
+                <Button x:Name="btnUndo"
+                    Style="{StaticResource btnItem}"
+                    Margin="-80,-60,0,0"
+                        ToolTip="Undo the last step (1 time per game)">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                Width="80" Height="40"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="20">
+                                <Image Source="/Resources/Icons/undo.png" Stretch="Uniform" Margin="1,1,4,3"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <!-- BUTTON PAUSE-->
+                <Button Style="{StaticResource btnItem}"
+                    Margin="-80,60,0,0"
+                        ToolTip="Pause game">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                Width="80" Height="40"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="20">
+                                <Image Source="/Resources/Icons/pause.png" Stretch="Uniform" Margin="2,3,2,3"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
                 <Button x:Name="btnPause"  Style="{StaticResource btnItem}"
                     Click ="btnPause_Click" Margin="-80,-60,0,0"/>
 
+                <!-- BUTTON SAVE-->
+                <Button Style="{StaticResource btnItem}"
+                    Margin="160,-60,0,0"
+                        ToolTip="Save the current game">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                Width="80" Height="40"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="20">
+                                <Image Source="/Resources/Icons/save.png" Stretch="Uniform" Margin="2,3,2,3"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
                 <Button x:Name="btnUndo" Style="{StaticResource btnItem}"
                     Click="btnUndo_Click"
                         Margin="-80,60,0,0"/>
 
+                <!-- BUTTON VOLUME-->
+                <Button Style="{StaticResource btnItem}" Command="{Binding DataContext.InGameViewModel.VolumeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    Margin="160,60,0,0"
+                        ToolTip="Music On/Off">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                Width="80" Height="40"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="20">
+                                <Image x:Name="volumeImage" Source="/Resources/Icons/volume.png" Stretch="Uniform" Margin="3,3,3,3"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding DataContext.InGameViewModel.IsVolumeChecked, RelativeSource={RelativeSource AncestorType=Window}}" Value="True">
+                                    <Setter TargetName="volumeImage" Property="Source" Value="\Resources\Icons\volume.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding DataContext.InGameViewModel.IsVolumeChecked, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
+                                    <Setter TargetName="volumeImage" Property="Source" Value="\Resources\Icons\volume-mute.png"/>
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
                 <Button x:Name="btnLoad" Style="{StaticResource btnItem}"
                     Margin="160,-60,0,0"
                     Command="{Binding DataContext.MainViewModel.ShowLoadGameCommand, RelativeSource={RelativeSource AncestorType=Window}}" Click="btnLoad_Click" />
 
-                <Button Style="{StaticResource btnItem}"
-                    Margin="160,60,0,0"/>
 
-                <Button  Grid.Column="2"                       
-                    Height="100" Width="120"
+                <!-- BUTTON EXIT-->
+                    <Button Grid.Column="2"                       
+                    Height="120" Width="120"
                     Background="#BE5CCD"
+                    Style="{StaticResource TriggerStyle}"
+                    Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    ToolTip="Back to Start menu">
+
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Border 
+                                Width="120" Height="120"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#9D4EC5"
+                                BorderThickness="3"
+                                CornerRadius="60">
+                                    <Image Source="\Resources\Icons\exit.png" Stretch="Uniform" Margin="3,3,3,3"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                     Style="{StaticResource TriggerStyle}" 
                      Command="{Binding DataContext.MainViewModel.ExitCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                         >
@@ -201,6 +299,5 @@
             </Grid>
 
         </Canvas>
-
     </Grid>
 </UserControl>

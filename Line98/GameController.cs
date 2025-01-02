@@ -1,6 +1,13 @@
 ﻿using Line98.Control;
 using Line98.Model;
 using Line98.View;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Line98
@@ -8,10 +15,10 @@ namespace Line98
     public class GameController
     {
         private readonly GameControl gameControl;
-        private readonly InGameUC inGameUC;
-        private GameLogic gameLogic;
         private GameLogic preGameLogic;
         private Board TempBoard;
+        public  GameLogic gameLogic;
+        private InGameUC inGameUC;
 
         public GameController(GameControl gameControl, GameLogic gameLogic, InGameUC inGameUC)
         {

@@ -9,9 +9,11 @@
                     Value="/Fonts/#Courier Prime" >
             </Setter>
         </Style>-->
-        <ResourceDictionary>
+
+        <ResourceDictionary >
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resource/DataTemplete.xaml"/>
+                <ResourceDictionary Source="Animation/GameAnimation.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

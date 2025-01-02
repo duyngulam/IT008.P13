@@ -12,6 +12,23 @@ namespace Line98.View
             InitializeComponent();
         }
 
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            StyleBallManager.Instance.SetStyle("balls");
+        }
 
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        {
+            StyleBallManager.Instance.SetStyle("Ball2");
+        }
+
+        private void RadioButton_Checked_3(object sender, RoutedEventArgs e)
+        {
+            StyleBallManager.Instance.SetStyle("ball3");
+        }
+        private void RadioButton_Checked_4(object sender, RoutedEventArgs e)
+        {
+            StyleBallManager.Instance.SetStyle("ball4");
+        }
     }
 }

@@ -16,9 +16,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <UserControl.DataContext>
-        <localViewModel:ControlPanelViewModel/>
-    </UserControl.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -93,7 +90,7 @@
                     Style="{StaticResource radioButton}"
                     Content="4"
                     Width="60" Margin="51,0,239,0"
-                    >
+                    Command="{Binding DataContext.NewGameViewModel.FourBallCommand, RelativeSource={RelativeSource AncestorType=Window}}">
                 </RadioButton>
 
                 <!--RADIO BUTTTON 5-->
@@ -104,7 +101,7 @@
                     Content="5"
                     Width="60" Margin="145,0,145,0"
                     IsChecked="True"
-                    >
+                    Command="{Binding DataContext.NewGameViewModel.FiveBallCommand, RelativeSource={RelativeSource AncestorType=Window}}">
                 </RadioButton>
 
                 <!--RADIO BUTTON 6-->
@@ -114,7 +111,7 @@
                     Style="{StaticResource radioButton}"
                     Content="6"
                     Width="60" Margin="239,0,51,0"
-                    >
+                    Command="{Binding DataContext.NewGameViewModel.SixBallCommand, RelativeSource={RelativeSource AncestorType=Window}}">
                 </RadioButton>
 
                 <!--MODE-->
@@ -143,6 +140,7 @@
                     Margin="51,0,124,50"
                     HorizontalContentAlignment="Left"
                     IsChecked="True"
+                    Checked="rdBtnNormal_Checked"
                     >
                 </RadioButton>
 
@@ -154,6 +152,7 @@
                     Content="TIMER" Height="50"
                     Margin="51,50,162,0"
                     HorizontalContentAlignment="Left"
+                    Checked="rdBtnTimer_Checked"
                     >
                 </RadioButton>
 
@@ -176,7 +175,6 @@
                     Content="BACK"
                     FontSize="30"
                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25,0,0,0"
-                    Click="btnSmallBack_Click"
                     Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
             </Grid>

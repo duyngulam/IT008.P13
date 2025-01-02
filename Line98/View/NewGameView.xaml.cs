@@ -6,13 +6,12 @@ namespace Line98.View
 {
     public partial class NewGameView : UserControl
     {
-        public event EventHandler BackRequested;
         public NewGameView()
         {
             InitializeComponent();
         }
 
-        private void btnSmallBack_Click(object sender, RoutedEventArgs e)
+        private void rdBtnNormal_Checked(object sender, RoutedEventArgs e)
         {
 
         }
@@ -34,7 +33,12 @@ namespace Line98.View
             GameState.Instance.board = new Board(selectedBall);
 
 
+            StyleBallManager.Instance.SetMode(true);
+        }
 
+        private void rdBtnTimer_Checked(object sender, RoutedEventArgs e)
+        {
+            StyleBallManager.Instance.SetMode(false);
         }
     }
 }

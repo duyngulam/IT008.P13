@@ -1,6 +1,21 @@
 ﻿using Line98.Control;
 using Line98.Model;
+using Line98.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Line98.View
 {
@@ -9,11 +24,16 @@ namespace Line98.View
         int GridSize = 9;
         int BallCount = 5;
         private GameController _gameController;
+        private ControlPanelViewModel _viewModel;
 
 
         public InGameView()
         {
             InitializeComponent();
+
+            _viewModel = new ControlPanelViewModel();
+            DataContext = _viewModel;
+
             BallCount = GameState.Instance.SelectedBallCount;
             GridSize = BallCount == 6 ? 12 : 9;
             // Tạo Board và GameLogic

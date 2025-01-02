@@ -16,15 +16,15 @@ namespace Line98.ViewModel
         }
         public ICommand ShowMenuStyleCommand { get; set; }
         public ICommand ShowMenuScoreNormalCommand { get; set; }
-        public ICommand ShowMenuHelpCommand { get; set; }
+        public ICommand ShowMenuMusicCommand { get; set; }
         private void ShowMenuStyle(object obj) => MenuCurrentView = new MenuStyleViewModel();
         private void ShowMenuScoreNormal(object obj) => MenuCurrentView = new MenuScoreNormalViewModel();
-        private void ShowMenuHelp(object obj) => MenuCurrentView = new MenuHelpViewModel();
+        private void ShowMenuMusic(object obj) => MenuCurrentView = new MenuMusicViewModel();
         public MenuItemViewModel()
         {
             ShowMenuStyleCommand = new ViewModelCommand(ShowMenuStyle);
             ShowMenuScoreNormalCommand = new ViewModelCommand(ShowMenuScoreNormal);
-            ShowMenuHelpCommand = new ViewModelCommand(ShowMenuHelp);
+            ShowMenuMusicCommand = new ViewModelCommand(ShowMenuMusic);
 
             MenuCurrentView = new MenuStyleViewModel();
         }

@@ -16,24 +16,62 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Resources\Background Music\Song 1.wav" />
 		<None Remove="Resources\background.png" />
+		<None Remove="Resources\Ball2.png" />
+		<None Remove="Resources\ball3.png" />
+		<None Remove="Resources\ball4.png" />
 		<None Remove="Resources\balls.png" />
 		<None Remove="Resources\gameboard.png" />
 		<None Remove="Resources\Grid12x12.png" />
 		<None Remove="Resources\Grid9x9.png" />
+		<None Remove="Resources\Icons\exit.png" />
+		<None Remove="Resources\Icons\load.png" />
+		<None Remove="Resources\Icons\pause.png" />
+		<None Remove="Resources\Icons\save.png" />
+		<None Remove="Resources\Icons\undo.png" />
+		<None Remove="Resources\Icons\volume-mute.png" />
+		<None Remove="Resources\Icons\volume.png" />
+		<None Remove="Resources\Pics\Planet1.png" />
+		<None Remove="Resources\Pics\Planet2.png" />
+		<None Remove="ScoreData\NormalScore.txt" />
+		<None Remove="ScoreData\TimerScore.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Resources\Background Music\Song 1.wav">
+		<Content Include="Resources\BackgroundMusic\Song1.wav">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
+		<Resource Include="Fonts\CourierPrime-Bold.ttf" />
+		<Resource Include="Fonts\CourierPrime-Regular.ttf" />
+		<Resource Include="Fonts\GeostarFill-Regular.ttf" />
+		<Content Include="Resources\BackgroundMusic\Song2.wav" />
+		<PackageReference Include="NAudio" Version="2.2.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<Resource Include="Resources\background.png" />
+		<Resource Include="Resources\Ball2.png" />
+		<Resource Include="Resources\ball3.png" />
+		<Resource Include="Resources\ball4.png" />
 		<Resource Include="Resources\balls.png" />
 		<Resource Include="Resources\gameboard.png" />
 		<Resource Include="Resources\Grid12x12.png" />
 		<Resource Include="Resources\Grid9x9.png" />
+		<Resource Include="Resources\Icons\exit.png" />
+		<Resource Include="Resources\Icons\load.png" />
+		<Resource Include="Resources\Icons\pause.png" />
+		<Resource Include="Resources\Icons\save.png" />
+		<Resource Include="Resources\Icons\undo.png" />
+		<Resource Include="Resources\Icons\volume-mute.png" />
+		<Resource Include="Resources\Icons\volume.png" />
+		<Resource Include="Resources\Pics\Planet1.png" />
+		<Resource Include="Resources\Pics\Planet2.png" />
+		<Resource Include="ScoreData\NormalScore.txt">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="ScoreData\TimerScore.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\" />
 	</ItemGroup>
 
 </Project>

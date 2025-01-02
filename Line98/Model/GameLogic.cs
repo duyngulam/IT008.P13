@@ -1,7 +1,16 @@
-﻿namespace Line98.Model
+﻿using Line98.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace Line98.Model
 {
     [Serializable]
     public class GameLogic
+    public class GameLogic : ViewModelBase
     {
         public Board board;
         private int minLength;
@@ -25,6 +34,15 @@
         {
             get => selectedBallPosition;
             set => selectedBallPosition = value;
+        }
+        public int MinLength
+        {
+            get => minLength;
+            set
+            {
+                minLength = value;
+                OnPropertyChanged(nameof(MinLength));
+            }
         }
         public List<(int row, int col)>? MovingPath
         {
@@ -448,6 +466,14 @@
         public int getSize()
         {
             return (int)board.Size;
+        }
+        public bool IsGameOVer()
+        {
+            if(GetEmptyCells().Count != (board.Size * board.Size))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

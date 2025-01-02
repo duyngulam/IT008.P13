@@ -5,34 +5,35 @@ namespace Line98.Model
 {
     class CountdownTimer
     {
-        private int _timeLeftInSeconds; // Lưu trữ thời gian còn lại tính bằng giây
+        private int _timeInSeconds; // Lưu trữ thời gian (có thể tăng hoặc giảm)
         private DispatcherTimer _timer;
+        private bool _isCountingUp; // Biến để xác định chế độ đếm (lên hoặc xuống)
 
         // Sự kiện khi thời gian thay đổi
         public event Action<string> TimeChanged;
 
-        // Sự kiện khi thời gian kết thúc
+        // Sự kiện khi thời gian kết thúc (chỉ áp dụng cho đếm ngược)
         public event Action TimeUp;
 
-        // Khởi tạo CountdownTimer với thời gian bắt đầu là số giây
-        public CountdownTimer(int startTimeInMinutes)
+        // Khởi tạo CountdownTimer với chế độ và thời gian bắt đầu
+        public CountdownTimer(int startTimeInMinutes = 0, bool isCountingUp = false)
         {
-            // Chuyển đổi thời gian từ phút sang giây
-            _timeLeftInSeconds = startTimeInMinutes * 60;
+            _timeInSeconds = isCountingUp ? 0 : startTimeInMinutes * 60;
+            _isCountingUp = isCountingUp;
 
             // Khởi tạo Timer
             _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1);  // Cập nhật mỗi giây
+            _timer.Interval = TimeSpan.FromSeconds(1); // Cập nhật mỗi giây
             _timer.Tick += Timer_Tick;
         }
 
-        // Bắt đầu đếm ngược
+        // Bắt đầu đếm
         public void Start()
         {
             _timer.Start();
         }
 
-        // Dừng đếm ngược
+        // Dừng đếm
         public void Stop()
         {
             _timer.Stop();
@@ -41,8 +42,15 @@ namespace Line98.Model
         // Hàm xử lý sự kiện mỗi giây
         private void Timer_Tick(object sender, EventArgs e)
         {
-            // Giảm thời gian
-            _timeLeftInSeconds--;
+            if (_isCountingUp)
+            {
+                // Tăng thời gian
+                _timeInSeconds++;
+            }
+            else
+            {
+                // Giảm thời gian
+                _timeInSeconds--;
 
             // Cập nhật thời gian lên giao diện
             TimeChanged?.Invoke(FormatTime(_timeLeftInSeconds));
@@ -61,7 +69,7 @@ namespace Line98.Model
         {
             int minutes = timeInSeconds / 60;
             int seconds = timeInSeconds % 60;
-            return $"{minutes:D2}:{seconds:D2}";  // Hiển thị dưới dạng "mm:ss"
+            return $"{minutes:D2}:{seconds:D2}"; // Hiển thị dưới dạng "mm:ss"
         }
         public int GetTimeLeft()
         {
