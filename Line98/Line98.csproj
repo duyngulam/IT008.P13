@@ -38,13 +38,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Resources\BackgroundMusic\Song1.wav">
+		<Resource Include="Resources\BackgroundMusic\Song1.wav">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
+		</Resource>
 		<Resource Include="Fonts\CourierPrime-Bold.ttf" />
 		<Resource Include="Fonts\CourierPrime-Regular.ttf" />
 		<Resource Include="Fonts\GeostarFill-Regular.ttf" />
-		<Content Include="Resources\BackgroundMusic\Song2.wav" />
+		<Resource Include="Resources\BackgroundMusic\Song2.wav" />
 		<PackageReference Include="NAudio" Version="2.2.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<Resource Include="Resources\background.png" />

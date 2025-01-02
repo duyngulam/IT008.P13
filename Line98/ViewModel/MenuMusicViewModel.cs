@@ -133,7 +133,7 @@ namespace Line98.ViewModel
             Is4thSongPlaying = false;
             Is5thSongPlaying = false;
             CurrentSong = "Resources/BackgroundMusic/Song2.wav";
-            MessageBox.Show(CurrentSong);
+
         }
 
         private void Play1stSong(object obj)
@@ -144,7 +144,7 @@ namespace Line98.ViewModel
             Is4thSongPlaying = false;
             Is5thSongPlaying = false;
             CurrentSong = "Resources/BackgroundMusic/Song1.wav";
-            MessageBox.Show(CurrentSong);
+            
         }
     }
 }

@@ -14,13 +14,10 @@ namespace Line98.View
     /// </summary>
     public partial class MenuScoreNormal : UserControl
     {
-        string normalfilePath = "pack://application:,,,/ScoreData/NormalScore.txt";
-        string timerfilePath = "pack://application:,,,/ScoreData/TimerScore.txt";
-
         public MenuScoreNormal()
         {
             InitializeComponent();
-            ShowScore(normalfilePath);
+            ShowScore(1);
         }
 
         public static void BubbleSort(List<TableRow> data)
@@ -41,37 +38,34 @@ namespace Line98.View
             }
         }
 
-        void ShowScore(string uriPath)
+        void ShowScore(int type)
         {
+            // Lấy dữ liệu từ Slot 1 (danh sách các chuỗi)
+            List<string> x = ScoreSaveManager.LoadFromSlot(1);
             var data = new List<TableRow>();
 
-            // Sử dụng Application.GetResourceStream để đọc file
-            var resourceUri = new Uri(uriPath, UriKind.RelativeOrAbsolute);
-            var resourceStream = Application.GetResourceStream(resourceUri);
+            int count = 1;
 
-            if (resourceStream != null)
+            // Duyệt qua từng phần tử trong danh sách x (mỗi phần tử là một chuỗi)
+            foreach (var line in x)
             {
-                using (var reader = new StreamReader(resourceStream.Stream))
+                var trimmedLine = line.Trim(); // Loại bỏ khoảng trắng thừa
+                var columns = trimmedLine.Split('.'); // Phân tách bằng dấu chấm
+
+                if (columns.Length == 2) // Kiểm tra nếu có 2 phần tử sau khi phân tách
                 {
-                    string line;
-                    int count = 1;
-                    while ((line = reader.ReadLine()) != null && count <=4 )
-                    {
-                        var trimmedLine = line.Trim();
-                        var columns = trimmedLine.Split('.'); // Phân tách bằng dấu chấm
-                        if (columns.Length == 2) // Kiểm tra đủ 2 cột
-                        {
-                            data.Add(new TableRow { Column1 = columns[0], Column2 = columns[1] });
-                        }
-                        count++;
-                    }
+                    data.Add(new TableRow { Column1 = columns[0], Column2 = columns[1] });
                 }
+                count++;
             }
 
+            // Sắp xếp dữ liệu (nếu cần)
             BubbleSort(data);
+
             // Gắn dữ liệu vào ListBox
             lbNormal.ItemsSource = data;
         }
+
         public class TableRow
         {
             public string Column1 { get; set; }
@@ -83,7 +77,7 @@ namespace Line98.View
             pTimer.Visibility = Visibility.Collapsed;
             borderNormal.Visibility = Visibility.Visible;
             borderTimer.Visibility = Visibility.Collapsed;
-            ShowScore(normalfilePath);
+            ShowScore(1);
             
         }
 
@@ -93,7 +87,7 @@ namespace Line98.View
             pTimer.Visibility = Visibility.Visible;
             borderNormal.Visibility = Visibility.Collapsed;
             borderTimer.Visibility = Visibility.Visible;
-            ShowScore(timerfilePath);
+            ShowScore(2);
         }
     }
 }

@@ -22,8 +22,6 @@ namespace Line98
 {
     public partial class MainWindow : Window
     {
-        private WaveOutEvent _waveOut;           // Đối tượng để phát nhạc
-        private AudioFileReader _audioFile;     // Đối tượng đọc file nhạc
         private ControlPanelViewModel _viewModel;
         public MainWindow()
         {
@@ -34,39 +32,19 @@ namespace Line98
             DataContext = _viewModel;
 
             //BACKGROUND MUSIC
-            _audioFile = new AudioFileReader(_viewModel.MenuMusicViewModel.CurrentSong);
-            _waveOut = new WaveOutEvent();
-            _waveOut.Init(_audioFile);
-            _waveOut.Play();
-
+            ChangeMusic.Instance.ChangeMusicTo("Song1");
             _viewModel.InGameViewModel.PropertyChanged += InGameViewModel_PropertyChanged;
             _viewModel.MenuMusicViewModel.PropertyChanged += MenuMusicViewModel_PropertyChanged;
         }
 
         private void InGameViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(InGameViewModel.IsVolumeChecked))
-            {
-                if (_viewModel.InGameViewModel.IsVolumeChecked)
-                {
-                    _waveOut.Play();
-                }
-                else
-                {
-                    _waveOut.Pause();
-                }
-            }
+
         }
         
         private void MenuMusicViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(MenuMusicViewModel.CurrentSong))
-            {
-                _audioFile = new AudioFileReader(_viewModel.MenuMusicViewModel.CurrentSong);
-                _waveOut = new WaveOutEvent();
-                _waveOut.Init(_audioFile);
-                _waveOut.Play();
-            }
+
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -83,11 +61,7 @@ namespace Line98
 
         public void ChangeBackgroundMusic(string musicFilePath)
         {
-            _waveOut.Stop();
-            _audioFile.Dispose();
-            _audioFile = new AudioFileReader(musicFilePath);
-            _waveOut.Init(_audioFile);
-            _waveOut.Play();
+
         }
     }
 }

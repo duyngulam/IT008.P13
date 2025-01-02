@@ -53,44 +53,16 @@ namespace Line98.View
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            string fileName;
-
-            // Kiểm tra trạng thái đếm thời gian và đặt tên file phù hợp
-            if (StyleBallManager.Instance.isCountingup)
+            if (StyleBallManager.Instance.isCountingup == true)
             {
-                fileName = "NormalScore.txt";
+                ScoreSaveManager.SaveToSlot(1, txtName.Text + "." + scoreSave.ToString() + "\n");
             }
             else
             {
-                fileName = "TimerScore.txt";
-            }
-
-            // Đường dẫn tuyệt đối đến thư mục chứa file trong dự án
-            string projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-            string filePath = Path.Combine(projectDirectory, "ScoreData", fileName);
-
-            // Kiểm tra nếu thư mục chứa file không tồn tại, tạo nó nếu cần thiết
-            string directoryPath = Path.GetDirectoryName(filePath);
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            // Ghi dữ liệu vào tệp
-            string content = txtName.Text;
-            // Thực hiện bắt đầu trò chơi mới sau khi lưu
-            //   filePath = "D:\\KTPM\\HK3\\LapTrinhTrucQuan\\DoAn\\Line98\\ScoreData\\NormalScore.txt";
-                        //  "D:\\KTPM\\HK3\\LapTrinhTrucQuan\\DoAn\\Line98\\Line98\\ScoreData\\NormalScore.txt"
-            try
-            {
-                File.AppendAllText(filePath, content + "." + scoreSave.ToString() + "\n");
-                MessageBox.Show("Dữ liệu đã được lưu thành công.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi ghi dữ liệu vào file: {ex.Message}");
-            }
-
+                ScoreSaveManager.SaveToSlot(2, txtName.Text + "." + scoreSave.ToString() + "\n");
+            } 
+                
+            
             newGame();
         }
 

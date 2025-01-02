@@ -104,10 +104,8 @@
                 FontSize="110" FontFamily="{StaticResource CourierPrimeFont}" >
                     <TextBlock.Foreground>
                         <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
-                            <GradientStop Color="#FF95B0" Offset="0.32" />
-                            <GradientStop Color="#FFCFD2" Offset="0.4233" />
-                            <GradientStop Color="#FEEECC" Offset="0.5467" />
-                            <GradientStop Color="#FCCDB6" Offset="0.6598" />
+                            <GradientStop Color="#BE5CCD" Offset="0.32" />
+                            <GradientStop Color="#9D4EC5" Offset="0.7233" />
                         </LinearGradientBrush>
                     </TextBlock.Foreground>
                 </TextBlock>

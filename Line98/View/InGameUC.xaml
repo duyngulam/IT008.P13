@@ -232,7 +232,7 @@
                 <!-- BUTTON VOLUME-->
                 <Button Style="{StaticResource btnItem}" Command="{Binding DataContext.InGameViewModel.VolumeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     Margin="160,60,0,0"
-                        ToolTip="Music On/Off">
+                        ToolTip="Music On/Off" Click="Button_Click_1">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border 
