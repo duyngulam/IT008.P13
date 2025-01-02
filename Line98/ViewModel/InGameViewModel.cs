@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
-
 namespace Line98.ViewModel
 {
     public class InGameViewModel : ViewModelBase
@@ -28,6 +28,14 @@ namespace Line98.ViewModel
             if (mainVM != null)
             {
                 mainVM.ViewChanged += OnViewChanged;
+            }
+        }
+        ~InGameViewModel()
+        {
+            var mainVM = Application.Current.Resources["MainViewModel"] as MainViewModel;
+            if (mainVM != null)
+            {
+                mainVM.ViewChanged -= OnViewChanged;
             }
         }
 
@@ -54,15 +62,3 @@ namespace Line98.ViewModel
     }
 }
 
-~InGameViewModel()
-        {
-    var mainVM = Application.Current.Resources["MainViewModel"] as MainViewModel;
-    if (mainVM != null)
-    {
-        mainVM.ViewChanged -= OnViewChanged;
-    }
-}
-
-    }
-
-}

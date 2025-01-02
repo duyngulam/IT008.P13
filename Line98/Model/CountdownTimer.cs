@@ -52,18 +52,18 @@ namespace Line98.Model
                 // Giảm thời gian
                 _timeInSeconds--;
 
-            // Cập nhật thời gian lên giao diện
-            TimeChanged?.Invoke(FormatTime(_timeLeftInSeconds));
-            GameState.Instance.Time = _timeLeftInSeconds;
+                // Cập nhật thời gian lên giao diện
+                TimeChanged?.Invoke(FormatTime(_timeInSeconds));
+                GameState.Instance.Time = _timeInSeconds;
 
-            // Nếu hết thời gian, dừng Timer và gọi sự kiện TimeUp
-            if (_timeLeftInSeconds <= 0)
-            {
-                _timer.Stop();
-                TimeUp?.Invoke();
+                // Nếu hết thời gian, dừng Timer và gọi sự kiện TimeUp
+                if (_timeInSeconds <= 0)
+                {
+                    _timer.Stop();
+                    TimeUp?.Invoke();
+                }
             }
         }
-
         // Hàm định dạng lại thời gian dưới dạng "mm:ss"
         private string FormatTime(int timeInSeconds)
         {
@@ -73,11 +73,11 @@ namespace Line98.Model
         }
         public int GetTimeLeft()
         {
-            return _timeLeftInSeconds;
+            return _timeInSeconds;
         }
         public void SetTimeLeft(int timeLeftInSeconds)
         {
-            _timeLeftInSeconds = timeLeftInSeconds;
+            _timeInSeconds = timeLeftInSeconds;
         }
     }
 }

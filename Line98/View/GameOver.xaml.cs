@@ -18,7 +18,7 @@ namespace Line98.View
     /// <summary>
     /// Interaction logic for GameOver.xaml
     /// </summary>
-    public partial class GameOver : UserControl
+    public partial class GameOver : Window
     {
         public GameOver()
         {
@@ -29,15 +29,16 @@ namespace Line98.View
         public string Placeholder
         {
             get { return placeholder; }
-            set { 
+            set
+            {
                 placeholder = value;
                 tbPlaceholder.Text = placeholder;
-                 }
+            }
         }
 
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtName.Text)) { tbPlaceholder.Visibility= Visibility.Visible;}
+            if (string.IsNullOrEmpty(txtName.Text)) { tbPlaceholder.Visibility = Visibility.Visible; }
             else tbPlaceholder.Visibility = Visibility.Collapsed;
         }
 

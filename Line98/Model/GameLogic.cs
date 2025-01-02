@@ -9,7 +9,6 @@ using System.Windows;
 namespace Line98.Model
 {
     [Serializable]
-    public class GameLogic
     public class GameLogic : ViewModelBase
     {
         public Board board;
@@ -469,7 +468,7 @@ namespace Line98.Model
         }
         public bool IsGameOVer()
         {
-            if(GetEmptyCells().Count != (board.Size * board.Size))
+            if (GetEmptyCells().Count != (board.Size * board.Size))
             {
                 return false;
             }
