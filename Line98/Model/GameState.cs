@@ -22,5 +22,6 @@ public class GameState
         Time = 15 * 60;
         IsPlaying = false;
         LoadGame = false;
+        GameMode = true;
     }
 }

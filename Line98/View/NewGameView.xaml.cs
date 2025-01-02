@@ -14,6 +14,7 @@ namespace Line98.View
         private void rdBtnNormal_Checked(object sender, RoutedEventArgs e)
         {
 
+            StyleBallManager.Instance.SetMode(true);
         }
 
         private void btnSmallNext_Click(object sender, RoutedEventArgs e)
@@ -33,11 +34,11 @@ namespace Line98.View
             GameState.Instance.board = new Board(selectedBall);
 
 
-            StyleBallManager.Instance.SetMode(true);
         }
 
         private void rdBtnTimer_Checked(object sender, RoutedEventArgs e)
         {
+            GameState.Instance.GameMode = false;
             StyleBallManager.Instance.SetMode(false);
         }
     }

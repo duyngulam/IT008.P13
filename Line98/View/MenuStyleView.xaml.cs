@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows;
 
 namespace Line98.View
 {

@@ -46,6 +46,8 @@ namespace Line98.Model
             {
                 // Tăng thời gian
                 _timeInSeconds++;
+                TimeChanged?.Invoke(FormatTime(_timeInSeconds));
+                GameState.Instance.Time = _timeInSeconds;
             }
             else
             {

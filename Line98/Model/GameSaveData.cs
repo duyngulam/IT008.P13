@@ -10,6 +10,7 @@ public class GameSaveData
     public int Score { get; set; }
     public int SelectedBallCount { get; set; }
     public int Time { get; set; }
+    public bool GameMode { get; set; }
 
     // Constructor private để ngăn việc khởi tạo bên ngoài
     private GameSaveData()
@@ -18,6 +19,7 @@ public class GameSaveData
         Score = 0;
         SelectedBallCount = 5;
         Time = 0;
+        GameMode = true;
     }
 
     // Truy cập instance duy nhất của class
@@ -43,5 +45,6 @@ public class GameSaveData
         Score = 0;
         SelectedBallCount = 5;
         Time = 0;
+        GameMode = true;
     }
 }

@@ -2,6 +2,7 @@
 using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace Line98.View
 {
@@ -11,7 +12,7 @@ namespace Line98.View
     public partial class InGameUC : UserControl
     {
 
-        private CountdownTimer _countdownTimer;
+        private CountdownTimer _countdownTimer = new CountdownTimer(15);
         private CountdownTimer countUp;
         private GameLogic _gameLogic;
         private int _score;
@@ -31,7 +32,7 @@ namespace Line98.View
 
         void countdown()
         {
-            _countdownTimer = new CountdownTimer(15); // 5 phút = 300 giây
+            //  _countdownTimer = new CountdownTimer(15); // 5 phút = 300 giây
 
             // Đăng ký sự kiện TimeChanged để cập nhật TextBlock mỗi khi thời gian thay đổi
             _countdownTimer.TimeChanged += (time) => CountdownText.Text = time;

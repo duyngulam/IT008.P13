@@ -17,7 +17,7 @@ namespace Line98
         private readonly GameControl gameControl;
         private GameLogic preGameLogic;
         private Board TempBoard;
-        public  GameLogic gameLogic;
+        public GameLogic gameLogic;
         private InGameUC inGameUC;
 
         public GameController(GameControl gameControl, GameLogic gameLogic, InGameUC inGameUC)
@@ -175,6 +175,7 @@ namespace Line98
             GameSaveData.Instance.Score = gameLogic.Score;
             GameSaveData.Instance.SelectedBallCount = GameState.Instance.SelectedBallCount;
             GameSaveData.Instance.Time = inGameUC.GetTime();
+            GameSaveData.Instance.GameMode = GameState.Instance.GameMode;
             for (int i = 0; i < gameLogic.getSize(); i++)
             {
                 for (int j = 0; j < gameLogic.getSize(); j++)

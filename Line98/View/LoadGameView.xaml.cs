@@ -147,12 +147,11 @@ namespace Line98.View
                     GameSaveData.Instance.Score = loadedData.Score;
                     GameSaveData.Instance.SelectedBallCount = loadedData.SelectedBallCount;
                     GameSaveData.Instance.Time = loadedData.Time;
+                    GameSaveData.Instance.GameMode = loadedData.GameMode;
                     if (GameSaveData.Instance.Board != null)
                     {
                         GameState.Instance.IsPlaying = true;
                         GameState.Instance.LoadGame = true;
-
-
                     }
                 }
 
