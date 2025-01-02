@@ -91,15 +91,16 @@ Grid.Row="1"
                 </Button>
                 <Button  x:Name="Save2"
                     Content="Save" Style="{StaticResource btnItem}"
-         Margin="400,2,200,53" Grid.Row="1">
+         Margin="400,2,200,53" Grid.Row="1" Click="Save2_Click">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
                 <Button  x:Name="Load2"
+                           Command="{Binding DataContext.MainViewModel.LoadbtnCommand, RelativeSource={RelativeSource AncestorType=Window}}"
             Content="Load" Style="{StaticResource btnItem}"
 Grid.Row="1"
- Margin="550,2,50,53" RenderTransformOrigin="4.803,0.588">
+ Margin="550,2,50,53" RenderTransformOrigin="4.803,0.588" Height="NaN" Click="Load2_Click">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>

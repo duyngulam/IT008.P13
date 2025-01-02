@@ -1,21 +1,8 @@
 ﻿using Line98.Control;
 using Line98.Model;
 using Line98.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Line98.View
 {
@@ -55,16 +42,13 @@ namespace Line98.View
             // Gán GameControl vào gameArea
             gameArea.Children.Add(gameControl);
             _gameController.NewGame(); GameState.Instance.IsPlaying = true;
-
-            _gameController.NewGame();
-
             if (gameLogic.IsGameOVer() == true)
             {
                 GameOver gameOver = new GameOver();
                 gameOver.Show();
-            } 
-                
-            
+            }
+
+
         }
     }
 }

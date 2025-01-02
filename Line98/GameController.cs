@@ -32,9 +32,14 @@ namespace Line98
             gameControl.CellClicked += HandleCellClick;
             inGameUC.PauseClicked += PauseScreen;
             inGameUC.SaveClicked += SaveToGameSaveData;
-
+            inGameUC.GameOver += StopGame;
+            inGameUC.SetTime(GameState.Instance.Time);
         }
-
+        private void StopGame()
+        {
+            gameControl.ClearBalls();
+            GameState.Instance.Reset();
+        }
         private void InitializeGame()
         {
             for (int i = 0; i < 3; i++)
@@ -94,13 +99,13 @@ namespace Line98
                     GameState.Instance.score = gameLogic.Score;
                     gameControl.ShowNumberWithAnimation(gameControl.BallOverlay, scoreChange, row, col);
                     await gameControl.ClearBallsAnimation(gameControl.BallOverlay, ClearPosition);
+                    UpdateUI();
                     return;
                 }
-
                 UpdateUI();
                 if (gameLogic.CheckGameOver())
                 {
-                    MessageBox.Show("OVER");
+                    StopGame();
                 }
 
             }
@@ -122,10 +127,12 @@ namespace Line98
         {
             if (gameControl.PauseOverlay.Visibility == Visibility.Collapsed)
             {
+
                 gameControl.PauseOverlay.Visibility = Visibility.Visible;
             }
             else
             {
+
                 gameControl.PauseOverlay.Visibility = Visibility.Collapsed;
             }
         }

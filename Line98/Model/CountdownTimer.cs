@@ -18,9 +18,16 @@ namespace Line98.Model
         // Khởi tạo CountdownTimer với chế độ và thời gian bắt đầu
         public CountdownTimer(int startTimeInMinutes = 0, bool isCountingUp = false)
         {
-            _timeInSeconds = isCountingUp ? 0 : startTimeInMinutes * 60;
-            _isCountingUp = isCountingUp;
+            if (GameState.Instance.IsPlaying == true)
+            {
+                _timeInSeconds = GameState.Instance.Time;
+            }
+            else
+            {
+                _timeInSeconds = isCountingUp ? 0 : startTimeInMinutes * 60;
 
+            }
+            _isCountingUp = isCountingUp;
             // Khởi tạo Timer
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1); // Cập nhật mỗi giây

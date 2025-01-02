@@ -69,6 +69,47 @@ namespace Line98.View
                     }
                 }
             }
+            Saveslot2.Children.Clear();
+            if (GameSaveManager.IsSlotOccupied(2))
+            {
+                var loadedData2 = GameSaveManager.LoadFromSlot(2);
+
+                int sbc = loadedData2.SelectedBallCount;
+                int size;
+                if (sbc == 6)
+                {
+                    size = 12;
+                    var imageBrush = new ImageBrush();
+                    imageBrush.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Line98;component/Resources/Grid12x12.png"));
+
+                    // Áp dụng ImageBrush cho nền của Canvas
+                    Saveslot2.Background = imageBrush;
+                }
+                else
+                {
+                    size = 9;
+                    var imageBrush = new ImageBrush();
+                    imageBrush.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Line98;component/Resources/Grid9x9.png"));
+
+                    // Áp dụng ImageBrush cho nền của Canvas
+                    Saveslot2.Background = imageBrush;
+                }
+                Ball[,] board = new Ball[size, size];
+
+                board = loadedData2.Board;
+                if (board != null)
+                {
+
+                    for (int i = 0; i < size; i++)
+                    {
+                        for (int j = 0; j < size; j++)
+                        {
+                            if (board[i, j] != null)
+                                AddBall(Saveslot2, i, j, board[i, j].colorIndex, board[i, j].isBig, sbc);
+                        }
+                    }
+                }
+            }
         }
         public void AddBall(Canvas c, int row, int column, int colorIndex, bool isBig, int BallCount)
         {
@@ -141,6 +182,40 @@ namespace Line98.View
             try
             {
                 var loadedData = GameSaveManager.LoadFromSlot(1);
+                if (loadedData != null)
+                {
+                    GameSaveData.Instance.Board = loadedData.Board;
+                    GameSaveData.Instance.Score = loadedData.Score;
+                    GameSaveData.Instance.SelectedBallCount = loadedData.SelectedBallCount;
+                    GameSaveData.Instance.Time = loadedData.Time;
+                    GameSaveData.Instance.GameMode = loadedData.GameMode;
+                    if (GameSaveData.Instance.Board != null)
+                    {
+                        GameState.Instance.IsPlaying = true;
+                        GameState.Instance.LoadGame = true;
+                    }
+                }
+
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void Save2_Click(object sender, RoutedEventArgs e)
+        {
+            var saveData = GameSaveData.Instance;
+            GameSaveManager.SaveToSlot(2, saveData);
+            UpdateUI();
+        }
+
+        private void Load2_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                var loadedData = GameSaveManager.LoadFromSlot(2);
                 if (loadedData != null)
                 {
                     GameSaveData.Instance.Board = loadedData.Board;

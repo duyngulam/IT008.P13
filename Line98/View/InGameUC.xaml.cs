@@ -13,13 +13,14 @@ namespace Line98.View
     {
 
         private CountdownTimer _countdownTimer = new CountdownTimer(15);
-        private CountdownTimer countUp;
+        private CountdownTimer countUp = new CountdownTimer(0);
         private GameLogic _gameLogic;
         private int _score;
         private bool paused = false;
         public event Action UndoClicked;
         public event Action PauseClicked;
         public event Action SaveClicked;
+        public event Action GameOver;
         public InGameUC()
         {
             InitializeComponent();
@@ -38,7 +39,11 @@ namespace Line98.View
             _countdownTimer.TimeChanged += (time) => CountdownText.Text = time;
 
             // Đăng ký sự kiện TimeUp để thông báo khi hết thời gian
-            _countdownTimer.TimeUp += () => CountdownText.Text = "Time's up!";
+            _countdownTimer.TimeUp += () =>
+            {
+                CountdownText.Text = "Time's up!";
+                GameOver?.Invoke();
+            };
 
             // Bắt đầu đếm ngược
             _countdownTimer.Start();
@@ -64,11 +69,13 @@ namespace Line98.View
             {
                 paused = !paused;
                 _countdownTimer?.Start();
+                countUp.Start();
             }
             else
             {
                 paused = !paused;
                 _countdownTimer?.Stop();
+                countUp.Stop();
             }
         }
 
@@ -78,6 +85,8 @@ namespace Line98.View
         }
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
+            _countdownTimer?.Stop();
+            countUp.Stop();
             SaveClicked?.Invoke();
         }
         public int GetTime()
