@@ -119,10 +119,9 @@ namespace Line98
         {
             if (GameState.Instance.IsPlaying)
             {
-                gameLogic.Score = GameState.Instance.score;
+                gameLogic.Score = GameSaveData.Instance.Score;
+                inGameUC.SetTime(GameSaveData.Instance.Time);
                 UpdateUI();
-
-
                 return;
             }
             InitializeGame();

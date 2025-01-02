@@ -191,6 +191,7 @@ namespace Line98.View
                     GameSaveData.Instance.GameMode = loadedData.GameMode;
                     if (GameSaveData.Instance.Board != null)
                     {
+                        GameState.Instance.score = loadedData.Score;
                         GameState.Instance.IsPlaying = true;
                         GameState.Instance.LoadGame = true;
                     }
@@ -225,6 +226,7 @@ namespace Line98.View
                     GameSaveData.Instance.GameMode = loadedData.GameMode;
                     if (GameSaveData.Instance.Board != null)
                     {
+                        GameState.Instance.score = loadedData.Score;
                         GameState.Instance.IsPlaying = true;
                         GameState.Instance.LoadGame = true;
                     }

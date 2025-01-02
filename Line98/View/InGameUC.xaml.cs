@@ -96,6 +96,7 @@ namespace Line98.View
         public void SetTime(int time)
         {
             _countdownTimer.SetTimeLeft(time);
+            countUp.SetTimeLeft(time);
         }
     }
 }
