@@ -64,6 +64,20 @@
                     Height="40" Width="200"/>
 
                 </Canvas>
+
+                <ListBox Grid.Row="1" Height="180" Background="Transparent"
+                         Foreground="White" x:Name="lbNormal" FontSize="35"
+                         FontFamily="Kochasan"
+                         BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Column1}" Width="300" Margin="100,0,0,0"/>
+                                <TextBlock Text="{Binding Column2}" Width="100" Margin="100,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
         </Canvas>
     </Grid>

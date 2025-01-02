@@ -83,8 +83,13 @@ namespace Line98
                     return;
                 }
                 UpdateUI();
+                if (gameLogic.IsGameOVer())
+                {
+                    MessageBox.Show("Gameover");
+                }
             }
         }
+        
 
         public void NewGame()
         {

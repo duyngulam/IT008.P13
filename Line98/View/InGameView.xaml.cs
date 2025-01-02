@@ -22,7 +22,7 @@ namespace Line98.View
     public partial class InGameView : UserControl
     {
         int GridSize = 9;
-        int BallCount = 6;
+        int BallCount = 5;
         private GameController _gameController;
         private ControlPanelViewModel _viewModel;
 

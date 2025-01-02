@@ -410,6 +410,14 @@ namespace Line98.Model
         {
             return (int)board.Size;
         }
+        public bool IsGameOVer()
+        {
+            if(GetEmptyCells().Count != (board.Size * board.Size))
+            {
+                return false;
+            }
+            return true;
+        }
     }
     public enum ClickState
     {
