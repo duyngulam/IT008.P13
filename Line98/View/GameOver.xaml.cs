@@ -21,9 +21,11 @@ namespace Line98.View
     /// </summary>
     public partial class GameOver : Window
     {
-        public GameOver()
+        private int scoreSave;
+        public GameOver(int score)
         {
             InitializeComponent();
+            scoreSave = score;
         }
 
         private string placeholder;
@@ -54,7 +56,7 @@ namespace Line98.View
             string filePath = "D:\\KTPM\\HK3\\LapTrinhTrucQuan\\DoAn\\Line98\\ScoreData\\TimerScore.txt"; // Đường dẫn file
             string content = txtName.Text;
 
-            File.AppendAllText(filePath, content + ".");
+            File.AppendAllText(filePath, content + "." + scoreSave.ToString());
         }
     }
 }

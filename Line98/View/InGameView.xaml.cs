@@ -58,13 +58,7 @@ namespace Line98.View
 
             _gameController.NewGame();
 
-            if (gameLogic.IsGameOVer() == true)
-            {
-                GameOver gameOver = new GameOver();
-                gameOver.Show();
-            } 
-                
-            
+                           
         }
     }
 }
