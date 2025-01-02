@@ -1,27 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace Line98.Model
+﻿namespace Line98.Model
 {
+    [Serializable]
     public class GameLogic
     {
-        private Board board;
+        public Board board;
         private int minLength;
         private Random random = new Random();
         private (int row, int col)? selectedBallPosition;// Nullable Tuple
         private List<(int row, int col)>? movingPath;
         private int score;
+        public event Action BallWillMove;
 
-        public int Score { get { return score; } }
-      
+        private void NeedPreLogic()
+        {
+            BallWillMove?.Invoke(); // Kích hoạt sự kiện khi bóng được di chuyển
+        }
+        public int Score
+        {
+            get => score;
+            set => score = value;
+        }
+
         public (int row, int col)? SelectedBallPosition
         {
             get => selectedBallPosition;
-            private set => selectedBallPosition = value;
+            set => selectedBallPosition = value;
         }
         public List<(int row, int col)>? MovingPath
         {
@@ -55,7 +58,7 @@ namespace Line98.Model
             this.board = board;
             this.minLength = minLength;
         }
-        private List<(int x, int y)> GetEmptyCells()
+        public List<(int x, int y)> GetEmptyCells()
         {
             List<(int x, int y)> emptyCells = new List<(int x, int y)>();
 
@@ -70,6 +73,21 @@ namespace Line98.Model
                 }
             }
             return emptyCells;
+        }
+        public bool CheckGameOver()
+        {
+            for (int i = 0; i < board.Size; i++)
+            {
+                for (int j = 0; j < board.Size; j++)
+                {
+                    if (board.IsEmpty(i, j))
+                    {
+                        return false; // Game chưa kết thúc
+                    }
+                }
+            }
+            // Nếu không có ô trống nào, game kết thúc
+            return true;
         }
 
         // Hàm tạo bóng nhỏ ở vị trí ngẫu nhiên
@@ -101,7 +119,7 @@ namespace Line98.Model
 
             // Tính toán xác suất để chọn màu nhiều nhất 
             int chosenColor;
-            if (random.NextDouble() < 0.3)
+            if (random.NextDouble() < 0.2)
             {
                 chosenColor = mostFrequentColor;
             }
@@ -175,7 +193,7 @@ namespace Line98.Model
             {
                 board.RemoveBall(pos.x, pos.y);
             }
-           score+= CalculateScore(toClear.Count);
+            score += CalculateScore(toClear.Count);
 
             return toClear;
         }
@@ -255,9 +273,9 @@ namespace Line98.Model
         public List<(int x, int y)> FindPath((int x, int y) start, (int x, int y) end)
         {
             int size = board.Size;
-            if (board.Balls[end.x, end.y] != null )
+            if (board.Balls[end.x, end.y] != null)
             {
-                if(board.Balls[end.x, end.y].isBig)
+                if (board.Balls[end.x, end.y].isBig)
                 {
                     return null;
                 }
@@ -321,6 +339,7 @@ namespace Line98.Model
                 bool moved = TryMoveBallTo(row, col);
                 if (moved)
                 {
+
                     SelectedBallPosition = null; // Hủy chọn bóng sau khi di chuyển
                     return ClickState.moved;
                 }
@@ -343,6 +362,7 @@ namespace Line98.Model
             MovingPath = FindPath(SelectedBallPosition.Value, (row, col));
             if (MovingPath != null)
             {
+                NeedPreLogic();
                 MoveBall(SelectedBallPosition.Value, (row, col));
                 return true;
             }
@@ -390,21 +410,51 @@ namespace Line98.Model
             {
                 MakeSmallBall();
             }
-
         }
         public Ball[,] GetBalls()
         {
-            return board.Balls;
+            var size = board.Balls.GetLength(0);
+            var copy = new Ball[size, size];
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    copy[i, j] = board.Balls[i, j];
+                }
+            }
+
+            return copy;
         }
+
+        public void SetBoard(Ball[,] NewBoard)
+        {
+            for (int i = 0; i < board.Size; i++)
+            {
+
+                for (int j = 0; j < board.Size; j++)
+                {
+
+                    if (NewBoard[i, j] != null)
+                    {
+                        board.Balls[i, j] = NewBoard[i, j].Clone();
+                    }
+                    else
+                        board.RemoveBall(i, j);
+                }
+            }
+        }
+
         public int getSize()
         {
             return (int)board.Size;
         }
     }
-    public enum ClickState
-    {
-        selectNewBall,
-        selectBall,
-        moved
-    }
 }
+public enum ClickState
+{
+    selectNewBall,
+    selectBall,
+    moved
+}
+

@@ -10,11 +10,10 @@
         <ResourceDictionary Source="/Line98;component/Animation/GameAnimation.xaml" />
     </UserControl.Resources>
 
-    <!--Grid chỉ hiển thị ảnh các ô-->
     <Grid Name="GridCell">
         <Grid.Style>
             <Style TargetType="Grid">
-                <!-- mặc định 99 -->
+                <!-- mặc định 9x9 -->
                 <Setter Property="Background">
                     <Setter.Value>
                         <ImageBrush ImageSource="/resources/Grid9x9.png" Stretch="UniformToFill"/>
@@ -22,7 +21,7 @@
                 </Setter>
                 <Style.Triggers>
                     <!-- Khi giá trị là true, chuyển sang ảnh nền khác -->
-                    <DataTrigger Binding="{Binding Is12x12}" Value="True">
+                    <DataTrigger Binding="{Binding Is12x12, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
                         <Setter Property="Background">
                             <Setter.Value>
                                 <ImageBrush ImageSource="/resources/Grid12x12.png" Stretch="UniformToFill"/>
@@ -34,5 +33,9 @@
         </Grid.Style>
         <!-- Canvas để hiển thị bóng -->
         <Canvas x:Name="BallOverlay" Background="Transparent" MouseLeftButtonDown="Canvas_MouseLeftButtonDown"/>
+        <Grid x:Name="PauseOverlay" Background="Black" Visibility="Collapsed" IsHitTestVisible="True">
+            <TextBlock Text="Paused" Foreground="White" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
     </Grid>
+
 </UserControl>

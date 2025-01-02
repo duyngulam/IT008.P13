@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Line98.Model
+﻿namespace Line98.Model
 {
     public class Ball
     {
         public int colorIndex { get; set; }
-        public bool isTriggered { get; set; }
         public bool isBig { get; set; }
-        public Ball(int ColorIndex, bool IsBig = true, bool isTriggered = false)
+        public Ball() { }
+
+        public Ball(int ColorIndex, bool IsBig = true)
         {
             this.colorIndex = ColorIndex;
             this.isBig = IsBig;
-            this.isTriggered = isTriggered;
         }
         public Ball Clone()
         {
-            return new Ball(this.colorIndex, this.isBig);
+            return new Ball
+            {
+                colorIndex = this.colorIndex,
+                isBig = this.isBig
+            };
         }
     }
 }

@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Line98.Model;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Line98.View
 {
@@ -25,8 +14,26 @@ namespace Line98.View
 
         private void btnSmallBack_Click(object sender, RoutedEventArgs e)
         {
-            //canvasNewGame.Visibility = Visibility.Collapsed;
-            //BackRequested?.Invoke(this, EventArgs.Empty);
+
+        }
+
+        private void btnSmallNext_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedBall = 5;
+            if (rdBtn4.IsChecked == true)
+            {
+                selectedBall = 4;
+            }
+            else if (rdBtn5.IsChecked == true)
+            {
+                selectedBall = 5;
+            }
+            else if (rdBtn6.IsChecked == true) { selectedBall = 6; }
+            GameState.Instance.Reset();
+            GameState.Instance.SelectedBallCount = selectedBall;
+            GameState.Instance.board = new Board(selectedBall);
+
+
 
         }
     }

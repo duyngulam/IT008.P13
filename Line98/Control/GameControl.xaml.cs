@@ -1,9 +1,10 @@
-﻿using System.Windows;
+﻿using System.Data.Common;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 namespace Line98.Control
 {
 
@@ -23,8 +24,12 @@ namespace Line98.Control
         int cellSize; // Kích thước ô lưới
         public GameControl(int GridSize)
         {
-
+            SetValue(Is12x12Property, false);
             InitializeComponent();
+            if (GameState.Instance.SelectedBallCount == 6)
+            {
+                SetValue(Is12x12Property, true);
+            }
             this.GridSize = GridSize;
             cellSize = Is12x12 ? 60 : 80;
 
@@ -35,7 +40,7 @@ namespace Line98.Control
         {
             if (Is12x12)
             {
-                ballSize = isBig ? 50 : 20;
+                ballSize = isBig ? 35 : 15;
             }
             else
             {
@@ -101,27 +106,46 @@ namespace Line98.Control
         private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Point clickedPoint = e.GetPosition((Canvas)sender);
-            int cellSize = 720 / 9; // Kích thước 1 ô trong lưới (9x9)
+            int cellSize = 720 / GridSize; // Kích thước 1 ô trong lưới (9x9)
             int row = (int)(clickedPoint.Y / cellSize);
             int col = (int)(clickedPoint.X / cellSize);
             CellClicked?.Invoke(row, col);
         }
         public void AddClickAnimation(UIElement element, double Y)
         {
-            var storyboard = (Storyboard)FindResource("VerticalMoveAnimation");
-            // Tùy chỉnh giá trị From và To
-            foreach (var child in storyboard.Children)
+            // Tìm bóng tại vị trí cụ thể (sử dụng phương thức GetBallAtPosition)
+            var ballImage = GetBallAtPosition(BallOverlay, (int)Canvas.GetTop(element) / cellSize, (int)Canvas.GetLeft(element) / cellSize);
+
+            if (ballImage != null)
             {
-                if (child is DoubleAnimation animation)
+                // Tạo một Storyboard cho animation
+                var storyboard = (Storyboard)FindResource("VerticalMoveAnimation");
+
+                // Tùy chỉnh giá trị From và To
+                foreach (var child in storyboard.Children)
                 {
-                    animation.From = Y - 5;
-                    animation.To = Y + 5;
+                    if (child is DoubleAnimation animation)
+                    {
+                        animation.From = Y - 5;
+                        animation.To = Y + 5;
+                    }
                 }
+
+                // Đặt Transform gốc cho element
+                ballImage.RenderTransform = new ScaleTransform(1, 1);
+
+                // Đăng ký sự kiện Completed của Storyboard
+                storyboard.Completed += (s, e) =>
+                {
+                    // Xử lý khi animation hoàn tất (nếu cần)
+                };
+
+                // Chạy Storyboard
+                Storyboard.SetTarget(storyboard, ballImage);
+                storyboard.Begin();
             }
-            element.RenderTransform = new ScaleTransform(1, 1); // Đặt Transform gốc
-            Storyboard.SetTarget(storyboard, element);
-            storyboard.Begin();
         }
+
         public Task ClearBallsAnimation(Canvas canvas, List<(int x, int y)> positions)
         {
             var tcs = new TaskCompletionSource<bool>();
@@ -176,7 +200,7 @@ namespace Line98.Control
             // Lấy bóng cũ tại điểm bắt đầu
             var ballImage = GetBallAtPosition(canvas, start.x, start.y);
             if (ballImage == null) return;
-
+            Panel.SetZIndex(ballImage, int.MaxValue);
             // Di chuyển bóng qua từng điểm trong path
             for (int i = 1; i < path.Count; i++)
             {
@@ -202,6 +226,61 @@ namespace Line98.Control
             // Đặt vị trí cuối cùng sau khi hoàn tất
             Canvas.SetLeft(ballImage, end.y * cellSize);
             Canvas.SetTop(ballImage, end.x * cellSize);
+        }
+
+        public void ShowNumberWithAnimation(Canvas canvas, int number, int row, int col)
+        {
+            // Tính toán vị trí trung tâm của ô
+            double centerX = col * cellSize + cellSize / 2.0;
+            double centerY = row * cellSize + cellSize / 2.0;
+
+            // Tạo TextBlock để hiển thị số
+            var textBlock = new TextBlock
+            {
+                Text = number.ToString(),
+                FontSize = 30,
+                FontWeight = FontWeights.Bold,
+                Foreground = Brushes.IndianRed,
+                Background = Brushes.Transparent
+            };
+
+            // Đặt vị trí ban đầu (tọa độ canvas)
+            Canvas.SetLeft(textBlock, centerX - textBlock.FontSize / 2); // Canh giữa theo X
+            Canvas.SetTop(textBlock, centerY - textBlock.FontSize / 2); // Canh giữa theo Y
+
+            // Thêm TextBlock vào Canvas
+            canvas.Children.Add(textBlock);
+
+            // Tạo animation di chuyển lên trên
+            var moveUpAnimation = new DoubleAnimation
+            {
+                From = centerY,
+                To = centerY - 50, // Di chuyển lên trên 50 pixels
+                Duration = TimeSpan.FromSeconds(1), // Thời gian di chuyển
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+            };
+
+            // Tạo animation fade-out
+            var fadeOutAnimation = new DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = TimeSpan.FromSeconds(1) // Thời gian biến mất
+            };
+
+            // Gắn animation fade-out vào thuộc tính Opacity
+            textBlock.BeginAnimation(OpacityProperty, fadeOutAnimation);
+
+            // Gắn animation di chuyển vào thuộc tính Top
+            var tcs = new TaskCompletionSource<bool>();
+            moveUpAnimation.Completed += (s, e) =>
+            {
+                // Xóa TextBlock khỏi Canvas sau khi animation hoàn tất
+                canvas.Children.Remove(textBlock);
+                tcs.SetResult(true);
+            };
+
+            textBlock.BeginAnimation(Canvas.TopProperty, moveUpAnimation);
         }
 
 

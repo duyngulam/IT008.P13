@@ -1,19 +1,7 @@
 ﻿using Line98.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace Line98.View
 {
@@ -22,15 +10,19 @@ namespace Line98.View
     /// </summary>
     public partial class InGameUC : UserControl
     {
+
         private CountdownTimer _countdownTimer;
         private GameLogic _gameLogic;
         private int _score;
+        private bool paused = false;
+        public event Action UndoClicked;
+        public event Action PauseClicked;
+        public event Action SaveClicked;
         public InGameUC()
         {
             InitializeComponent();
             Timer();
         }
-
         void Timer()
         {
             _countdownTimer = new CountdownTimer(15); // 5 phút = 300 giây
@@ -45,5 +37,42 @@ namespace Line98.View
             _countdownTimer.Start();
         }
 
+        private void btnUndo_Click(object sender, RoutedEventArgs e)
+        {
+
+            UndoClicked?.Invoke(); // Gọi sự kiện khi nhấn nút Undo
+        }
+
+        private void btnPause_Click(object sender, RoutedEventArgs e)
+        {
+            PauseClicked?.Invoke();
+            if (paused)
+            {
+                paused = !paused;
+                _countdownTimer?.Start();
+            }
+            else
+            {
+                paused = !paused;
+                _countdownTimer?.Stop();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            SaveClicked?.Invoke();
+        }
+        public int GetTime()
+        {
+            return _countdownTimer.GetTimeLeft();
+        }
+        public void SetTime(int time)
+        {
+            _countdownTimer.SetTimeLeft(time);
+        }
     }
 }

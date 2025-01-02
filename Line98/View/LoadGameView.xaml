@@ -13,6 +13,8 @@
                 <ResourceDictionary Source="/Line98;component/Resource/StyleButton.xaml"/>
                 <ResourceDictionary Source="/Line98;component/Resource/DataTemplete.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+
         </ResourceDictionary>
 
 
@@ -45,6 +47,70 @@
                        VerticalAlignment="Center" Canvas.Left="290">
             </Rectangle>
 
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="700" Canvas.Left="290" Height="515" Canvas.Top="65">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="410"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="350" 
+                           Width="300"
+                           Fill="#BE5CCD"
+                          
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center"  RenderTransformOrigin="0.445,0.718" Margin="28,0,0,0">
+                    <Rectangle.Effect>
+                        <DropShadowEffect/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Rectangle Height="350" 
+           Width="300"
+           Fill="#BE5CCD"
+           
+           HorizontalAlignment="Left" 
+           VerticalAlignment="Center"  RenderTransformOrigin="0.448,0.575" Margin="368,0,0,0">
+                    <Rectangle.Effect>
+                        <DropShadowEffect/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Button x:Name="Save1"
+                    Content="Save" Style="{StaticResource btnItem}"
+        Grid.Row="1"
+         Margin="59,2,541,53" Click="Save1_Click">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button  x:Name="Load1"
+            Content="Load" Style="{StaticResource btnItem}"
+Grid.Row="1"
+ Margin="200,2,400,53" Click="Load1_Click"
+                         Command="{Binding DataContext.MainViewModel.LoadbtnCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button  x:Name="Save2"
+                    Content="Save" Style="{StaticResource btnItem}"
+         Margin="400,2,200,53" Grid.Row="1">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button  x:Name="Load2"
+            Content="Load" Style="{StaticResource btnItem}"
+Grid.Row="1"
+ Margin="550,2,50,53" RenderTransformOrigin="4.803,0.588">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+            <Canvas x:Name="Saveslot1"  Height="300" 
+Width="300" Canvas.Left="318" Canvas.Top="95" HorizontalAlignment="Center" VerticalAlignment="Center">
+            </Canvas>
+            <Canvas x:Name="Saveslot2"  Height="300" 
+Width="300" Canvas.Left="658" Canvas.Top="95">
+            </Canvas>
         </Canvas>
 
         <!--BUTTON BACK-->
@@ -52,6 +118,9 @@
                 Grid.Row="1"
                 Content="BACK"
                 Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
         </Button>
 
     </Grid>

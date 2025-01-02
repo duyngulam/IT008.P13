@@ -1,23 +1,21 @@
-﻿using Line98.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace Line98.ViewModel
 {
-    public class MainViewModel:ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         private ViewModelBase _CurrentView;
+        public event Action<string> ViewChanged;
 
-        public ViewModelBase CurrentView 
-        { 
+        private void OnViewChanged(string viewName)
+        {
+            ViewChanged?.Invoke(viewName);
+        }
+        public ViewModelBase CurrentView
+        {
             get => _CurrentView;
-            
+
             set
             {
                 _CurrentView = value;
@@ -35,7 +33,24 @@ namespace Line98.ViewModel
         public ICommand ShowLoadGameCommand { get; set; }
         public ICommand ShowInGameCommand { get; set; }
         public ICommand ExitCommand { get; set; }
-        private void ShowStart(object obj) => CurrentView = new StartViewModel();
+        public ICommand LoadbtnCommand { get; set; }
+        private void ShowStart(object obj)
+        {
+            if (!GameState.Instance.IsPlaying)
+                CurrentView = new StartViewModel();
+            else
+
+                CurrentView = new InGameViewModel();
+            OnViewChanged(nameof(CurrentView));
+        }
+        private void BackLoad(object obj)
+        {
+            if (!GameState.Instance.IsPlaying)
+                return;
+            else
+                CurrentView = new InGameViewModel();
+            OnViewChanged(nameof(CurrentView));
+        }
         private void ShowNewGame(object obj) => CurrentView = new NewGameViewModel();
         private void ShowMenu(object obj) => CurrentView = new MenuViewModel();
         private void ShowMenuStyle(object obj) => CurrentView = new MenuStyleViewModel();
@@ -45,7 +60,17 @@ namespace Line98.ViewModel
         private void ShowInGame(object obj) => CurrentView = new InGameViewModel();
         private void ExitAciton(object obj)
         {
-            
+            var result = MessageBox.Show(
+        "Are you sure you want to exit the game?",
+        "Confirmation",
+        MessageBoxButton.YesNo,
+        MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                CurrentView = new StartViewModel();
+                GameState.Instance.IsPlaying = false;
+            }
         }
 
         public MainViewModel()
@@ -59,6 +84,7 @@ namespace Line98.ViewModel
             ShowLoadGameCommand = new ViewModelCommand(ShowLoadGame);
             ShowInGameCommand = new ViewModelCommand(ShowInGame);
             ExitCommand = new ViewModelCommand(ExitAciton);
+            LoadbtnCommand = new ViewModelCommand(BackLoad);
 
             CurrentView = new StartViewModel();
         }

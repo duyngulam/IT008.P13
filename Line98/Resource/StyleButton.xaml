@@ -214,5 +214,43 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+    <Style x:Key="btnItem" TargetType="Button">
+        <Setter Property="Background" Value="#BE5CCD"/>
+        <Setter Property="Foreground" Value="#FFC5D4"/>
+        <Setter Property="FontFamily" Value="Kodchasan"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Opacity" Value="1"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="100"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border 
+Width="90" Height="45"
+x:Name="border"
+Background="{TemplateBinding Background}"
+BorderBrush="#9D4EC5"
+BorderThickness="3"
+CornerRadius="30">
+                        <ContentPresenter HorizontalAlignment="Center" 
+          VerticalAlignment="Center"/>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+
+
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background"  Value="#9D4EC5"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+
 </ResourceDictionary>

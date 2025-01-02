@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using System.Windows.Documents;
 
 namespace Line98.Model
 {
     public class Board
     {
         public int Size { get; set; }
-        public Ball[,] Balls { get; private set; }
+        public Ball[,] Balls { get; set; }
 
         public Board(int size)
         {
@@ -44,6 +39,5 @@ namespace Line98.Model
 
             return balls;
         }
-
     }
 }

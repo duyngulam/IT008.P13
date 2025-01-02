@@ -28,6 +28,7 @@
 		<Content Include="Resources\Background Music\Song 1.wav">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<Resource Include="Resources\background.png" />
 		<Resource Include="Resources\balls.png" />
 		<Resource Include="Resources\gameboard.png" />

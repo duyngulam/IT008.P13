@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Policy;
 using System.Windows.Threading;
 
 namespace Line98.Model
@@ -50,6 +46,7 @@ namespace Line98.Model
 
             // Cập nhật thời gian lên giao diện
             TimeChanged?.Invoke(FormatTime(_timeLeftInSeconds));
+            GameState.Instance.Time = _timeLeftInSeconds;
 
             // Nếu hết thời gian, dừng Timer và gọi sự kiện TimeUp
             if (_timeLeftInSeconds <= 0)
@@ -65,6 +62,14 @@ namespace Line98.Model
             int minutes = timeInSeconds / 60;
             int seconds = timeInSeconds % 60;
             return $"{minutes:D2}:{seconds:D2}";  // Hiển thị dưới dạng "mm:ss"
+        }
+        public int GetTimeLeft()
+        {
+            return _timeLeftInSeconds;
+        }
+        public void SetTimeLeft(int timeLeftInSeconds)
+        {
+            _timeLeftInSeconds = timeLeftInSeconds;
         }
     }
 }

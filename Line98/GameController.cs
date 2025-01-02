@@ -1,29 +1,30 @@
 ﻿using Line98.Control;
 using Line98.Model;
 using Line98.View;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Media.Animation;
 
 namespace Line98
 {
     public class GameController
     {
         private readonly GameControl gameControl;
-        private readonly GameLogic gameLogic;
         private readonly InGameUC inGameUC;
+        private GameLogic gameLogic;
+        private GameLogic preGameLogic;
+        private Board TempBoard;
+
         public GameController(GameControl gameControl, GameLogic gameLogic, InGameUC inGameUC)
         {
             this.gameControl = gameControl;
             this.gameLogic = gameLogic;
+            TempBoard = new Board(GameState.Instance.SelectedBallCount == 6 ? 12 : 9);
+            preGameLogic = new GameLogic(TempBoard);
             this.inGameUC = inGameUC;
+            inGameUC.UndoClicked += Undo;
+            gameLogic.BallWillMove += UpdatePreLogic;
             gameControl.CellClicked += HandleCellClick;
+            inGameUC.PauseClicked += PauseScreen;
+            inGameUC.SaveClicked += SaveToGameSaveData;
 
         }
 
@@ -49,16 +50,20 @@ namespace Line98
                         gameControl.AddBall(i, j, Balllist[i, j].colorIndex, Balllist[i, j].isBig, gameLogic.SelectedBallPosition);
                 }
             }
+
+            inGameUC.scoreText.Text = gameLogic.Score.ToString();
         }
 
         public async void HandleCellClick(int row, int col)
         {
+
             ClickState clickstate = gameLogic.HandleClick(row, col);
             if (clickstate == ClickState.selectNewBall)
             {
                 UpdateUI();
                 return;
             }
+
             if (clickstate == ClickState.moved)// move thì update UI click thì k update
             {
                 await gameControl.AnimateBallMovement(gameControl.BallOverlay, gameLogic.MovingPath);
@@ -66,8 +71,10 @@ namespace Line98
                 var ClearPosition = gameLogic.Scoring();
                 if (ClearPosition.Count != 0)
                 {
+                    int scoreChange = gameLogic.CalculateScore(ClearPosition.Count);
                     inGameUC.scoreText.Text = gameLogic.Score.ToString();
-                    MessageBox.Show($"{gameLogic.CalculateScore(ClearPosition.Count)}");
+                    GameState.Instance.score = gameLogic.Score;
+                    gameControl.ShowNumberWithAnimation(gameControl.BallOverlay, scoreChange, row, col);
                     await gameControl.ClearBallsAnimation(gameControl.BallOverlay, ClearPosition);
                     return;
                 }
@@ -75,21 +82,102 @@ namespace Line98
                 ClearPosition = gameLogic.Scoring();
                 if (ClearPosition.Count != 0)
                 {
+                    int scoreChange = gameLogic.CalculateScore(ClearPosition.Count);
                     inGameUC.scoreText.Text = gameLogic.Score.ToString();
-                    MessageBox.Show($"{gameLogic.CalculateScore(ClearPosition.Count)}");
+                    GameState.Instance.score = gameLogic.Score;
+                    gameControl.ShowNumberWithAnimation(gameControl.BallOverlay, scoreChange, row, col);
                     await gameControl.ClearBallsAnimation(gameControl.BallOverlay, ClearPosition);
                     return;
                 }
+
                 UpdateUI();
+                if (gameLogic.CheckGameOver())
+                {
+                    MessageBox.Show("OVER");
+                }
+
             }
         }
 
         public void NewGame()
         {
+            if (GameState.Instance.IsPlaying)
+            {
+                gameLogic.Score = GameState.Instance.score;
+                UpdateUI();
 
+
+                return;
+            }
             InitializeGame();
-
         }
+        private void PauseScreen()
+        {
+            if (gameControl.PauseOverlay.Visibility == Visibility.Collapsed)
+            {
+                gameControl.PauseOverlay.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                gameControl.PauseOverlay.Visibility = Visibility.Collapsed;
+            }
+        }
+        private void Undo()
+        {
+            if (preGameLogic != null)
+            {
+                if (preGameLogic.GetEmptyCells().Count != preGameLogic.getSize() * preGameLogic.getSize())
+                {
+
+                    gameLogic.SetBoard(preGameLogic.GetBalls());
+                    gameLogic.Score = preGameLogic.Score;
+                    UpdateUI();
+                    inGameUC.scoreText.Text = gameLogic.Score.ToString();
+
+                }
+            }
+        }
+
+
+        private void UpdatePreLogic()
+        {
+            // Tạo bản sao mảng bóng từ GameLogic
+            Ball[,] TempBall = gameLogic.GetBalls();
+            Ball[,] newBallState = new Ball[gameLogic.getSize(), gameLogic.getSize()];
+
+            for (int i = 0; i < gameLogic.getSize(); i++)
+            {
+                for (int j = 0; j < gameLogic.getSize(); j++)
+                {
+                    if (TempBall[i, j] != null)
+                    {
+                        // Tạo bản sao của từng bóng
+                        newBallState[i, j] = new Ball(TempBall[i, j].colorIndex, TempBall[i, j].isBig);
+                    }
+                }
+            }
+
+            // Cập nhật trạng thái cho preGameLogic
+            preGameLogic.SetBoard(newBallState);
+            preGameLogic.Score = gameLogic.Score;
+        }
+        private void SaveToGameSaveData()
+        {
+            GameSaveData.Instance.Reset();
+            GameSaveData.Instance.Board = new Ball[gameLogic.getSize(), gameLogic.getSize()];
+            GameSaveData.Instance.Score = gameLogic.Score;
+            GameSaveData.Instance.SelectedBallCount = GameState.Instance.SelectedBallCount;
+            GameSaveData.Instance.Time = inGameUC.GetTime();
+            for (int i = 0; i < gameLogic.getSize(); i++)
+            {
+                for (int j = 0; j < gameLogic.getSize(); j++)
+                {
+                    if (gameLogic.board.Balls[i, j] != null)
+                        GameSaveData.Instance.Board[i, j] = gameLogic.board.Balls[i, j].Clone();
+                }
+            }
+        }
+
     }
 
 

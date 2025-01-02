@@ -166,6 +166,7 @@
                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                     HorizontalAlignment="Left" VerticalAlignment="Center" 
                     Margin="180,0,0,0"
+                    Click="btnSmallNext_Click"
                     Command="{Binding DataContext.MainViewModel.ShowInGameCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                 <!--Button SMALL BACK-->

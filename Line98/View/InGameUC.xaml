@@ -166,23 +166,26 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Style="{StaticResource btnItem}"
-                    Margin="-80,-60,0,0"/>
+                <Button x:Name="btnPause"  Style="{StaticResource btnItem}"
+                    Click ="btnPause_Click" Margin="-80,-60,0,0"/>
 
-                <Button Style="{StaticResource btnItem}"
-                    Margin="-80,60,0,0"/>
+                <Button x:Name="btnUndo" Style="{StaticResource btnItem}"
+                    Click="btnUndo_Click"
+                        Margin="-80,60,0,0"/>
 
-                <Button Style="{StaticResource btnItem}"
-                    Margin="160,-60,0,0"/>
+                <Button x:Name="btnLoad" Style="{StaticResource btnItem}"
+                    Margin="160,-60,0,0"
+                    Command="{Binding DataContext.MainViewModel.ShowLoadGameCommand, RelativeSource={RelativeSource AncestorType=Window}}" Click="btnLoad_Click" />
 
                 <Button Style="{StaticResource btnItem}"
                     Margin="160,60,0,0"/>
 
-                <Button Grid.Column="2"                       
+                <Button  Grid.Column="2"                       
                     Height="100" Width="120"
                     Background="#BE5CCD"
-                    Style="{StaticResource TriggerStyle}"
-            >
+                    Style="{StaticResource TriggerStyle}" 
+                     Command="{Binding DataContext.MainViewModel.ExitCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        >
                     <Button.Template>
                         <ControlTemplate>
                             <Border 
