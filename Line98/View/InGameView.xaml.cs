@@ -49,6 +49,10 @@ namespace Line98.View
             }
 
 
+
+            _gameController.NewGame();
+
+                           
         }
     }
 }

@@ -65,7 +65,7 @@
 		<Resource Include="Resources\Pics\Planet1.png" />
 		<Resource Include="Resources\Pics\Planet2.png" />
 		<Resource Include="ScoreData\NormalScore.txt">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="ScoreData\TimerScore.txt" />
 	</ItemGroup>

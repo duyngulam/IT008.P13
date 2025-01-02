@@ -7,7 +7,11 @@
              mc:Ignorable="d" 
         Background="Transparent"
         WindowStyle="None"
-             d:DesignHeight="758" d:DesignWidth="1280">
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Height="400" Width="700"
+             d:DesignHeight="400" d:DesignWidth="700">
     <Window.Resources>
         <FontFamily x:Key="GeostarFillFont" >pack://application:,,,/Fonts/#Geostar Fill</FontFamily>
         <FontFamily x:Key="CourierPrimeFont" >pack://application:,,,/Fonts/#Courier Prime</FontFamily>
@@ -74,69 +78,68 @@
                                     <GradientStop Color="#FCCDB6" Offset="0.6598" />
                                 </LinearGradientBrush>
                             </Border.BorderBrush>
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                  Margin="10,10,0,0" 
+                                  Foreground="{TemplateBinding Foreground}" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
 
         <Border Height="400" Width="700" BorderThickness="2"
                 BorderBrush="Transparent" CornerRadius="60"
-                Background="White" Opacity="0.7"
                 >
-        </Border>
-        <StackPanel Height="400" Width="700" Orientation="Vertical">
-            <TextBlock 
-                Margin="0,50,0,0"
-                Text="GAME OVER" Height="100" Width="600" 
-                       TextAlignment="Center" FontWeight="ExtraBold"
-                        VerticalAlignment="Center"
-                       FontSize="110" FontFamily="{StaticResource CourierPrimeFont}" >
-                <TextBlock.Foreground>
-                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
-                        <GradientStop Color="#FF95B0" Offset="0.32" />
-                        <GradientStop Color="#FFCFD2" Offset="0.4233" />
-                        <GradientStop Color="#FEEECC" Offset="0.5467" />
-                        <GradientStop Color="#FCCDB6" Offset="0.6598" />
-                    </LinearGradientBrush>
-                </TextBlock.Foreground>
-            </TextBlock>
-            <Canvas Margin="0,20,0,0" Height="80" Width="500">
-                <TextBox 
-                    x:Name="txtName"
-                    FontSize="20" FontWeight="Light"
-                    Height="80" Width="500" Canvas.Left="0"
-                    Style="{StaticResource tbStyle}"
-                    TextChanged="txtName_TextChanged">
-                    Enter your name                    
-                </TextBox>
-
-                <TextBlock x:Name="tbPlaceholder" 
-                           Height="70" Width="500" 
-                           VerticalAlignment="Center"
-                           FontSize="40" FontWeight="Light"
-                           Foreground="Gray"
-                           Margin="10,10,0,0"
-                           Text="Enter your name">
-                    
+        <Border.Background>
+            <SolidColorBrush Color="White" Opacity="0.9"/>
+        </Border.Background>
+        <Grid>
+            <StackPanel Height="400" Width="700" Orientation="Vertical">
+                <TextBlock 
+         Margin="0,50,0,0"
+         Text="GAME OVER" Height="100" Width="600" 
+                TextAlignment="Center" FontWeight="ExtraBold"
+                 VerticalAlignment="Center"
+                FontSize="110" FontFamily="{StaticResource CourierPrimeFont}" >
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                            <GradientStop Color="#FF95B0" Offset="0.32" />
+                            <GradientStop Color="#FFCFD2" Offset="0.4233" />
+                            <GradientStop Color="#FEEECC" Offset="0.5467" />
+                            <GradientStop Color="#FCCDB6" Offset="0.6598" />
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
                 </TextBlock>
-                <Button Height="80" Width="80" Content="X" 
-                        x:Name="btnClear" Canvas.Right="0"
-                        Background="Transparent" BorderThickness="0"
-                        Foreground="Gray" FontSize="20" FontWeight="ExtraBlack"
-                        Click="btnClear_Click">
-                    
-                </Button>
-            </Canvas>
+                <Canvas Margin="0,20,0,0" Height="80" Width="500">
 
-            <StackPanel Height="100" Width="500" Orientation="Horizontal">
-                <Button x:Name="btnSave" Margin="50,0,0,0" Content="SAVE" Foreground="White" Style="{StaticResource styleButton}"
-                        Click="btnSave_Click"/>
-                <Button x:Name="btnExit" Margin="100,0,0,0" Content="EXIT" Foreground="White" Style="{StaticResource styleButton}"
-                        Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <TextBox 
+             x:Name="txtName"  Text="Your name"
+             FontSize="30" FontWeight="Light"
+             FontFamily="Kodchasan"
+             Foreground="Black"
+             Height="80" Width="500" Canvas.Left="0"
+             Style="{StaticResource tbStyle}"
+             >
+                    </TextBox>
+
+
+                    <Button Height="80" Width="80" Content="X" 
+                 x:Name="btnClear" Canvas.Right="0"
+                 Background="Transparent" BorderThickness="0"
+                 Foreground="Gray" FontSize="20" FontWeight="ExtraBlack"
+                 Click="btnClear_Click">
+
+                    </Button>
+                </Canvas>
+
+                <StackPanel Height="100" Width="500" Orientation="Horizontal">
+                    <Button x:Name="btnSave" Margin="50,0,0,0" Content="SAVE" Foreground="White" Style="{StaticResource styleButton}"
+                 Click="btnSave_Click"/>
+                    <Button x:Name="btnExit" Margin="100,0,0,0" Content="EXIT" Foreground="White" Style="{StaticResource styleButton}"
+                 Click="btnExit_Click"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+        </Border>
 </Window>
