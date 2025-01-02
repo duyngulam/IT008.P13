@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Line98.View
 {
@@ -27,22 +27,22 @@ namespace Line98.View
             InitializeComponent();
             scoreSave = score;
         }
-
-        private string placeholder;
-        public string Placeholder
+        
+        void newGame()
         {
-            get { return placeholder; }
-            set
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+
+            // Đặt cửa sổ mới là MainWindow
+            App.Current.MainWindow = mainWindow;
+            foreach (Window window in App.Current.Windows)
             {
-                placeholder = value;
-                tbPlaceholder.Text = placeholder;
+                if (window != App.Current.MainWindow)
+                {
+                    window.Close();
+                }
             }
-        }
 
-        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtName.Text)) { tbPlaceholder.Visibility = Visibility.Visible; }
-            else tbPlaceholder.Visibility = Visibility.Collapsed;
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -53,10 +53,52 @@ namespace Line98.View
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            string filePath = "D:\\KTPM\\HK3\\LapTrinhTrucQuan\\DoAn\\Line98\\ScoreData\\TimerScore.txt"; // Đường dẫn file
-            string content = txtName.Text;
+            string fileName;
 
-            File.AppendAllText(filePath, content + "." + scoreSave.ToString());
+            // Kiểm tra trạng thái đếm thời gian và đặt tên file phù hợp
+            if (StyleBallManager.Instance.isCountingup)
+            {
+                fileName = "NormalScore.txt";
+            }
+            else
+            {
+                fileName = "TimerScore.txt";
+            }
+
+            // Đường dẫn tuyệt đối đến thư mục chứa file trong dự án
+            string projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            string filePath = Path.Combine(projectDirectory, "ScoreData", fileName);
+
+            // Kiểm tra nếu thư mục chứa file không tồn tại, tạo nó nếu cần thiết
+            string directoryPath = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Ghi dữ liệu vào tệp
+            string content = txtName.Text;
+            // Thực hiện bắt đầu trò chơi mới sau khi lưu
+            //   filePath = "D:\\KTPM\\HK3\\LapTrinhTrucQuan\\DoAn\\Line98\\ScoreData\\NormalScore.txt";
+                        //  "D:\\KTPM\\HK3\\LapTrinhTrucQuan\\DoAn\\Line98\\Line98\\ScoreData\\NormalScore.txt"
+            try
+            {
+                File.AppendAllText(filePath, content + "." + scoreSave.ToString() + "\n");
+                MessageBox.Show("Dữ liệu đã được lưu thành công.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi ghi dữ liệu vào file: {ex.Message}");
+            }
+
+            newGame();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+
+            newGame();
+
         }
     }
 }

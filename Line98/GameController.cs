@@ -37,7 +37,7 @@ namespace Line98
 
         private void InitializeGame()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 40; i++)
             {
                 gameLogic.MakeBigBall();
                 gameLogic.MakeSmallBall();
@@ -100,7 +100,10 @@ namespace Line98
                 UpdateUI();
                 if (gameLogic.CheckGameOver())
                 {
-                    MessageBox.Show("OVER");
+                    //MessageBox.Show("OVER");
+                    GameOver gameOver = new GameOver(gameLogic.Score); // Gán cửa sổ hiện tại (this) làm chủ
+                    GameState.Instance.Reset();
+                    gameOver.ShowDialog();
                 }
 
             }
