@@ -56,6 +56,15 @@ namespace Line98.View
             gameArea.Children.Add(gameControl);
             _gameController.NewGame(); GameState.Instance.IsPlaying = true;
 
+            _gameController.NewGame();
+
+            if (gameLogic.IsGameOVer() == true)
+            {
+                GameOver gameOver = new GameOver();
+                gameOver.Show();
+            } 
+                
+            
         }
     }
 }

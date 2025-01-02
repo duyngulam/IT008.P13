@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,6 +47,14 @@ namespace Line98.View
         {
             txtName.Clear();
             txtName.Focus();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            string filePath = "D:\\KTPM\\HK3\\LapTrinhTrucQuan\\DoAn\\Line98\\ScoreData\\TimerScore.txt"; // Đường dẫn file
+            string content = txtName.Text;
+
+            File.AppendAllText(filePath, content + ".");
         }
     }
 }
