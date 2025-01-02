@@ -30,6 +30,24 @@ namespace Line98.View
             ShowScore(normalfilePath);
         }
 
+        public static void BubbleSort(List<TableRow> data)
+        {
+            int n = data.Count;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (string.Compare(data[j].Column2, data[j + 1].Column2) < 0)
+                    {
+                        // Hoán đổi 2 phần tử
+                        var temp = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
         void ShowScore(string uriPath)
         {
             var data = new List<TableRow>();
@@ -57,6 +75,7 @@ namespace Line98.View
                 }
             }
 
+            BubbleSort(data);
             // Gắn dữ liệu vào ListBox
             lbNormal.ItemsSource = data;
         }

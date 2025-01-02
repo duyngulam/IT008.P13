@@ -44,6 +44,14 @@ namespace Line98.View
             // Gán GameControl vào gameArea
             gameArea.Children.Add(gameControl);
             _gameController.NewGame();
+
+            if (gameLogic.IsGameOVer() == true)
+            {
+                GameOver gameOver = new GameOver();
+                gameOver.Show();
+            } 
+                
+            
         }
     }
 }

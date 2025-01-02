@@ -132,8 +132,10 @@
             </Canvas>
 
             <StackPanel Height="100" Width="500" Orientation="Horizontal">
-                <Button Margin="50,0,0,0" Content="SAVE" Foreground="White" Style="{StaticResource styleButton}"/>
-                <Button Margin="100,0,0,0" Content="EXIT" Foreground="White" Style="{StaticResource styleButton}"/>
+                <Button x:Name="btnSave" Margin="50,0,0,0" Content="SAVE" Foreground="White" Style="{StaticResource styleButton}"
+                        Click="btnSave_Click"/>
+                <Button x:Name="btnExit" Margin="100,0,0,0" Content="EXIT" Foreground="White" Style="{StaticResource styleButton}"
+                        Command="{Binding DataContext.MainViewModel.ShowStartCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
             </StackPanel>
         </StackPanel>
     </Grid>
