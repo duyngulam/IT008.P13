@@ -98,5 +98,19 @@ namespace Line98.View
             _countdownTimer.SetTimeLeft(time);
             countUp.SetTimeLeft(time);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (ChangeMusic.Instance.isPlaying)
+            {
+                ChangeMusic.Instance.StopMusic();
+                ChangeMusic.Instance.isPlaying = false;
+            }
+            else
+            {
+                ChangeMusic.Instance.PlayMusic();
+                ChangeMusic.Instance.isPlaying = true;
+            }
+        }
     }
 }

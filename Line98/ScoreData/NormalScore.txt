@@ -2,6 +2,6 @@
 bname.120
 VVVVVYour name.0
 You.50
-tRNG.0
+tRNG.100
 M BEO.0
 Your namehihu.0

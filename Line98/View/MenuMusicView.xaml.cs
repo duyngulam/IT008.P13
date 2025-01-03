@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NAudio.Wave;
 using NAudio.CoreAudioApi;
+using Line98.Model;
 
 namespace Line98.View
 {
@@ -16,6 +17,11 @@ namespace Line98.View
         public MenuMusicView()
         {
             InitializeComponent();
+        }
+
+        private void RadioButton_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ChangeMusic.Instance.ChangeMusicTo("Song2");
         }
     }
 }
