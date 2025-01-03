@@ -19,14 +19,29 @@ namespace Line98.View
             InitializeComponent();
         }
 
-        private void RadioButton_Checked(object sender, System.Windows.RoutedEventArgs e)
+        private void RadioButton_Checked_1(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ChangeMusic.Instance.ChangeMusicTo("Song1");
+        }
+
+        private void RadioButton_Checked_2(object sender, System.Windows.RoutedEventArgs e)
         {
             ChangeMusic.Instance.ChangeMusicTo("Song2");
         }
 
-        private void RadioButton_Checked_1(object sender, System.Windows.RoutedEventArgs e)
+        private void RadioButton_Checked_3(object sender, System.Windows.RoutedEventArgs e)
         {
-            ChangeMusic.Instance.ChangeMusicTo("Song1");
+            ChangeMusic.Instance.ChangeMusicTo("Song3");
+        }
+
+        private void RadioButton_Checked_4(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ChangeMusic.Instance.ChangeMusicTo("Song4");
+        }
+
+        private void RadioButton_Checked_5(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ChangeMusic.Instance.StopMusic();
         }
     }
 }
