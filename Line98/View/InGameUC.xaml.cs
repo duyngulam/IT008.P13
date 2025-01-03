@@ -12,7 +12,7 @@ namespace Line98.View
     public partial class InGameUC : UserControl
     {
 
-        private CountdownTimer _countdownTimer = new CountdownTimer(15);
+        private CountdownTimer _countdownTimer = new CountdownTimer();
         private CountdownTimer countUp = new CountdownTimer(0);
         private GameLogic _gameLogic;
         private int _score;
@@ -33,7 +33,7 @@ namespace Line98.View
 
         void countdown()
         {
-            //  _countdownTimer = new CountdownTimer(15); // 5 phút = 300 giây
+            _countdownTimer = new CountdownTimer(15); 
 
             // Đăng ký sự kiện TimeChanged để cập nhật TextBlock mỗi khi thời gian thay đổi
             _countdownTimer.TimeChanged += (time) => CountdownText.Text = time;
@@ -51,7 +51,7 @@ namespace Line98.View
 
         void countup()
         {
-            countUp = new CountdownTimer(isCountingUp: true); // Đếm thời gian từ 0
+            countUp = new CountdownTimer(0,isCountingUp: true); // Đếm thời gian từ 0
             countUp.TimeChanged += time => CountdownText.Text = time;
             countUp.Start();
         }

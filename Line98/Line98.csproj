@@ -17,6 +17,8 @@
 
 	<ItemGroup>
 		<None Remove="Resources\background.png" />
+		<None Remove="Resources\BackgroundMusic\Song3.wav" />
+		<None Remove="Resources\BackgroundMusic\Song4.wav" />
 		<None Remove="Resources\Ball2.png" />
 		<None Remove="Resources\ball3.png" />
 		<None Remove="Resources\ball4.png" />
@@ -48,6 +50,8 @@
 		<PackageReference Include="NAudio" Version="2.2.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<Resource Include="Resources\background.png" />
+		<Resource Include="Resources\BackgroundMusic\Song3.wav" />
+		<Resource Include="Resources\BackgroundMusic\Song4.wav" />
 		<Resource Include="Resources\Ball2.png" />
 		<Resource Include="Resources\ball3.png" />
 		<Resource Include="Resources\ball4.png" />

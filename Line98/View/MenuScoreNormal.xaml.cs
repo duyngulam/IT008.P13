@@ -27,12 +27,16 @@ namespace Line98.View
             {
                 for (int j = 0; j < n - i - 1; j++)
                 {
-                    if (string.Compare(data[j].Column2, data[j + 1].Column2) < 0)
+                    // Chuyển đổi Column2 thành số để so sánh
+                    if (int.TryParse(data[j].Column2, out int value1) && int.TryParse(data[j + 1].Column2, out int value2))
                     {
-                        // Hoán đổi 2 phần tử
-                        var temp = data[j];
-                        data[j] = data[j + 1];
-                        data[j + 1] = temp;
+                        if (value1 < value2)
+                        {
+                            // Hoán đổi 2 phần tử
+                            var temp = data[j];
+                            data[j] = data[j + 1];
+                            data[j + 1] = temp;
+                        }
                     }
                 }
             }

@@ -35,11 +35,11 @@
 
                 <StackPanel Grid.Column="0"
                     Orientation="Vertical" >
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,25,0,0" IsChecked="{Binding Is1stSongPlaying}" Command="{Binding Play1stSongCommand}" Checked="RadioButton_Checked_1"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0" IsChecked="{Binding Is2ndSongPlaying}" Command="{Binding Play2ndSongCommand}" Checked="RadioButton_Checked"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0"/>
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,25,0,0"  Checked="RadioButton_Checked_1"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0"  Checked="RadioButton_Checked_2"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0" Checked="RadioButton_Checked_3"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0" Checked="RadioButton_Checked_4"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0" Checked="RadioButton_Checked_5"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1"
@@ -48,7 +48,7 @@
                     <Button Style="{StaticResource btnSong}" Margin="0,5,0,0" Width="200" Height="42" Content="Song 2" FontSize="25"/>
                     <Button Style="{StaticResource btnSong}" Margin="0,5,0,0" Width="200" Height="42" Content="Song 3" FontSize="25"/>
                     <Button Style="{StaticResource btnSong}" Margin="0,5,0,0" Width="200" Height="42" Content="Song 4" FontSize="25"/>
-                    <Button Style="{StaticResource btnSong}" Margin="0,5,0,0" Width="200" Height="42" Content="Song 5" FontSize="25"/>
+                    <Button Style="{StaticResource btnSong}" Margin="0,5,0,0" Width="200" Height="42" Content="None" FontSize="25"/>
                 </StackPanel>
             </Grid>
         </Canvas>
