@@ -42,7 +42,7 @@ namespace Line98.View
             // Gán GameControl vào gameArea
             gameArea.Children.Add(gameControl);
             _gameController.NewGame(); GameState.Instance.IsPlaying = true;
-                          
+
         }
     }
 }

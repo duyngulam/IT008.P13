@@ -105,7 +105,6 @@ namespace Line98
                 UpdateUI();
                 if (gameLogic.CheckGameOver())
                 {
-                    //MessageBox.Show("OVER");
                     GameOver gameOver = new GameOver(gameLogic.Score); // Gán cửa sổ hiện tại (this) làm chủ
                     GameState.Instance.Reset();
                     gameOver.ShowDialog();

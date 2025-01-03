@@ -23,6 +23,14 @@ namespace Line98.View
         public event Action GameOver;
         public InGameUC()
         {
+            if (GameState.Instance != null)
+            {
+                if (GameState.Instance.GameMode == true)
+                {
+                    StyleBallManager.Instance.isCountingup = true;
+                }
+                else { StyleBallManager.Instance.isCountingup = false; }
+            }
             InitializeComponent();
             if (StyleBallManager.Instance.isCountingup == true) { countup(); }
             else
@@ -33,7 +41,7 @@ namespace Line98.View
 
         void countdown()
         {
-            //  _countdownTimer = new CountdownTimer(15); // 5 phút = 300 giây
+            _countdownTimer = new CountdownTimer(15); // 5 phút = 300 giây
 
             // Đăng ký sự kiện TimeChanged để cập nhật TextBlock mỗi khi thời gian thay đổi
             _countdownTimer.TimeChanged += (time) => CountdownText.Text = time;
@@ -85,13 +93,19 @@ namespace Line98.View
         }
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
+            GameState.Instance.Time = _countdownTimer.GetTimeLeft();
             _countdownTimer?.Stop();
             countUp.Stop();
             SaveClicked?.Invoke();
         }
         public int GetTime()
         {
-            return _countdownTimer.GetTimeLeft();
+            if (GameState.Instance.GameMode)
+            {
+                return countUp.GetTimeLeft();
+            }
+            else
+                return _countdownTimer.GetTimeLeft();
         }
         public void SetTime(int time)
         {

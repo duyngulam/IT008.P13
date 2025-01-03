@@ -8,6 +8,7 @@ namespace Line98.View
     {
         public NewGameView()
         {
+            GameState.Instance.Reset();
             InitializeComponent();
         }
 
@@ -29,11 +30,13 @@ namespace Line98.View
                 selectedBall = 5;
             }
             else if (rdBtn6.IsChecked == true) { selectedBall = 6; }
-            GameState.Instance.Reset();
+
+            if (GameState.Instance.GameMode == true)
+            {
+                GameState.Instance.Time = 0;
+            }
             GameState.Instance.SelectedBallCount = selectedBall;
             GameState.Instance.board = new Board(selectedBall);
-
-
         }
 
         private void rdBtnTimer_Checked(object sender, RoutedEventArgs e)

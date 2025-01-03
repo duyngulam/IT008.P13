@@ -69,7 +69,7 @@ namespace Line98.ViewModel
             if (result == MessageBoxResult.Yes)
             {
                 CurrentView = new StartViewModel();
-                GameState.Instance.IsPlaying = false;
+                GameState.Instance.Reset();
             }
         }
 

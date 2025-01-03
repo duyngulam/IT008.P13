@@ -54,7 +54,6 @@ namespace Line98.Model
                 // Tăng thời gian
                 _timeInSeconds++;
                 TimeChanged?.Invoke(FormatTime(_timeInSeconds));
-                GameState.Instance.Time = _timeInSeconds;
             }
             else
             {
@@ -63,7 +62,7 @@ namespace Line98.Model
 
                 // Cập nhật thời gian lên giao diện
                 TimeChanged?.Invoke(FormatTime(_timeInSeconds));
-                GameState.Instance.Time = _timeInSeconds;
+
 
                 // Nếu hết thời gian, dừng Timer và gọi sự kiện TimeUp
                 if (_timeInSeconds <= 0)
