@@ -37,6 +37,9 @@ namespace Line98
         }
         private void StopGame()
         {
+            GameOver gameOver = new GameOver(gameLogic.Score); // Gán cửa sổ hiện tại (this) làm chủ
+            GameState.Instance.Reset();
+            gameOver.ShowDialog();
             gameControl.ClearBalls();
             GameState.Instance.Reset();
         }
@@ -105,9 +108,7 @@ namespace Line98
                 UpdateUI();
                 if (gameLogic.CheckGameOver())
                 {
-                    GameOver gameOver = new GameOver(gameLogic.Score); // Gán cửa sổ hiện tại (this) làm chủ
-                    GameState.Instance.Reset();
-                    gameOver.ShowDialog();
+
                     StopGame();
                 }
 
