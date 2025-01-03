@@ -35,7 +35,7 @@
 
                 <StackPanel Grid.Column="0"
                     Orientation="Vertical" >
-                    <RadioButton Style="{StaticResource radioButton}" Margin="0,25,0,0" IsChecked="{Binding Is1stSongPlaying}" Command="{Binding Play1stSongCommand}"/>
+                    <RadioButton Style="{StaticResource radioButton}" Margin="0,25,0,0" IsChecked="{Binding Is1stSongPlaying}" Command="{Binding Play1stSongCommand}" Checked="RadioButton_Checked_1"/>
                     <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0" IsChecked="{Binding Is2ndSongPlaying}" Command="{Binding Play2ndSongCommand}" Checked="RadioButton_Checked"/>
                     <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0"/>
                     <RadioButton Style="{StaticResource radioButton}" Margin="0,20,0,0"/>

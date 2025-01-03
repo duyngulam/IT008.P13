@@ -23,5 +23,10 @@ namespace Line98.View
         {
             ChangeMusic.Instance.ChangeMusicTo("Song2");
         }
+
+        private void RadioButton_Checked_1(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ChangeMusic.Instance.ChangeMusicTo("Song1");
+        }
     }
 }

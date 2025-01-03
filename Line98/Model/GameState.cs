@@ -14,6 +14,16 @@ public class GameState
     public int Time { get; set; }
     public bool IsPlaying { get; set; }
     public bool LoadGame { get; set; }
+    public GameState()
+    {
+        board = null;
+        score = 0;
+        SelectedBallCount = 5;
+        Time = 15 * 60;
+        IsPlaying = false;
+        LoadGame = false;
+        GameMode = true;
+    }
     public void Reset()
     {
         board = null;

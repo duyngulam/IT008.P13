@@ -41,7 +41,7 @@ namespace Line98.View
         void ShowScore(int type)
         {
             // Lấy dữ liệu từ Slot 1 (danh sách các chuỗi)
-            List<string> x = ScoreSaveManager.LoadFromSlot(1);
+            List<string> x = ScoreSaveManager.LoadFromSlot(type);
             var data = new List<TableRow>();
 
             int count = 1;
@@ -78,7 +78,7 @@ namespace Line98.View
             borderNormal.Visibility = Visibility.Visible;
             borderTimer.Visibility = Visibility.Collapsed;
             ShowScore(1);
-            
+
         }
 
         private void btnTimer_Click(object sender, RoutedEventArgs e)
